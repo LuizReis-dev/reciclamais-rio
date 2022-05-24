@@ -1,0 +1,54 @@
+.tabela-controlar {
+    margin: 10px;
+    margin-top: 40px;
+    width: 98%;
+    border-collapse: collapse;
+    font-family: 'Arial';
+}
+
+.tabela-controlar thead{
+    background-color: #4E944F;
+    height: 8vh;
+    color:#fafafa;
+}
+.tabela-controlar th {
+    width: 90px;
+}
+.tabela-controlar td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #63419656;
+}
+.tabela-controlar td button{
+    text-align: center;
+    margin-top: 10px;
+    border-bottom: 1px solid #63419628;
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.buttons-template {
+    width: 110px;
+    height: 38px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4E944F;
+    color: #fafafa;
+    margin-bottom: 10px;
+}
+.olho {
+    color: #4E944F;
+    margin-right: 20px;
+    
+}
+.btn-add {
+    width: 140px;
+    font-size: 14px;
+    margin-left: 10px;
+}
