@@ -11,8 +11,8 @@ require 'navegacao.html';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controlar catadores</title>
     <link rel="import" href="navegacao.html">
-    <link rel="stylesheet" href="../css/catadoresrcontrolar.css">
-    <link rel="stylesheet" href="../css/tabelacontrolar.css">
+    <link rel="stylesheet" href="../css/controlar.css">
+
 </head>
 
 <body>

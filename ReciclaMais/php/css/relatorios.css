@@ -1,0 +1,28 @@
+*{
+    font-family: 'Arial';
+}
+body {
+    display: flex;
+}
+.container {
+    width: 95vw;
+    height: fit-content;
+    background-color: #E9EFC0;
+}
+.titulo {
+    margin: 10px 0px 0px 10px;
+    color: #83BD75;
+    font-size: 32px;
+}
+.titulo-grafico {
+    color: #83BD75;
+    font-size: 25px;
+}
+.grafico-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+}
