@@ -32,6 +32,30 @@ require 'navegacao.html';
                 <td>Franciso Neves</td>
                 <td>50</td>
                 <td>000.000.000-00</td>
+                <td class="acoes">
+                    <a class="link" href="#"><i class="bi bi-eye olho"></i></a> 
+                    <a class="link"href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Franciso Neves</td>
+                <td>50</td>
+                <td>000.000.000-00</td>
+                <td class="acoes"><a class="link" href="#"><i class="bi bi-eye olho"></i></a> <a class="link"href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Franciso Neves</td>
+                <td>50</td>
+                <td>000.000.000-00</td>
+                <td class="acoes"><a class="link" href="#"><i class="bi bi-eye olho"></i></a> <a class="link"href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
+            </tr>
+            <tr class="bonificar">
+                <td>5</td>
+                <td>Franciso Neves</td>
+                <td>50</td>
+                <td>000.000.000-00</td>
                 <td class="acoes"><a class="link" href="#"><i class="bi bi-eye olho"></i></a> <a class="link"href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
             </tr>
             
