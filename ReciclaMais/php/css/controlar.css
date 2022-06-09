@@ -6,21 +6,26 @@
 
 body {
     display: flex;
-    
+    width: 100vw;
+    height: 100vh;
+
 }
+
 .conteudo-principal {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #E9EFC0;
-    
+
 }
+
 .opcoes {
-    width: 96vw;
+    width: 95vw;
     display: flex;
     justify-content: space-around;
 }
+
 .opcao {
     font-size: 22px;
     font-family: 'Arial';
@@ -29,17 +34,20 @@ body {
     width: 200px;
     border-radius: 2px;
     margin-top: 10px;
-    
+
 }
+
 .opcao:hover {
     color: #4E944F;
 }
+
 #selecionado {
     background-color: #83BD75;
     color: #fff;
     border: none;
-    pointer-events:none;
+    pointer-events: none;
 }
+
 .tabela-controlar {
     margin: 10px;
     margin-top: 40px;
@@ -48,20 +56,23 @@ body {
     font-family: 'Arial';
 }
 
-.tabela-controlar thead{
+.tabela-controlar thead {
     background-color: #4E944F;
     height: 8vh;
-    color:#fafafa;
+    color: #fafafa;
 }
+
 .tabela-controlar th {
     width: 90px;
 }
+
 .tabela-controlar td {
     text-align: center;
     padding: 10px;
     border-bottom: 1px solid #63419656;
 }
-.tabela-controlar td button{
+
+.tabela-controlar td button {
     text-align: center;
     margin-top: 10px;
     border-bottom: 1px solid #63419628;
@@ -73,6 +84,7 @@ body {
     align-items: center;
     padding-left: 40px;
 }
+
 .buttons-template {
     width: 110px;
     height: 38px;
@@ -85,15 +97,18 @@ body {
     margin-bottom: 10px;
     margin-right: 5px;
 }
+
 .link {
     width: 100px;
     margin-right: 20px;
 }
+
 .olho {
     color: #4E944F;
     margin-right: 20px;
-    
+
 }
+
 .btn-add {
     width: 140px;
     font-size: 14px;
@@ -102,4 +117,15 @@ body {
 
 .bonificar {
     background-color: #7fec81;
+}
+
+.form-bonificar {
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background-color: #4E944F;
+    display: none;
 }
