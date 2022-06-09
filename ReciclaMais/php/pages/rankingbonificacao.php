@@ -66,11 +66,13 @@ require 'navegacao.html';
     </div>
     <div class="form-bonificar">
             <i class="bi bi-x btn-sair"></i>
-            <p>Valor sugerido: R$45,00</p>
-            <p>Catador: Franciso Neves</p>
+            <div class="informacoes">
+                <p>Valor sugerido: R$45,00</p>
+                <p>Catador: Franciso Neves</p>
+            </div>
             <form action="">
-                <input type="text" placeholder="Digite o valor da bonificação..."><br>
-                <input type="submit" value="Bonificar">
+                <input class="input-valor" type="text" placeholder="Digite o valor da bonificação..."><br>
+                <input class="buttons-template submit-btn "type="submit" value="Bonificar">
             </form>
         </div>
     <script src="../scripts/rankingbonificacao.js"></script>
