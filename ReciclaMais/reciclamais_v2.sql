@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Jun-2022 às 12:33
+-- Generation Time: 20-Jun-2022 às 12:41
 -- Versão do servidor: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -119,10 +119,10 @@ INSERT INTO `material` (`id`, `nome`, `preco_por_kg`, `meta_bonificacao_kg`, `pr
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `operacoes_comerciais`
+-- Estrutura da tabela `operecao_comercial`
 --
 
-CREATE TABLE IF NOT EXISTS `operacoes_comerciais` (
+CREATE TABLE IF NOT EXISTS `operecao_comercial` (
   `id` int(11) NOT NULL,
   `id_catador` int(11) DEFAULT NULL,
   `id_empresa` int(11) DEFAULT NULL,
