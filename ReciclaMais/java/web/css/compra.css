@@ -1,0 +1,269 @@
+* {
+    font-family: 'Arial';
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E9EFC0;
+    display: flex;
+    margin: 0;
+    overflow-y: hidden;
+}
+
+div.compra {
+    width: 95%;
+    height: 100%;
+    display: flex;
+}
+
+div.fileira {
+    width: 530px;
+    height: 100%;
+    flex-direction: row;
+    padding: 40px;
+}
+
+div.coletor {
+    height: 40px;
+    display: flex;
+    position: relative;
+}
+
+form.coletor {
+    font-family: arial, verdana, sans-serif;
+    display: flex;
+}
+
+input.dados {
+    width: 300px;
+    height: 41px;
+    padding-left: 15px;
+    transition: 0.5s;
+    margin-left: 36px;
+}
+
+input.dados:focus {
+    border: 2px solid #83BD75;
+}
+
+input.dados[type='submit'] {
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+    background-color: #83BD75;
+    color: white;
+    border-style: none;
+    margin: 0;
+}
+
+input.dados[type='submit']:hover {
+    background-color: #4E944F;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+i.icone {
+    background-color: #83BD75;
+    padding: 5px;
+    color: #fff;
+    font-size: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+div.informacao {
+    height: 400px;
+    display: flex;
+    position: relative;
+}
+
+div.conteiner-info {
+    display: flex;
+    margin-top: 45px;
+}
+
+div.material {
+    width: 375px;
+    height: 40px;
+    display: flex;
+    position: relative;
+    margin-bottom: 45px;
+}
+
+select.produto {
+    width: 375px;
+    height: 40px;
+    background-color: #fff;
+    color: rgb(59, 59, 59, 0.75);
+    padding: 5px 40px 5px 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    appearance: none;
+    transition: 0.5s;
+}
+
+select.produto:focus {
+    border: 2px solid #83BD75;
+}
+
+span.seta {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #83BD75;
+    pointer-events: none;
+
+}
+
+span.seta:before,
+span.seta:after {
+    --size: 0.5em;
+    width: 0;
+    height: 0;
+    position: absolute;
+    content: "";
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+span.seta:before {
+    border-left: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-bottom: 0.5em solid #fff;
+    bottom: 35%;
+    margin-bottom: 5px;
+}
+
+span.seta:after {
+    border-left: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-top: 0.5em solid #fff;
+    top: 50%;
+    margin-top: 5px;
+}
+
+div.quantidade {
+    width: 300px;
+    height: 40px;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+i.material {
+    background-color: #83BD75;
+    color: #fff;
+    font-size: 21px;
+    padding: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+input.quantidade {
+    width: 300px;
+    height: 40px;
+    padding-left: 5px;
+    transition: 0.5s;
+    padding-left: 15px;
+    margin-left: 37px;
+}
+
+input.quantidade:focus {
+    border: 2px solid #83BD75;
+}
+
+div.botoes {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-around;
+}
+
+button.produtos {
+    font-size: 20px;
+    padding: 10px;
+    background-color: #83BD75;
+    width: 150px;
+    height: 65px;
+    border: none;
+    border-radius: 15px;
+    transition: 0.2s;
+    box-shadow: 0 4px #999;
+}
+
+button.produtos:hover {
+    background-color: #4E944F;
+    box-shadow: 0 4px rgb(100, 100, 100);
+    cursor: pointer;
+}
+
+button.produtos:active {
+    box-shadow: 0 1px rgb(100, 100, 100);
+    margin-top: 5px;
+}
+
+p.fonte {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+i.produto {
+    padding: 5px;
+    color: #fff;
+    font-size: 20px;
+}
+
+div.produtos {
+    width: 58%;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+
+table,
+tr.produto {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.produtos {
+    background-color: #fff;
+}
+
+tr.titulotabela {
+    background-color: #83BD75;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+
+th {
+    padding: 5px;
+}
+
+tr {
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr.total {
+    height: 43px;
+    background-color: #83BD75;
+    color: #fff;
+    font-size: 18px;
+}
+
+/*
+#E9EFC0
+#B4E197
+#83BD75
+#4E944F
+*/
