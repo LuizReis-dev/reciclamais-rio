@@ -1,5 +1,7 @@
 package entidades;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class Catador {
@@ -78,5 +80,22 @@ public class Catador {
         this.telefone = telefone;
     }
     
+    public int calcularIdade(){
+        Calendar hoje = Calendar.getInstance();
+        Calendar dataDeNascimento = new GregorianCalendar();
+        dataDeNascimento.setTime(this.data_de_nascimento);
+        
+        int idade = hoje.get(Calendar.YEAR) - dataDeNascimento.get(Calendar.YEAR);
+        
+        if(hoje.get(Calendar.MONTH) < dataDeNascimento.get(Calendar.MONTH)) {
+            idade--;
+        }else if(hoje.get(Calendar.MONTH) == dataDeNascimento.get(Calendar.MONTH)){
+            if(hoje.get(Calendar.DAY_OF_MONTH) < dataDeNascimento.get(Calendar.DAY_OF_MONTH)){
+                idade--;
+            }
+        }
+        
+        return idade;
+    }
 }
 

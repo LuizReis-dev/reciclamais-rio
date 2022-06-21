@@ -41,7 +41,7 @@
                     <tr>
                         <td>${catador.getId()}</td>
                         <td>${catador.getNome()}</td>                
-                        <td>${catador.getData_de_nascimento()}</td> 
+                        <td>${catador.calcularIdade()}</td> 
                         <td>${catador.getCpf()}</td>
                         <td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
                     </tr>
