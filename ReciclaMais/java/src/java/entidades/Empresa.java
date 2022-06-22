@@ -72,6 +72,10 @@ public class Empresa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     
 }
