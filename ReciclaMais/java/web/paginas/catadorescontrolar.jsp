@@ -22,8 +22,8 @@
         <div class="conteudo-principal">
             <div class="opcoes">
                 <a id="selecionado" class="opcao" href="#">Catadores</a>
-                <a class="opcao" href="empresascontrolar.php">Empresas</a>
-                <a class="opcao" href="materiaiscontrolar.php">Materiais</a>
+                <a class="opcao" href="empresascontrolar.jsp">Empresas</a>
+                <a class="opcao" href="materiaiscontrolar.jsp">Materiais</a>
             </div>
             <%
                 List<Catador> lista = CatadorDao.getCatadores();
