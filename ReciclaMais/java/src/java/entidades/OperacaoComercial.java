@@ -6,33 +6,29 @@ public class OperacaoComercial {
     private Catador catador;
     private Empresa empresa;
     private char tipo;
-    private Material material;
-    private double quantidade;
     private double total;
 
     public OperacaoComercial() {
     }
 
-    public OperacaoComercial(Catador catador, char tipo, Material material, double quantidade, double total) {
+    public OperacaoComercial(Catador catador, char tipo, double total) {
         this.catador = catador;
         this.tipo = tipo;
-        this.material = material;
-        this.quantidade = quantidade;
         this.total = total;
     }
 
-    public OperacaoComercial(Empresa empresa, char tipo, Material material, double quantidade, double total) {
+    public OperacaoComercial(Empresa empresa, char tipo, double total) {
         this.empresa = empresa;
         this.tipo = tipo;
-        this.material = material;
-        this.quantidade = quantidade;
         this.total = total;
     }
 
     public int getId() {
         return id;
     }
-
+    public void setId() {
+    
+    }
     public Catador getCatador() {
         return catador;
     }
@@ -55,22 +51,6 @@ public class OperacaoComercial {
 
     public void setTipo(char tipo) {
         this.tipo = tipo;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    public double getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
     }
 
     public double getTotal() {
