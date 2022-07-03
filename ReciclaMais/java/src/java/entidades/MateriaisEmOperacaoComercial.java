@@ -5,7 +5,7 @@ public class MateriaisEmOperacaoComercial {
     private int id;
     private OperacaoComercial operacaoComercial;
     private Material material;
-    private int quantidadeEmKg;
+    private double quantidadeEmKg;
 
     public MateriaisEmOperacaoComercial() {
     }
@@ -40,7 +40,7 @@ public class MateriaisEmOperacaoComercial {
         this.material = material;
     }
 
-    public int getQuantidadeEmKg() {
+    public double getQuantidadeEmKg() {
         return quantidadeEmKg;
     }
 
