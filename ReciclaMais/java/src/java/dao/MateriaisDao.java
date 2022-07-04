@@ -12,7 +12,7 @@ public class MateriaisDao {
         List<Material> list = new ArrayList<Material>();
         try{
         Connection con = ConnectionDao.getConnection();
-        PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM catador");
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM material");
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Material material = new Material();
