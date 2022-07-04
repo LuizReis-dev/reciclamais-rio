@@ -1,7 +1,7 @@
 package entidades;
 
 public class Material {
-   
+
     private int id;
     private String nome;
     private double preco_por_kg;
@@ -20,6 +20,10 @@ public class Material {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -53,6 +57,5 @@ public class Material {
     public void setPreco_bonificacao(double preco_bonificacao) {
         this.valor_bonificacao = preco_bonificacao;
     }
-    
-    
+
 }

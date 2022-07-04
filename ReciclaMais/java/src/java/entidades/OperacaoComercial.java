@@ -26,8 +26,8 @@ public class OperacaoComercial {
     public int getId() {
         return id;
     }
-    public void setId() {
-    
+    public void setId(int id) {
+        this.id = id;
     }
     public Catador getCatador() {
         return catador;

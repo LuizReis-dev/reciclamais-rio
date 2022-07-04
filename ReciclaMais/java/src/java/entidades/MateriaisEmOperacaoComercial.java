@@ -44,7 +44,7 @@ public class MateriaisEmOperacaoComercial {
         return quantidadeEmKg;
     }
 
-    public void setQuantidadeEmKg(int quantidadeEmKg) {
+    public void setQuantidadeEmKg(double quantidadeEmKg) {
         this.quantidadeEmKg = quantidadeEmKg;
     }
     
