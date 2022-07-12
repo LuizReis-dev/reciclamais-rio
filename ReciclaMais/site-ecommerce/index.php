@@ -1,3 +1,7 @@
+<?php 
+require 'cabecalho.html';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,24 +13,13 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/estiloprincipal.css">
 </head>
 
 <body>
-    <div class="cabecalho">
-        <h2 class="nome-cooperativa">ReciclaMais</h2>
-        <ul class="opcoes">
-            <li>Comprar</li>
-            <li>Vender</li>
-            <li>Estoque</li>
-            <li>Nossa Loja</li>
-        </ul>
-        <div class="logos">
-            <i class="bi bi-cart3"></i>
-            <i class="bi bi-person-circle usuario"></i>
-        </div>
-    </div>
+   
     <div class="banner">
         <img src="./imagens/cristo.png" alt="cristo-redentor">
         <div class="paragrafo">

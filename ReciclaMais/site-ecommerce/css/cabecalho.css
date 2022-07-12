@@ -1,0 +1,44 @@
+.cabecalho {
+    display: flex;
+    width: 90vw;
+    height: 40px;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b4b4b4;
+}
+
+.cabecalho h2 {
+    font-family: 'Nunito';
+    font-weight: 400;
+}
+
+.opcoes {
+    display: flex;
+    list-style: none;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.opcoes li {
+    cursor: pointer;
+}
+.opcoes li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logos {
+    font-size: 25px;
+}
+
+.logos i {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.opcoes li:hover {
+    font-weight: 800;
+}
