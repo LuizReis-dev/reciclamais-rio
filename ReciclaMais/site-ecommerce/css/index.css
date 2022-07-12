@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+}
+
+body {
+    background-color: #E9EFC0;
+
+}
+
+.cabecalho {
+    display: flex;
+    width: 90vw;
+    height: 40px;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b4b4b4;
+}
+
+.cabecalho h2 {
+    font-family: 'Nunito';
+    font-weight: 400;
+}
+
+.opcoes {
+    display: flex;
+    list-style: none;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.opcoes li {
+    cursor: pointer;
+}
+
+.logos {
+    font-size: 25px;
+}
+
+.logos i {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.opcoes li:hover {
+    font-weight: 800;
+}
+
+.banner {
+    margin: auto;
+    text-align: center;
+    width: 1088px;
+    margin-top: 15px;
+    height: 500px;
+    background-image: url(../imagens/img-banner3.png);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.281);
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: 35% 65%;
+    grid-template-areas: "nada img img" "nada p p";
+}
+
+.banner img {
+    width: 180px;
+    height: 180px;
+    padding-left: 110px;
+    justify-self: center;
+    grid-area: img;
+}
+
+.paragrafo {
+    font-family: "";
+    font-style: normal;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    color: #fff;
+    grid-area: p;
+}
+
+.paragrafo h2 {
+    width: 80%;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.paragrafo p {
+    width: 80%;
+    font-size: 25px;
+    text-align: justify;
+}
