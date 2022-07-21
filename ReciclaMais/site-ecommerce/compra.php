@@ -2,6 +2,11 @@
 <?php
 require 'cabecalho.html';
 require  'conexao.php';
+session_start();
+if(!isset($_SESSION["id_usuario"])){
+    header('location: login.html');
+}
+
 
 $sql = "SELECT imagem, nome, preco_venda_kg FROM material";
 $result = $conn->query($sql);

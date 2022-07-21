@@ -7,7 +7,7 @@ $campoCnpj = filter_input(INPUT_POST, 'cnpj', FILTER_VALIDATE_INT);
 $campoEmail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $campoRamo = filter_input(INPUT_POST, 'ramo');
 $campoEndereco = filter_input(INPUT_POST, 'endereco');
-$campoSenha = $_POST["senha"];
+$campoSenha = password_hash($_POST["senha"], PASSWORD_BCRYPT);
 
 
 $sql = "INSERT INTO usuario(login, senha, acesso) VALUES ('$campoCnpj', '$campoSenha', 'empresa')";

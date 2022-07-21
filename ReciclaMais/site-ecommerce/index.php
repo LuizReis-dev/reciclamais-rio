@@ -1,5 +1,10 @@
 <?php 
 require 'cabecalho.html';
+session_start();
+if(!isset($_SESSION["id_usuario"])){
+    header('location: login.html');
+}
+
 ?>
 
 <!DOCTYPE html>
