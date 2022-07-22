@@ -14,7 +14,11 @@
     font-family: 'Nunito';
     font-weight: 400;
 }
+.cabecalho a {
+    text-decoration: none;
+    color: inherit;
 
+}
 .opcoes {
     display: flex;
     list-style: none;
@@ -24,10 +28,6 @@
 
 .opcoes li {
     cursor: pointer;
-}
-.opcoes li a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .logos {

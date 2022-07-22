@@ -1,0 +1,86 @@
+body {
+    overflow: hidden;
+}
+.container {
+    height: 90vh;
+    width: 80vw;
+    margin: auto;
+    margin-top: 20px;
+}  
+.titulo {
+    text-align: center;
+    font-weight: 400;
+}
+.container table {
+    width: 100%;
+    margin: auto;
+}
+.container table thead td {
+	padding: 30px 0;
+	border-bottom: 1px solid green;
+}
+.container table thead td:last-child {
+	text-align: right;
+}
+.container table tbody td {
+	padding: 20px 0;
+	border-bottom: 1px solid green;
+}
+.container table tbody td:last-child {
+	text-align: right;
+}
+.container table .img {
+	width: 80px;
+}
+.container table .remover {
+	color: #777777;
+	font-size: 12px;
+	padding-top: 3px;
+}
+.container table .remover:hover {
+	text-decoration: underline;
+}
+.container table .preco {
+	color: #999999;
+}
+.container table a {
+	text-decoration: none;
+	color: #555555;
+}
+.container table input[type="number"] {
+	width: 68px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	color: #555555;
+	border-radius: 5px;
+}
+.container .subtotal {
+	text-align: right;
+	padding: 40px 0;
+}
+.container .subtotal .text {
+	padding-right: 40px;
+	font-size: 18px;
+}
+.container .subtotal .preco {
+	font-size: 18px;
+	color: #999999;
+}
+.buttons {
+	text-align: right;
+	padding-bottom: 40px;
+}
+.buttons input[type="submit"] {
+	margin-left: 5px;
+	padding: 12px 20px;
+	border: 0;
+	background: green;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.buttons input[type="submit"]:hover {
+	background: green;
+}
