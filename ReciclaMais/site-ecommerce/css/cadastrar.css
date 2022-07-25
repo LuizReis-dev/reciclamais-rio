@@ -1,0 +1,236 @@
+@import url(estilo.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+.container {
+    display: flex;
+    margin: auto;
+    width: 1000px;
+    height: 500px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.4);
+}
+
+.cadastrar {
+    order: 1;
+    width: 350px;
+    height: 500px;
+    background-color: var(--branco);
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.cabecalho h2 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 35px;
+    color: var(--verde4);
+}
+
+.inputs {
+    padding-bottom: 35px;
+}
+
+.inputs input,
+button {
+    width: 80%;
+    height: 35px;
+    padding-left: 8px;
+    box-sizing: border;
+}
+
+.div_formulario {
+    margin-top: 25px;
+    position: relative;
+}
+
+.input_formulario {
+    border-radius: 5px;
+    border: 1px solid var(--preto);
+    color: var(--preto);
+    transition: var(--tempo);
+}
+
+.label_formulario {
+    background-color: var(--branco);
+    position: absolute;
+    font-size: 14px;
+    top: 8px;
+    left: 35px;
+    padding: 0 10px;
+    color: var(--preto);
+    text-transform: uppercase;
+    cursor: text;
+    pointer-events: none;
+    transition: var(--tempo);
+}
+
+.input_formulario:hover {
+    border-color: var(--verde2);
+}
+
+.input_formulario:hover~.label_formulario {
+    color: var(--verde2);
+}
+
+.input_formulario:focus~.label_formulario,
+.input_formulario:valid~.label_formulario {
+    transform: translateX(5px) translateY(-15px);
+    font-size: 12px;
+    color: var(--branco);
+    background-color: var(--verde4);
+    letter-spacing: 2px;
+}
+
+.input_formulario:focus,
+.input_formulario:valid {
+    border-color: var(--verde4);
+}
+
+
+.termo-uso {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+}
+
+#termo {
+    width: 30px;
+    height: 15px;
+    position: relative;
+    -webkit-appearance: none;
+    background: var(--cinza);
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: var(--tempo);
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#termo:checked {
+    background: var(--verde4);
+}
+
+#termo::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: var(--branco);
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: var(--tempo);
+}
+
+#termo:checked:before {
+    left: 15px;
+}
+
+.termo_div {
+    font-size: 12px;
+}
+
+.termo-div a,
+.inputs p {
+    font-size: 12px;
+}
+
+.inputs p {
+    margin-top: 10px;
+}
+
+.inputs a {
+    color: var(--verde4);
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.inputs a:hover {
+    text-decoration: underline;
+}
+
+.botao {
+    background-color: var(--verde3);
+    color: var(--branco);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+}
+
+.botao:hover {
+    background-color: var(--verde4);
+}
+
+.botao:active {
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.4),
+        inset -4px -4px 6px -1px rgba(78, 148, 79, 0.7),
+        -0.5px -0.5px 0 rgba(78, 148, 79, 1),
+        0.5px 0.5px 0 rgba(0, 0, 0, 0.15),
+        0 12px 10px -10px rgba(0, 0, 0, 0.05);
+    transform: translateY(2px);
+}
+
+.img {
+    width: 650px;
+    background-color: var(--verde4);
+    display: flex;
+    order: 2;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--branco);
+    width: 715px;
+}
+
+
+.img span {
+    width: var(--max-porcentagem);
+    height: var(--max-porcentagem);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.cristo {
+    margin: 10px auto;
+}
+
+.cristo img {
+    width: 200px;
+    height: 200px;
+}
+
+.img span h2 {
+    font-size: 40px;
+    color: var(--verde1);
+}
+
+.img span p {
+    font-style: italic;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #E1E8EB;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B4E197;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0cf80;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #83bb5d;
+}
