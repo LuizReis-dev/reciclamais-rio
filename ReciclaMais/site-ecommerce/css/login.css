@@ -1,92 +1,195 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+@import url(estilo.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
-html, body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    font-family: "Montserrat";
-    background-color: #E9EFC0;
-}
 .container {
     display: flex;
     margin: auto;
     width: 800px;
     height: 400px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.562);
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.4);
 }
+
 .login {
     order: 1;
     width: 300px;
-    background-color: #fff;
+    background-color: var(--branco);
     text-align: center;
 }
-.cabecalho h1 {
+
+.cabecalho h2 {
     margin-top: 50px;
     margin-bottom: 30px;
     font-size: 35px;
-    color: #4E944F;
+    color: var(--verde4);
+    text-transform: uppercase;
 }
-.inputs input, button {
+
+.inputs input,
+button {
     width: 80%;
     height: 35px;
-    margin-top: 25px;
     padding-left: 8px;
     box-sizing: border;
 }
-.inputs a {
-    text-decoration: none;
-    font-size: 10px;
+
+.div_formulario {
+    margin-top: 25px;
+    position: relative;
 }
-.img {
-    background-color: #4E944F;
-    display: flex;
-    order: 2;
-    background-size:cover;
-    background-position: center;
-    text-align: center;
-    color: #fff;
-    width: 515px;
+
+.label_formulario {
+    background-color: var(--branco);
+    position: absolute;
+    font-size: 14px;
+    top: 8px;
+    left: 35px;
+    padding: 0 10px;
+    color: var(--preto);
+    text-transform: uppercase;
+    cursor: text;
+    pointer-events: none;
+    transition: var(--tempo);
 }
-.links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    margin-top: 5px;
-}
-.botao {
-    color: #fff;
-    border: 0;
+
+.input_formulario {
     border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    background-color: #4E944F;
+    border: 1px solid var(--preto);
+    color: var(--preto);
+    transition: var(--tempo);
 }
+
+.input_formulario:hover {
+    border-color: var(--verde2);
+}
+
+.input_formulario:hover~.label_formulario {
+    color: var(--verde2);
+}
+
+.input_formulario:focus~.label_formulario,
+.input_formulario:valid~.label_formulario {
+    transform: translateX(5px) translateY(-15px);
+    font-size: 12px;
+    color: var(--branco);
+    background-color: var(--verde4);
+    letter-spacing: 2px;
+}
+
+.input_formulario:focus,
+.input_formulario:valid {
+    border-color: var(--verde4);
+}
+
+.input_formulario:not(.input_formulario:valid) {
+    
+}
+
+#alterar {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    margin-right: 5px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    color: var(--cinza);
+}
+
+#alterar i {
+    font-size: 20px;
+    top: 10%;
+    left: 20%;
+    position: absolute;
+    color: inherit;
+    cursor: pointer;
+}
+
+i.bi::before{
+    color: var(--cinza);
+    transition: var(--tempo);
+}
+
+i.bi:hover::before{
+    color: var(--preto);
+}
+
+.inputs input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+}
+
+.inputs p {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
 .inputs a {
-    color: #4E944F;
+    color: var(--verde4);
     text-decoration: none;
     font-size: 12px;
-    transition: 0.5s;
+    cursor: pointer;
 }
 
 .inputs a:hover {
     text-decoration: underline;
 }
 
+.botao {
+    background-color: var(--verde3);
+    color: #fff;
+    margin-top: 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+}
+
 .botao:hover {
-    background-color: #83BD75;
+    background-color: var(--verde4);
 }
+
+.botao:active {
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.4),
+        inset -4px -4px 6px -1px rgba(78, 148, 79, 0.7),
+        -0.5px -0.5px 0 rgba(78, 148, 79, 1),
+        0.5px 0.5px 0 rgba(0, 0, 0, 0.15),
+        0 12px 10px -10px rgba(0, 0, 0, 0.05);
+    transform: translateY(2px);
+}
+
+.img {
+    width: 515px;
+    background-color: var(--verde4);
+    display: flex;
+    order: 2;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--branco);
+}
+
+
 .img span {
-    margin: auto;
+    width: var(--max-porcentagem);
+    height: var(--max-porcentagem);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
 }
-.img span h1 {
+
+.cristo img {
+    width: 200px;
+    height: 200px;
+}
+
+.img span h2 {
     font-size: 40px;
     color: #E9EFC0;
 }
+
 .img span p {
     font-style: italic;
 }
