@@ -1,3 +1,5 @@
+@import url(estilo.css);
+
 .cabecalho {
     display: flex;
     width: 90vw;
@@ -10,15 +12,17 @@
     border-bottom: 1px solid #b4b4b4;
 }
 
-.cabecalho h2 {
+.cabecalho h1 {
     font-family: 'Nunito';
     font-weight: 400;
+    color: var(--verde4);
 }
+
 .cabecalho a {
     text-decoration: none;
     color: inherit;
-
 }
+
 .opcoes {
     display: flex;
     list-style: none;
@@ -30,6 +34,30 @@
     cursor: pointer;
 }
 
+.opcoes li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.opcoes li a::after {
+    content: '';
+    background-color: var(--verde4);
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 0;
+    bottom: -10px;
+    transition: var(--tempo);
+}
+
+.opcoes li a:hover:after {
+    width: 100%;
+}
+
 .logos {
     font-size: 25px;
 }
@@ -37,23 +65,25 @@
 .logos i {
     margin-right: 5px;
     cursor: pointer;
+    color: var(--preto);
 }
 
 .opcoes li:hover {
     font-weight: 800;
 }
+
 .logos span {
     display: inline-block;
-	text-align: center;
-	background-color: #83BD75;
-	border-radius: 50%;
-	color: #FFFFFF;
-	font-size: 12px;
-	line-height: 16px;
-	width: 16px;
-	height: 16px;
-	font-weight: bold;
+    text-align: center;
+    background-color: #83BD75;
+    border-radius: 50%;
+    color: var(--branco);
+    font-size: 12px;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    font-weight: bold;
     position: relative;
-	bottom: 15px;
-	right: 0;
+    bottom: 15px;
+    right: 0;
 }
