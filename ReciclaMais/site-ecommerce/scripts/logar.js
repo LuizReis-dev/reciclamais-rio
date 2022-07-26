@@ -25,20 +25,6 @@ login.addEventListener("click", function () {
     }, 300);
 });
 
-/* Máscara para a CNPJ */
-const cnpj = document.querySelector('#cnpj');
-
-cnpj.addEventListener('keypress', () => {
-    let cnpjLength = cnpj.value.length
-
-    if(cnpjLength === 2 || cnpjLength === 6){
-        cnpj.value += '.'
-    }else if(cnpjLength === 10){
-        cnpj.value += '/'
-    }else if(cnpjLength === 15){
-        cnpj.value += '-'
-    }
-});
 
 /* Mostrar senha */
 const senha = document.getElementById('senha');

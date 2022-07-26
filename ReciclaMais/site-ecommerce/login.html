@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReciclaMais Rio | Login</title>
-  <link rel="stylesheet" href="../css/logar.css" />
-  <link rel="stylesheet" href="../css/teladecarregamento.css">
+  <link rel="stylesheet" href="./css/login.css" />
+  <link rel="stylesheet" href="./css/teladecarregamento.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
@@ -27,9 +27,9 @@
           <h2>Login</h2>
         </div>
         <div class="inputs">
-          <form action="login.php" method="GET">
+          <form action="login.php" method="POST">
             <div class="div_formulario">
-              <input type="text" name="cnpj" placeholder="" id="cnpj" class="input_formulario" maxlength="18" minlength="18" autocomplete="off" required>
+              <input type="text" name="login" placeholder="" id="cnpj" class="input_formulario" maxlength="18" autocomplete="off" required>
               <label for="cnpj" class="label_formulario">CNPJ</label>
             </div>
             <div class="div_formulario">
@@ -48,7 +48,7 @@
       <div class="img">
         <span>
           <div class="cristo">
-            <img src="../imagens/cristo.png" alt="cristo-redentor">
+            <img src="./imagens/cristo.png" alt="cristo-redentor">
           </div>
           <h2>Seja bem-vindo</h2>
           <p>
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="../scripts/logar.js"></script>
+  <script type="text/javascript" src="./scripts/logar.js"></script>
 </body>
 
 </html>

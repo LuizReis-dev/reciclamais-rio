@@ -16,7 +16,7 @@ if ($conn->query($sql) === TRUE) {
 }  
 $id_usuario = $conn->insert_id;
 echo $id_usuario;
-$sql2 = "INSERT INTO empresa(nome, telefone, cnpj, email, ramo, endereco, id_usuario) VALUES ('$campoNome', '$campoTelefone', '$campoEmail','$campoCnpj' ,'$campoRamo', '$campoEndereco', '$id_usuario')";
+$sql2 = "INSERT INTO empresa(nome, telefone, email, cnpj, ramo, endereco, id_usuario) VALUES ('$campoNome', '$campoTelefone', '$campoEmail','$campoCnpj' ,'$campoRamo', '$campoEndereco', '$id_usuario')";
 if ($conn->query($sql2) === TRUE) {	
     echo "Empresa gravada.";
 }  else {

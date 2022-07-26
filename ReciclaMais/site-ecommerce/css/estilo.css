@@ -1,0 +1,38 @@
+* {
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    z-index: 0;
+}
+
+:root {
+    /*cores*/
+    --verde1: #E9EFC0;
+    --verde2: #B4E197;
+    --verde3: #83BD75;
+    --verde4: #4E944F;
+    --preto: #000000;
+    --cinza: #c6c6c6;
+    --branco: #ffffff;
+
+    /*numeros*/
+    --tamanho-x: 100vw;
+    --tamanho-y: 100vh;
+    --max-porcentagem: 100%;
+    --tempo: 0.5s;
+
+    /*
+    'Montserrat'
+    'Nunito'
+    */
+}
+
+.pagina {
+    width: var(--tamanho-x);
+    height: var(--tamanho-y);
+    background: var(--verde1);
+    display: grid;
+}
