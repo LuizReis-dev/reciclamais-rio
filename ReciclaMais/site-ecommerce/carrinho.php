@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <?php
 require 'cabecalho.php';
+require 'conexao.php';
+$materiais_no_carrinho = isset($_SESSION['carrinho']) ? $_SESSION['carrinho'] : array();
+$materiais_para_pesquisar = " ";
+foreach ($materiais_no_carrinho as $material) {
+    $auxiliar = $materiais_para_pesquisar;
+    $materiais_para_pesquisar = $material . ", " . $auxiliar;
+}
 ?>
 <html lang="pt-br">
 
@@ -24,26 +31,32 @@ require 'cabecalho.php';
                     <td>Quantidade</td>
                     <td>Total</td>
                 </tr>
-                
+
             </thead>
             <tbody>
-                <tr>
-                    <td class="img">
-                        <a href="">
-                            <img src=">" width="50" height="50" alt="">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="">Cobre</a>
+                <?php
+                $sql = "SELECT * FROM material WHERE id IN (" . $materiais_para_pesquisar . "0 )";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td class="img"><a href=""> <img src=">" width="50" height="50" alt=""></a> </td>';
+                        echo ' <td>
+                        <a href="">' . $row["nome"]. '</a>
                         <br>
-                        <a href="" class="remover">remover</a>
-                    </td>
-                    <td class="preco">R$30</td>
-                    <td class="quantidade">
-                        <input type="number" name="quantidade" value="" min="1" max="" placeholder="quantidade" required>
-                    </td>
-                    <td class="preco">R$2000</td>
-                </tr>
+                        <a href="removercarrinho.php?id_material='.$row["id"] . '" class="remover">remover</a>
+                        </td>
+                        <td class="preco">R$'.$row["preco_venda_kg"].'</td>
+                        <td class="quantidade">
+                        <input type="number" name="quantidade-'.$row["id"].'" value="" min="1" max="" placeholder="quantidade" required>
+                        </td>
+                        <td class="preco">R$</td>';
+                        echo '</tr>';
+                    }
+                } else {
+                    echo '<td colspan="5" style="text-align:center;"> Você ainda não adicionou nenhum material ao carrinho </td>';
+                }
+                ?>
             </tbody>
         </table>
         <p>Confira a quantidade selecionada antes de realizar a compra</p>
@@ -56,7 +69,7 @@ require 'cabecalho.php';
             <input type="submit" value="Comprar" name="comprar">
         </div>
     </div>
-    
+
 </body>
 
 </html>
