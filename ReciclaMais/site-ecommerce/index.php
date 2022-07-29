@@ -1,6 +1,5 @@
 <?php 
-require 'cabecalho.html';
-session_start();
+require 'cabecalho.php';
 if(!isset($_SESSION["id_usuario"])){
     header('location: login.html');
 }

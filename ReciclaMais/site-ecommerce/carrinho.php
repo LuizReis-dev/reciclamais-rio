@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-require 'cabecalho.html';
-session_start();
+require 'cabecalho.php';
 ?>
 <html lang="pt-br">
 
@@ -25,7 +24,7 @@ session_start();
                     <td>Quantidade</td>
                     <td>Total</td>
                 </tr>
-
+                
             </thead>
             <tbody>
                 <tr>
@@ -37,26 +36,27 @@ session_start();
                     <td>
                         <a href="">Cobre</a>
                         <br>
-                        <a href="" class="remover">removerr</a>
+                        <a href="" class="remover">remover</a>
                     </td>
                     <td class="preco">R$30</td>
                     <td class="quantidade">
-                        <input type="number" name="quantity" value="" min="1" max="" placeholder="Quantity" required>
+                        <input type="number" name="quantidade" value="" min="1" max="" placeholder="quantidade" required>
                     </td>
                     <td class="preco">R$2000</td>
                 </tr>
             </tbody>
         </table>
+        <p>Confira a quantidade selecionada antes de realizar a compra</p>
         <div class="subtotal">
             <span class="text">Preço total</span>
             <span class="preco">$20,00</span>
         </div>
         <div class="buttons">
-            <input type="submit" value="Update" name="update">
-            <input type="submit" value="Place Order" name="placeorder">
+            <input type="submit" value="Atualizar" name="atualizar">
+            <input type="submit" value="Comprar" name="comprar">
         </div>
     </div>
-
+    
 </body>
 
 </html>

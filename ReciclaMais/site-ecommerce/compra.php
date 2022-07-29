@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <?php
-require 'cabecalho.html';
+require 'cabecalho.php';
 require  'conexao.php';
-session_start();
 if(!isset($_SESSION["id_usuario"])){
     header('location: login.html');
 }
 
 
-$sql = "SELECT imagem, nome, preco_venda_kg FROM material";
+$sql = "SELECT id, imagem, nome, preco_venda_kg FROM material";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 ?>
@@ -33,7 +32,7 @@ if ($result->num_rows > 0) {
             echo "<img class='imagem' src='data:image/jpeg;base64," . base64_encode($row['imagem']) . "/>";
             echo "<p class='descricao'>" . $row["nome"] . " </p> ";
             echo "<p class='preco'> R$" . $row["preco_venda_kg"] . " o KG</p>";
-            echo '<button class="btn-carrinho">Adicionar ao carrinho</button>';
+            echo '<a class="btn-carrinho"href="adicionarcarrinho.php?id_material='.$row["id"] . '"><button class="btn-carrinho">Adicionar ao carrinho</button></a>';
             echo '<button class="btn-comprar">Comprar agora</button>';
             echo "</div>";
         }

@@ -48,7 +48,7 @@ body {
 	color: #555555;
 }
 .container table input[type="number"] {
-	width: 68px;
+	width: 200px;
 	padding: 10px;
 	border: 1px solid #ccc;
 	color: #555555;

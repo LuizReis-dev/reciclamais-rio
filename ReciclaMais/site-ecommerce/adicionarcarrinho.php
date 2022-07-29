@@ -20,10 +20,12 @@
                 } else {
                     //adicionando produto ao carrinho
                     $_SESSION['carrinho'][$id_material] = $id_material;
+                    header('location: compra.php');
                 }
             } else {
                 //adicionando o primeiro item ao carrinho
                 $_SESSION['carrinho'] = array($id_material => $id_material);
+                header('location: compra.php');
             }
         } else {
             echo "<h1>Esse material não existe</h1>";
@@ -32,4 +34,3 @@
     } else {
         echo "<h1>Nenhum material selecionado</h1>";
     }
-?>

@@ -1,6 +1,7 @@
 @import url(estilo.css);
 
 .cabecalho {
+    font-family: 'Nunito';
     display: flex;
     width: 90vw;
     height: 40px;
@@ -12,9 +13,9 @@
     border-bottom: 1px solid #b4b4b4;
 }
 
-.cabecalho h1 {
+.nome-cooperativa{
     font-family: 'Nunito';
-    font-weight: 400;
+    font-weight: 200;
     color: var(--verde4);
 }
 
