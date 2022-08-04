@@ -17,17 +17,24 @@ $result = $conn->query($sql);
  $row = $result->fetch_assoc();
  
 	if ($result->num_rows > 0) {
-
-			$verificado = password_verify($campoSenha, $row["senha"]);
-			if($verificado){			
-				$_SESSION['acesso'] = $row["acesso"];
-				$_SESSION['id_usuario'] = $row["id"];
-				header('location: index.php');
-				exit;
-			}else{
-			  header( "location:login.html" ); 
-				exit;  
-			}		
+			if($row["acesso"] == "empresa"){	
+				$verificado = password_verify($campoSenha, $row["senha"]);
+				if($verificado){			
+					$_SESSION['acesso'] = $row["acesso"];
+					$_SESSION['id_usuario'] = $row["id"];
+					header('location: index.php');
+					exit;
+				}else{
+				  header( "location:login.html" ); 
+					exit;  
+				}		  
+			} elseif($row["acesso"] == "admin") {
+				if($campoSenha == $row["senha"]){
+					header('location: admin.html');
+				} else {
+					echo'senha errada';
+				}
+			}
 	} else {
 		header('location: login.html');
 		exit; 
