@@ -15,7 +15,7 @@ if ($result->num_rows > 0) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Controlar empresas</title>
         <link rel="import" href="navegacao.html">
-        <link rel="stylesheet" href="../css/controlar.css">
+        <link rel="stylesheet" href="./css/controlar.css">
     </head>
 
     <body>
