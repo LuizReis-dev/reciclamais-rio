@@ -1,7 +1,7 @@
 <?php
 require 'navegacao.html';
 require 'conexao.php';
-$sql = "SELECT id, nome, preco_por_kg FROM material";
+$sql = "SELECT id, nome, preco_venda_kg FROM material";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 ?>
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 
             <?php
             while ($row = $result->fetch_assoc()) {
-                echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td> R$" . $row["preco_por_kg"] . " </td>";
+                echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td> R$" . $row["preco_venda_kg"] . " </td>";
                 echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
             }
         } else {
