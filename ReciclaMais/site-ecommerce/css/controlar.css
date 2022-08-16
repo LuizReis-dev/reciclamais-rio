@@ -155,3 +155,7 @@ body {
 .submit-btn {
     margin-top: 10px;
 }
+.pagination {
+    color: green;
+    font-size: 20px;
+}

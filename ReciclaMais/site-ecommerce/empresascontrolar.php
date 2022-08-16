@@ -1,8 +1,33 @@
 <?php
 require 'navegacao.html';
 require 'conexao.php';
-$sql = "SELECT id, nome, ramo, cnpj FROM empresa";
+
+
+$id = $_GET["pag"];
+
+$total = 5;
+
+if ($id != 1) {
+    $id = $id - 1;
+    $id = $id * $total + 1;
+}
+
+$id--;
+$sql = "SELECT * FROM empresa ORDER BY id LIMIT $id, $total";
+
+$sqlContagem = "SELECT count(*) as contagem FROM empresa";
+
 $result = $conn->query($sql);
+$resultContagem = $conn->query($sqlContagem);
+
+$rowContagem = $resultContagem->fetch_assoc();
+$contagem = $rowContagem["contagem"];
+
+if ($contagem % $total == 0) {
+    $contagem = $contagem / $total;
+} else {
+    $contagem = $contagem / $total + 1;
+}
 if ($result->num_rows > 0) {
 ?>
 
@@ -44,7 +69,12 @@ if ($result->num_rows > 0) {
         }
             ?>
             </table>
-
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $contagem; $i++) {
+                    echo "<a class='pagination' href='empresascontrolar.php?pag=$i'>$i</a> ";
+                }
+                ?>
+            </div>
         </div>
 
     </body>
