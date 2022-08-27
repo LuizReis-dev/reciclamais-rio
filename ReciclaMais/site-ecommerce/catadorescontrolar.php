@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
                     }
                     ?>
                 </div>
-                <a href=""> <button class='buttons-template btn-add'>Adicionar</button></a>
+                <a href="adicionarcatadorform.php"> <button class='buttons-template btn-add'>Adicionar</button></a>
             </div>
         </div>
 
