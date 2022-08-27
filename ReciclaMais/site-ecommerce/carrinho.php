@@ -2,6 +2,8 @@
 <?php
 require 'cabecalho.php';
 require 'conexao.php';
+require 'acessocomum.php';
+
 $materiais_no_carrinho = isset($_SESSION['carrinho']) ? $_SESSION['carrinho'] : array();
 $materiais_para_pesquisar = " ";
 foreach ($materiais_no_carrinho as $material) {

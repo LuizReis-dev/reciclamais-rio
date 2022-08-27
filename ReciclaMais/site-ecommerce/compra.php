@@ -2,9 +2,7 @@
 <?php
 require 'cabecalho.php';
 require  'conexao.php';
-if(!isset($_SESSION["id_usuario"])){
-    header('location: login.html');
-}
+require 'acessocomum.php';
 
 
 $sql = "SELECT id, imagem, nome, preco_venda_kg FROM material";

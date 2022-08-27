@@ -1,6 +1,8 @@
 <?php
 require 'navegacao.html';
 require 'conexao.php';
+require 'acessoadm.php';
+
 $id = $_GET["pag"];
 
 $total = 2;
