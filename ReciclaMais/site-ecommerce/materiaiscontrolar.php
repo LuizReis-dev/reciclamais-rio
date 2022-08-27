@@ -69,11 +69,14 @@ if ($result->num_rows > 0) {
 
             ?>
             </table>
-            <div class="pagination">
-                <?php for ($i = 1; $i <= $contagem; $i++) {
-                    echo "<a class='pagination' href='materiaiscontrolar.php?pag=$i'>$i</a> ";
-                }
-                ?>
+            <div class="escolha">
+                <div class="pagination">
+                    <?php for ($i = 1; $i <= $contagem; $i++) {
+                        echo "<a class='pagination' href='catadorescontrolar.php?pag=$i'>$i</a> ";
+                    }
+                    ?>
+                </div>
+                <a href="adicionarmaterialform.php"> <button class='buttons-template btn-add'>Adicionar</button></a>
             </div>
         </div>
 
