@@ -30,6 +30,7 @@ $result = $conn->query($sql);
 				}		  
 			} elseif($row["acesso"] == "admin") {
 				if($campoSenha == $row["senha"]){
+					$_SESSION['acesso'] = $row["acesso"];
 					header('location: admin.html');
 				} else {
 					echo'senha errada';

@@ -13,7 +13,8 @@ if ($id != 1) {
 }
 
 $id--;
-$sql = "SELECT * FROM empresa ORDER BY id LIMIT $id, $total";
+$sql = "SELECT empresa.*, usuario.status FROM empresa LEFT JOIN usuario ON empresa.id_usuario = usuario.id order by empresa.id LIMIT $id, $total;
+";
 
 $sqlContagem = "SELECT count(*) as contagem FROM empresa";
 
@@ -62,7 +63,7 @@ if ($result->num_rows > 0) {
             <?php
             while ($row = $result->fetch_assoc()) {
                 echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td> " . $row["ramo"] . " </td> <td> " . $row["cnpj"] . " </td>";
-                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
+                echo "<td class='acoes'><a href='bloquearusuario.php?id=".$row["id_usuario"]."&status=".$row["status"] . "'><i class='bi bi-x-circle olho'></i></a> <a href='#'><button btn-edit class='buttons-template btn-delete'>Editar</button> </a></td>";
             }
         } else {
             return "<h1> Nenhuma empresa encontrada</h1>";
