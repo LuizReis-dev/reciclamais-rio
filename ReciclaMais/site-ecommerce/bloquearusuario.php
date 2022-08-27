@@ -10,14 +10,12 @@ require 'conexao.php';
 
 if ($campostatus == "ativo") {
 
-    // Bloquear usuário o registro com o id
     $sql = "UPDATE usuario SET Status='inativo' WHERE id=$campoid";
 } else {
 
     $sql = "UPDATE usuario SET Status='ativo' WHERE id=$campoid";
 }
 
-//Executa o sql e faz tratamento de erro.
 if ($conn->query($sql) === TRUE) {
     echo "Usuário bloqueado";
 

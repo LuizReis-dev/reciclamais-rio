@@ -70,16 +70,19 @@ if ($result->num_rows > 0) {
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td>" . $row["idade"] . " </td> <td>" . $row["cpf"] . "</td>";
-                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
+                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='deletarcatador.php?id=".$row["id"]."'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
             }
         }
-            ?>
+        ?>
             </table>
-            <div class="pagination">
-                <?php for ($i = 1; $i <= $contagem; $i++) {
-                    echo "<a class='pagination' href='catadorescontrolar.php?pag=$i'>$i</a> ";
-                }
-                ?>
+            <div class="escolha">
+                <div class="pagination">
+                    <?php for ($i = 1; $i <= $contagem; $i++) {
+                        echo "<a class='pagination' href='catadorescontrolar.php?pag=$i'>$i</a> ";
+                    }
+                    ?>
+                </div>
+                <a href=""> <button class='buttons-template btn-add'>Adicionar</button></a>
             </div>
         </div>
 

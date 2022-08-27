@@ -1,6 +1,6 @@
 <?php
-    require 'acessocomum.php';
     session_start();
+    require 'acessocomum.php';
     require 'conexao.php';
     if(isset($_GET['id_material']) && is_numeric(($_GET['id_material']))){
         $id_material = $_GET['id_material'];
