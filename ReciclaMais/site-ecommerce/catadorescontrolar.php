@@ -70,7 +70,7 @@ if ($result->num_rows > 0) {
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td>" . $row["idade"] . " </td> <td>" . $row["cpf"] . "</td>";
-                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='deletarcatador.php?id=".$row["id"]."'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
+                echo "<td class='acoes'><a href='editarcatadorform.php?id=".$row["id"] ."'><i class='bi bi-eye olho'></i></a> <a href='deletarcatador.php?id=".$row["id"]."'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
             }
         }
         ?>
