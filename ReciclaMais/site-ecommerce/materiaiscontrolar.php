@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
             <?php
             while ($row = $result->fetch_assoc()) {
                 echo "<tr> <td>" . $row["id"] . "</td> <td>" . $row["nome"] . "</td> <td> R$" . $row["preco_venda_kg"] . " </td>";
-                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='#'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
+                echo "<td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='deletarmaterial.php?id=".$row["id"]."'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>";
             }
         } else {
             return "<h1> Nenhum material enconterado</h1>";
@@ -72,7 +72,7 @@ if ($result->num_rows > 0) {
             <div class="escolha">
                 <div class="pagination">
                     <?php for ($i = 1; $i <= $contagem; $i++) {
-                        echo "<a class='pagination' href='catadorescontrolar.php?pag=$i'>$i</a> ";
+                        echo "<a class='pagination' href='materiaiscontrolar.php?pag=$i'>$i</a> ";
                     }
                     ?>
                 </div>
