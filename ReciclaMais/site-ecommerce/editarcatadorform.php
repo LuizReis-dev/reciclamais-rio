@@ -15,9 +15,13 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Catador</title>
+    <link rel="stylesheet" href="./css/editarcatador.css">
 </head>
 <body>
-    <form action="editarcatador.php" method="post">
+    <div id="pagina">
+        <div class="conteiner">
+            <h2>editar catador</h2>
+            <form action="editarcatador.php" method="post">
         <input type="hidden" name="id" value="<?php echo $row["id"]?>">
         <input type="text" name="nome" id="" placeholder="nome" value="<?php echo $row["nome"]?>">
         <input type="text" name="cpf" id="" placeholder="cpf" value="<?php echo $row["cpf"]?>">
@@ -27,6 +31,9 @@ if ($result->num_rows > 0) {
         <input type="text" name="telefone" id="" placeholder="telefone" value="<?php echo $row["telefone"]?>">
         <input type="submit" value="enviar">
     </form>
+        </div>
+    </div>
+    
     
 </body>
 </html>
