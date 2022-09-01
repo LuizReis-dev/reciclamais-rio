@@ -1,39 +1,54 @@
 * {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat','Nunito';
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     border: 0;
     outline: none;
     z-index: 0;
-    font-weight: 200;
 }
 
 :root {
-    /*cores*/
-    --verde1: #E9EFC0;
-    --verde2: #B4E197;
-    --verde3: #83BD75;
-    --verde4: #4E944F;
-    --preto: #000000;
-    --cinza: #c6c6c6;
-    --branco: #ffffff;
+    /* plano de fundo */
+    --backgroundC: linear-gradient(120deg,var(--verdeC1),var(--verdeC2),var(--verdeC3),var(--verdeC4));
+    --backgroundE: linear-gradient(120deg,var(--verdeE4),var(--verdeE3),var(--verdeE2),var(--verdeE1));
 
-    /*numeros*/
+    /* imagens */
+    
+
+    /* cores */
+    --verdeC1: #E9EFC0;
+    --verdeC2: #B4E197;
+    --verdeC3: #83BD75;
+    --verdeC4: #4E944F;
+
+    --verdeE1: #235347;
+    --verdeE2: #163832;
+    --verdeE3: #0b2b26;
+    --verdeE4: #051f20;
+
+    --preto: #000000;
+    --cinzaE: #2f2323;
+    --branco: #ffffff;
+    --cinzaC: #c6c6c6;
+    
+    --sucesso: #2ecc71;
+    --erro: #e74c3c;
+    --transparent: transparent;
+
+    /* números */
     --tamanho-x: 100vw;
     --tamanho-y: 100vh;
     --max-porcentagem: 100%;
     --tempo: 0.5s;
-
-    /*
-    'Montserrat'
-    'Nunito'
-    */
+    --font-size: 18px;
+    
 }
 
-.pagina {
+#pagina {
     width: var(--tamanho-x);
     height: var(--tamanho-y);
-    background: var(--verde1);
+    background: var(--backgroundC);
     display: grid;
+    overflow: hidden;
 }
