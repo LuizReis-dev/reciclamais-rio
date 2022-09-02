@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexao.php';
+require '../util/conexao.php';
 $campoNome = filter_input(INPUT_POST, 'nome');
 $campoMeta = filter_input(INPUT_POST, 'meta_bonificacao');
 $campoBonificacao = filter_input(INPUT_POST, 'valor_bonificacao');

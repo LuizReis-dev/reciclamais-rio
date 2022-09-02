@@ -1,9 +1,9 @@
 <?php 
 session_start();
-require 'acessoadm.php';
+require '../acesso/acessoadm.php';
 $campoid = filter_input(INPUT_GET, 'id');
 
-require 'conexao.php';
+require '../util/conexao.php';
 $sql = "DELETE FROM catador WHERE id = $campoid";
 
 if ($conn->query($sql) === TRUE) {

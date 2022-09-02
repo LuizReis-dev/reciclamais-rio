@@ -8,7 +8,7 @@ if (!isset($_POST['senha'])) {
 $campoLogin = filter_input(INPUT_POST, 'login');
 $campoSenha = filter_input(INPUT_POST, 'senha');
 
-require 'conexao.php';
+require '../util/conexao.php';
 
 $sql = "SELECT * FROM usuario where login='$campoLogin'";
 
@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 		} elseif ($row["acesso"] == "admin") {
 			if ($campoSenha == $row["senha"]) {
 				$_SESSION['acesso'] = $row["acesso"];
-				header('location: admin.html');
+				header('location: ../admin/admin.html');
 			} else {
 				echo 'senha errada';
 			}

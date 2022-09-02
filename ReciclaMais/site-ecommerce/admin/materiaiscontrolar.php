@@ -1,7 +1,7 @@
 <?php
-require 'navegacao.html';
-require 'conexao.php';
-require 'acessoadm.php';
+require '../util/navegacao.html';
+require '../util/conexao.php';
+require '../acesso/acessoadm.php';
 
 
 $id = $_GET["pag"];
@@ -40,14 +40,15 @@ if ($result->num_rows > 0) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Controlar materiais</title>
         <link rel="import" href="navegacao.html">
-        <link rel="stylesheet" href="./css/controlar.css">
+        <link rel="stylesheet" href="../css/controlar.css">
+        <link rel="stylesheet" href="../css/estiloprincipal.css">
     </head>
 
     <body>
         <div class="conteudo-principal">
             <div class="opcoes">
-                <a class="opcao" href="catadorescontrolar.php">Catadores</a>
-                <a class="opcao" href="empresascontrolar.php">Empresas</a>
+                <a class="opcao" href="catadorescontrolar.php?pag=1">Catadores</a>
+                <a class="opcao" href="empresascontrolar.php?pag=1">Empresas</a>
                 <a id="selecionado" class="opcao" href="#">Materiais</a>
             </div>
             <table class="tabela-controlar">

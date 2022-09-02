@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require 'conexao.php';
+require '../util/conexao.php';
 $campoId = filter_input(INPUT_POST, 'id');
 $campoNome = filter_input(INPUT_POST, 'nome');
 $campoCpf = filter_input(INPUT_POST, 'cpf');

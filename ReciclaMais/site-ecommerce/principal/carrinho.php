@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-require 'cabecalho.php';
-require 'conexao.php';
-require 'acessocomum.php';
+require '../util/cabecalho.php';
+require '../util/conexao.php';
+require '../acesso/acessocomum.php';
 
 $materiais_no_carrinho = isset($_SESSION['carrinho']) ? $_SESSION['carrinho'] : array();
 $materiais_para_pesquisar = " ";
@@ -17,8 +17,8 @@ foreach ($materiais_no_carrinho as $material) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estiloprincipal.css">
-    <link rel="stylesheet" href="./css/carrinho.css">
+    <link rel="stylesheet" href="../css/estiloprincipal.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
     <title>Carrinho</title>
 </head>
 
@@ -46,7 +46,7 @@ foreach ($materiais_no_carrinho as $material) {
                         echo ' <td>
                         <a href="">' . $row["nome"]. '</a>
                         <br>
-                        <a href="removercarrinho.php?id_material='.$row["id"] . '" class="remover">remover</a>
+                        <a href="../carrinho/removercarrinho.php?id_material='.$row["id"] . '" class="remover">remover</a>
                         </td>
                         <td class="preco">R$'.$row["preco_venda_kg"].'</td>
                         <td class="quantidade">

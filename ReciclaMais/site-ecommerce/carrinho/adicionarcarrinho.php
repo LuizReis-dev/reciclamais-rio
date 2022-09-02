@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require 'acessocomum.php';
-    require 'conexao.php';
+    require '../acesso/acessocomum.php';
+    require '../util/conexao.php';
     if(isset($_GET['id_material']) && is_numeric(($_GET['id_material']))){
         $id_material = $_GET['id_material'];
 
@@ -15,7 +15,7 @@
                     echo '<h1> Produto já adicionado ao carrinho </h1>';
                 } else {
                     $_SESSION['carrinho'][$id_material] = $id_material;
-                    header('location: compra.php');
+                    header('location: ../principal/compra.php');
                 }
             } else {
                 $_SESSION['carrinho'] = array($id_material => $id_material);

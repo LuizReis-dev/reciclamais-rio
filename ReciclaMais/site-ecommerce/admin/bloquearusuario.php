@@ -1,12 +1,12 @@
 <?php
 session_start();
-require 'acessoadm.php';
+require '../acesso/acessoadm.php';
 
 
 $campoid = filter_input(INPUT_GET, 'id');
 $campostatus = filter_input(INPUT_GET, 'status');
 
-require 'conexao.php';
+require '../util/conexao.php';
 
 if ($campostatus == "ativo") {
 
