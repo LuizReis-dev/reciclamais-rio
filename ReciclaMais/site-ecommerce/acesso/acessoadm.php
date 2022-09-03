@@ -7,7 +7,7 @@ if(!isset ($_SESSION['acesso']))
   exit;
 }else{
 	if($_SESSION['acesso']!="admin"){
-		    header('location:index.php'); 
+		    header('location: ../admin/admin.html'); 
 			exit; 
 	}
 }
