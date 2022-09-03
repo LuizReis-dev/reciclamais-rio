@@ -28,7 +28,15 @@ $qtd_carrinho = isset($_SESSION['carrinho']) ? count($_SESSION['carrinho']) : 0;
         </ul>
         <div class="logos">
             <a href="carrinho.php"><i class="bi bi-cart3"><span><?php echo $qtd_carrinho; ?></span></i></a>
-            <i class="bi bi-person-circle usuario"></i>
+            <?php 
+                if(isset($_SESSION["id_usuario"])){
+                    echo '<a href="editar.php?id='.$_SESSION["id_usuario"].'"> <i class="bi bi-person-circle usuario"></i></a>';
+                    echo '<a href="../util/logout.php"><i class="bi bi-box-arrow-right"></i></a>';
+                } else {
+                    echo '<a href="login.html"> <i class="bi bi-person-circle usuario"></i></a>';
+                }
+            ?>
+            
         </div>
     </div>
 </body>
