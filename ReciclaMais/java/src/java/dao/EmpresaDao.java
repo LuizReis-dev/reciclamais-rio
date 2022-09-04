@@ -43,5 +43,19 @@ public class EmpresaDao {
         }
         return contagem;
     }
+    
+    public static int excluirEmpresa(Empresa empresa){
+       int status = 0;  
+        try{
+             Connection con = ConnectionDao.getConnection();
+             PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM empresa WHERE id=?");
+             ps.setInt(1, empresa.getId());         
+             status = ps.executeUpdate();
+         }catch(Exception erro){
+             System.out.println(erro);
+         }      
+            return status;
+   }
+    
 
 }
