@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd%22%3E">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/paginas/erro404.jsp</location>
+    </error-page>
+    <jsp-config>
+        <jsp-property-group>
+            <display-name>404</display-name>
+            <url-pattern>/erro404.jsp</url-pattern>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>
