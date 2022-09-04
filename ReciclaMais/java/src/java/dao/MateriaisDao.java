@@ -1,5 +1,6 @@
 package dao;
 
+import entidades.Catador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import entidades.Material;
 public class MateriaisDao {
 
     public static List<Material> getMateriais(int inicio, int total) {
-        
+
         List<Material> list = new ArrayList<Material>();
         try {
             Connection con = ConnectionDao.getConnection();
@@ -30,6 +31,7 @@ public class MateriaisDao {
         }
         return list;
     }
+
     public static int getContagem() {
         int contagem = 0;
         try {
@@ -44,6 +46,7 @@ public class MateriaisDao {
         }
         return contagem;
     }
+
     public static int excluirMaterial(Material material) {
         int status = 0;
         try {
@@ -51,6 +54,23 @@ public class MateriaisDao {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM material WHERE id=?");
             ps.setInt(1, material.getId());
 
+            status = ps.executeUpdate();
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return status;
+    }
+
+    public static int cadastrarMaterial(Material material) {
+        int status = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO MATERIAL(NOME,META_BONIFICACAO_KG, VALOR_BONIFICACAO, PRECO_COMPRA_KG, PRECO_VENDA_KG, IMAGEM, QTD_DISPONIVEL_VENDA) VALUES(?,?,?,?,?, ' ', 0)");
+            ps.setString(1, material.getNome());
+            ps.setDouble(2, material.getMetaBonificacaoKg());
+            ps.setDouble(3, material.getValorBonificacao());
+            ps.setDouble(4, material.getPrecoCompraKg());
+            ps.setDouble(5, material.getPrecoVendaKg());
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);
