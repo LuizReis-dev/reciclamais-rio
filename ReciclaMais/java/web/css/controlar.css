@@ -7,18 +7,12 @@
 
 body {
     display: flex;
-    width: 100vw;
-    height: 100vh;
-
 }
 
 .conteudo-principal {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #E9EFC0;
-
 }
 
 .opcoes {
@@ -160,4 +154,22 @@ body {
 }
 .submit-btn {
     margin-top: 10px;
+}
+.pagination {
+    color: red;
+    font-size: 20px;
+    width: 140px;
+    display: flex;
+    margin-left: 5px;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.pagination a {
+    color: green;
+
+}
+.escolha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

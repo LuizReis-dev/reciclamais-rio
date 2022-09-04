@@ -28,8 +28,27 @@
             </div>
             <table class="tabela-controlar">
                 <%
-                    List<Empresa> lista = EmpresaDao.getEmpresas();
+                    String pag = request.getParameter("pag");
+                    int id = Integer.parseInt(pag);
+
+                    //Quantidade de Registros da Página
+                    int total = 5;
+
+                    if (id != 1) {
+                        id = id - 1;
+                        id = id * total + 1;
+                    }
+                    List<Empresa> lista = EmpresaDao.getEmpresas(id, total);
                     request.setAttribute("lista", lista);
+
+                    int contagem = EmpresaDao.getContagem();
+                    int i;
+                    request.setAttribute("contagem", contagem);
+                    if (contagem % total == 0) {
+                        contagem = contagem / total;
+                    } else {
+                        contagem = contagem / total + 1;
+                    }
                 %>
                 <thead>
                 <th>Id</th>
@@ -49,7 +68,11 @@
                 </c:forEach>
 
             </table>
-
+                <div class="pagination">
+                    <% for(i=1; i <= contagem; i++) {%>
+                            <a href="empresascontrolar.jsp?pag=<%=i%>"><%=i%></a>
+                    <% } %>   
+                </div>  
         </div>
 
     </body>
