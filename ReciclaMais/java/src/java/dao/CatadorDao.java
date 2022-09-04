@@ -28,6 +28,7 @@ public class CatadorDao {
         }
         return list;
     }
+
     public static int getContagem() {
         int contagem = 0;
         try {
@@ -54,8 +55,11 @@ public class CatadorDao {
                 catador = new Catador();
                 catador.setId(rs.getInt("id"));
                 catador.setNome(rs.getString("nome"));
-                catador.setData_de_nascimento(rs.getDate("data_de_nascimento"));
                 catador.setCpf(rs.getString("cpf"));
+                catador.setEndereco(rs.getString("endereco"));
+                catador.setEmail(rs.getString("email"));
+                catador.setTelefone(rs.getString("telefone"));
+
             }
         } catch (Exception erro) {
             System.out.println(erro);
@@ -67,14 +71,14 @@ public class CatadorDao {
         int status = 0;
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE catador SET nome=? WHERE id=?");
-            ps.setInt(1, catador.getId());
-            ps.setString(2, catador.getNome());
-            ps.setString(3, catador.getCpf());
-            ps.setString(4, catador.getEndereco());
-            ps.setDate(5, new java.sql.Date(catador.getData_de_nascimento().getTime()));
-            ps.setString(6, catador.getEmail());
-            ps.setString(7, catador.getTelefone());
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE catador SET nome=?, cpf=?, endereco=?, email=?, telefone=? WHERE id=?");
+            ps.setString(1, catador.getNome());
+            ps.setString(2, catador.getCpf());
+            ps.setString(3, catador.getEndereco());
+            ps.setString(4, catador.getEmail());
+            ps.setString(5, catador.getTelefone());
+            ps.setInt(6, catador.getId());
+
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);
