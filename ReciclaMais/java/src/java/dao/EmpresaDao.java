@@ -57,5 +57,43 @@ public class EmpresaDao {
             return status;
    }
     
+    public static int editarEmpresa(Empresa empresa){
+       int status = 0;  
+   try{
+        Connection con = ConnectionDao.getConnection();
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE empresa SET nome=?, email=?,endereco=?,telefone=? WHERE id=?");
+        ps.setString(1, empresa.getNome());
+        ps.setString(2, empresa.getEmail());
+        ps.setString(3, empresa.getEndereco());    
+        ps.setString(4, empresa.getTelefone());
+        ps.setInt(5, empresa.getId());
+        status = ps.executeUpdate();
+    }catch(Exception erro){
+        System.out.println(erro);
+    }      
+       return status;
+   }
+     public static Empresa getEmpresaById(int id){
+        Empresa empresa = null;      
+    try{
+        Connection con = ConnectionDao.getConnection();
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from empresa where id=?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            empresa = new Empresa();
+            empresa.setId(rs.getInt("id"));
+            empresa.setNome(rs.getString("nome"));
+            empresa.setEmail(rs.getString("email"));     
+            empresa.setCnpj(rs.getString("cnpj"));
+            empresa.setEndereco(rs.getString("endereco"));
+            empresa.setRamo(rs.getString("ramo"));
+            empresa.setTelefone(rs.getString("telefone"));
+        }
+    }catch(Exception erro){
+        System.out.println(erro);
+    }      
+        return empresa;
+    }
 
 }

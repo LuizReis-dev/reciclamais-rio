@@ -63,7 +63,7 @@
                         <td>${empresa.getNome()}</td>                
                         <td>${empresa.getRamo()}</td> 
                         <td>${empresa.getCnpj()}</td>
-                        <td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='excluirempresa.jsp?id=${empresa.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
+                        <td class='acoes'><a href='editarempresaform.jsp?id=${empresa.getId()}'><i class='bi bi-eye olho'></i></a> <a href='excluirempresa.jsp?id=${empresa.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
                     </tr>
                 </c:forEach>
 
