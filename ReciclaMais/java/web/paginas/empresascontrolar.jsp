@@ -68,11 +68,14 @@
                 </c:forEach>
 
             </table>
+            <div class="escolha">    
                 <div class="pagination">
-                    <% for(i=1; i <= contagem; i++) {%>
-                            <a href="empresascontrolar.jsp?pag=<%=i%>"><%=i%></a>
-                    <% } %>   
+                    <% for (i = 1; i <= contagem; i++) {%>
+                    <a href="empresascontrolar.jsp?pag=<%=i%>"><%=i%></a>
+                    <% }%>   
                 </div>  
+                <a href="cadastrarempresaform.jsp"> <button class='buttons-template btn-add'>Adicionar</button></a>
+            </div>
         </div>
 
     </body>

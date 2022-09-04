@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar Catador</title>
+        <link rel="stylesheet" href="../css/editarform.css">
+    </head>
+    <body>
+
+        <div id="pagina">
+            <div class="conteiner">
+                <h2>cadastrar empresa</h2>
+                <form action="cadastrarempresa.jsp" method="post">
+                    <input type="text" name="nome" id="" placeholder="nome">>
+                    <input type="text" name="email" id="" placeholder="email">
+                    <input type="text" name="cnpj" id="" placeholder="cnpj">
+                    <input type="text" name="endereco" id="" placeholder="endereço">
+                    <input type="text" name="ramo" id="" placeholder="ramo">
+                    <input type="text" name="telefone" id="" placeholder="telefone">
+                    <input type="submit" value="enviar" style="background-color: green;">
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+</html>

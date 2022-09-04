@@ -95,5 +95,21 @@ public class EmpresaDao {
     }      
         return empresa;
     }
-
+     public static int cadastrarEmpresa(Empresa empresa){
+       int status = 0;  
+   try{
+        Connection con = ConnectionDao.getConnection();
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO EMPRESA(NOME,EMAIL,CNPJ,ENDERECO,TELEFONE,RAMO,ID_USUARIO) VALUES(?,?,?,?,?,?,0)");
+        ps.setString(1, empresa.getNome());
+        ps.setString(2, empresa.getEmail());
+        ps.setString(3, empresa.getCnpj());
+        ps.setString(4, empresa.getEndereco());
+        ps.setString(5, empresa.getTelefone());
+        ps.setString(6, empresa.getRamo());
+        status = ps.executeUpdate();
+    }catch(Exception erro){
+        System.out.println(erro);
+    }      
+       return status;
+   }
 }
