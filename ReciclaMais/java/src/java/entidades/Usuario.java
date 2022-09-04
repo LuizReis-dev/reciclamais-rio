@@ -8,6 +8,9 @@ public class Usuario {
     private String acesso;
     private String status;
 
+    public Usuario() {
+    }
+    
     public Usuario(int id, String login, String senha, String acesso, String status) {
         this.id = id;
         this.login = login;

@@ -8,17 +8,19 @@ public class Empresa {
     private String endereco;
     private String email;
     private String telefone;
+    private Usuario usuario;
 
     public Empresa() {
     }
 
-    public Empresa(String nome, String cnpj, String ramo, String endereco, String email, String telefone) {
+    public Empresa(String nome, String cnpj, String ramo, String endereco, String email, String telefone, Usuario usuario) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.ramo = ramo;
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -75,6 +77,14 @@ public class Empresa {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     
