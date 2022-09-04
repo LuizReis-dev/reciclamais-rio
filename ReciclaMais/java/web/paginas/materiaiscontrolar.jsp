@@ -61,7 +61,7 @@
                         <td>${material.getId()}</td>
                         <td>${material.getNome()}</td>                
                         <td>${material.getPrecoVendaKg()}</td> 
-                        <td class='acoes'><a href='editarmaterialform.jsp?id=${material.getId()}'><i class='bi bi-eye olho'></i></a> <a href='excluirmaterialjsp?id=${material.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
+                        <td class='acoes'><a href='editarmaterialform.jsp?id=${material.getId()}'><i class='bi bi-eye olho'></i></a> <a href='excluirmaterial.jsp?id=${material.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
                     </tr>
                 </c:forEach>
 

@@ -44,4 +44,18 @@ public class MateriaisDao {
         }
         return contagem;
     }
+    public static int excluirMaterial(Material material) {
+        int status = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM material WHERE id=?");
+            ps.setInt(1, material.getId());
+
+            status = ps.executeUpdate();
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return status;
+    }
+
 }
