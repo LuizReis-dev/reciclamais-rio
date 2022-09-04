@@ -18,17 +18,36 @@
 
     <body>
         <%@include file="navegacao.html"%>
+        <%
+            String pag = request.getParameter("pag");
+            int id = Integer.parseInt(pag);
 
+            //Quantidade de Registros da Página
+            int total = 2;
+
+            if (id != 1) {
+                id = id - 1;
+                id = id * total + 1;
+            }
+            List<Catador> lista = CatadorDao.getCatadores(id, total);
+            request.setAttribute("lista", lista);
+
+            int contagem = CatadorDao.getContagem();
+            int i;
+            request.setAttribute("contagem", contagem);
+            if (contagem % total == 0) {
+                contagem = contagem / total;
+            } else {
+                contagem = contagem / total + 1;
+            }
+        %>
         <div class="conteudo-principal">
             <div class="opcoes">
                 <a id="selecionado" class="opcao" href="#">Catadores</a>
                 <a class="opcao" href="empresascontrolar.jsp">Empresas</a>
                 <a class="opcao" href="materiaiscontrolar.jsp">Materiais</a>
             </div>
-            <%
-                List<Catador> lista = CatadorDao.getCatadores();
-                request.setAttribute("lista", lista);
-            %>
+
             <table class="tabela-controlar">
                 <thead>
                 <th>Id</th>
@@ -47,7 +66,14 @@
                     </tr>
                 </c:forEach>
             </table>
-
+            <div class="escolha">    
+                <div class="pagination">
+                    <% for (i = 1; i <= contagem; i++) {%>
+                    <a href="catadorescontrolar.jsp?pag=<%=i%>"><%=i%></a>
+                    <% }%>   
+                </div>  
+                <a href="cadastrarcatadorform.jsp"> <button class='buttons-template btn-add'>Adicionar</button></a>
+            </div>
         </div>
 
     </body>
