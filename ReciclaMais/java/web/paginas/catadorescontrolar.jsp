@@ -52,7 +52,6 @@
                 <thead>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Idade</th>
                 <th>CPF</th>
                 <th class="th-actions">Ações</th>
                 </thead>
@@ -60,7 +59,6 @@
                     <tr>
                         <td>${catador.getId()}</td>
                         <td>${catador.getNome()}</td>                
-                        <td>${catador.calcularIdade()}</td> 
                         <td>${catador.getCpf()}</td>
                         <td class='acoes'><a href='#'><i class='bi bi-eye olho'></i></a> <a href='excluircatador.jsp?id=${catador.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button> </a></td>
                     </tr>

@@ -72,7 +72,7 @@ public class CatadorDao {
             ps.setString(2, catador.getNome());
             ps.setString(3, catador.getCpf());
             ps.setString(4, catador.getEndereco());
-            ps.setDate(5, catador.getData_de_nascimento());
+            ps.setDate(5, new java.sql.Date(catador.getData_de_nascimento().getTime()));
             ps.setString(6, catador.getEmail());
             ps.setString(7, catador.getTelefone());
             status = ps.executeUpdate();
@@ -123,13 +123,12 @@ public class CatadorDao {
         int status = 0;
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO CATADOR(NOME) VALUES(?)");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO CATADOR(NOME,CPF, ENDERECO, EMAIL, TELEFONE) VALUES(?,?,?,?,?)");
             ps.setString(1, catador.getNome());
             ps.setString(2, catador.getCpf());
             ps.setString(3, catador.getEndereco());
-            ps.setDate(4, catador.getData_de_nascimento());
-            ps.setString(5, catador.getEmail());
-            ps.setString(6, catador.getTelefone());
+            ps.setString(4, catador.getEmail());
+            ps.setString(5, catador.getTelefone());
 
             status = ps.executeUpdate();
         } catch (Exception erro) {
