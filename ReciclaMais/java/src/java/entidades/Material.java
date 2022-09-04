@@ -1,21 +1,24 @@
 package entidades;
 
 public class Material {
-
+    
     private int id;
-    private String nome;
-    private double preco_por_kg;
-    private double meta_bonificacao_kg;
-    private double valor_bonificacao;
+    private String nome; 
+    private double metaBonificacaoKg;
+    private double valorBonificacao;
+    private double precoCompraKg;
+    private double precoVendaKg;
 
     public Material() {
     }
 
-    public Material(String nome, double preco_por_kg, double meta_bonificacao_kg, double preco_bonificacao) {
+    public Material(int id, String nome, double metaBonificacaoKg, double valorBonificacao, double precoCompraKg, double precoVendaKg) {
+        this.id = id;
         this.nome = nome;
-        this.preco_por_kg = preco_por_kg;
-        this.meta_bonificacao_kg = meta_bonificacao_kg;
-        this.valor_bonificacao = preco_bonificacao;
+        this.metaBonificacaoKg = metaBonificacaoKg;
+        this.valorBonificacao = valorBonificacao;
+        this.precoCompraKg = precoCompraKg;
+        this.precoVendaKg = precoVendaKg;
     }
 
     public int getId() {
@@ -34,28 +37,36 @@ public class Material {
         this.nome = nome;
     }
 
-    public double getPreco_por_kg() {
-        return preco_por_kg;
+    public double getMetaBonificacaoKg() {
+        return metaBonificacaoKg;
     }
 
-    public void setPreco_por_kg(double preco_por_kg) {
-        this.preco_por_kg = preco_por_kg;
+    public void setMetaBonificacaoKg(double metaBonificacaoKg) {
+        this.metaBonificacaoKg = metaBonificacaoKg;
     }
 
-    public double getMeta_bonificacao_kg() {
-        return meta_bonificacao_kg;
+    public double getValorBonificacao() {
+        return valorBonificacao;
     }
 
-    public void setMeta_bonificacao_kg(double meta_bonificacao_kg) {
-        this.meta_bonificacao_kg = meta_bonificacao_kg;
+    public void setValorBonificacao(double valorBonificacao) {
+        this.valorBonificacao = valorBonificacao;
     }
 
-    public double getPreco_bonificacao() {
-        return valor_bonificacao;
+    public double getPrecoCompraKg() {
+        return precoCompraKg;
     }
 
-    public void setPreco_bonificacao(double preco_bonificacao) {
-        this.valor_bonificacao = preco_bonificacao;
+    public void setPrecoCompraKg(double precoCompraKg) {
+        this.precoCompraKg = precoCompraKg;
     }
 
+    public double getPrecoVendaKg() {
+        return precoVendaKg;
+    }
+
+    public void setPrecoVendaKg(double precoVendaKg) {
+        this.precoVendaKg = precoVendaKg;
+    }
+    
 }
