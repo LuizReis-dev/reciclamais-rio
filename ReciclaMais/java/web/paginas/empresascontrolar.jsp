@@ -22,9 +22,9 @@
 
         <div class="conteudo-principal">
             <div class="opcoes">
-                <a class="opcao" href="catadorescontrolar.jsp">Catadores</a>
+                <a class="opcao" href="catadorescontrolar.jsp?pag=1">Catadores</a>
                 <a id="selecionado" class="opcao" href="#s">Empresas</a>
-                <a class="opcao" href="materiaiscontrolar.jsp">Materiais</a>
+                <a class="opcao" href="materiaiscontrolar.jsp?pag=1">Materiais</a>
             </div>
             <table class="tabela-controlar">
                 <%

@@ -44,8 +44,8 @@
         <div class="conteudo-principal">
             <div class="opcoes">
                 <a id="selecionado" class="opcao" href="#">Catadores</a>
-                <a class="opcao" href="empresascontrolar.jsp">Empresas</a>
-                <a class="opcao" href="materiaiscontrolar.jsp">Materiais</a>
+                <a class="opcao" href="empresascontrolar.jsp?pag=1">Empresas</a>
+                <a class="opcao" href="materiaiscontrolar.jsp?pag=1">Materiais</a>
             </div>
 
             <table class="tabela-controlar">
