@@ -20,6 +20,8 @@ foreach ($materiais_no_carrinho as $material) {
     <link rel="stylesheet" href="../css/estiloprincipal.css">
     <link rel="stylesheet" href="../css/carrinho.css">
     <title>Carrinho</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
 </head>
 
 <body>
@@ -41,18 +43,18 @@ foreach ($materiais_no_carrinho as $material) {
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo '<tr class="material-adicionado" data-preco="'. $row["preco_venda_kg"].'" data-id="'.$row["id"].'">';
+                        echo '<tr class="material-adicionado" data-preco="' . $row["preco_venda_kg"] . '" data-id="' . $row["id"] . '">';
                         echo '<td class="img"><a href=""> <img src=">" width="50" height="50" alt=""></a> </td>';
                         echo ' <td>
-                        <a href="">' . $row["nome"]. '</a>
+                        <a href="">' . $row["nome"] . '</a>
                         <br>
-                        <a href="../carrinho/removercarrinho.php?id_material='.$row["id"] . '" class="remover">remover</a>
+                        <a href="../carrinho/removercarrinho.php?id_material=' . $row["id"] . '" class="remover">remover</a>
                         </td>
-                        <td class="preco">R$'.$row["preco_venda_kg"].'</td>
+                        <td class="preco">R$' . $row["preco_venda_kg"] . '</td>
                         <td class="quantidade">
-                        <input class="quantidade-input" type="number" name="quantidade-'.$row["id"].'" value="1" min="1" max="" placeholder="quantidade em KG" required>
+                        <input class="quantidade-input" type="number" name="quantidade-' . $row["id"] . '" value="1" min="1" max="" placeholder="quantidade em KG" required>
                         </td>
-                        <td class="preco-calcular" id="preco-'.$row["id"].'">R$'.$row["preco_venda_kg"].'</td>';
+                        <td class="preco-calcular" id="preco-' . $row["id"] . '">R$' . $row["preco_venda_kg"] . '</td>';
                         echo '</tr>';
                     }
                 } else {
@@ -68,17 +70,17 @@ foreach ($materiais_no_carrinho as $material) {
         </div>
         <div class="buttons">
             <input type="submit" value="Atualizar" name="atualizar">
-            <input type="submit" value="Comprar" name="comprar">
+            <input type="submit" value="Comprar" name="comprar" id="btn-comprar">
         </div>
     </div>
 
     <script>
         let materiais = document.querySelectorAll('.material-adicionado');
         let totalValor;
-        materiais.forEach((material, index) =>{
+        materiais.forEach((material, index) => {
             let totalDiv = document.getElementById(`preco-${material.dataset.id}`);
             let quantidadeinput = document.getElementsByName(`quantidade-${material.dataset.id}`);
-            quantidadeinput[0].addEventListener('blur', ()=>{
+            quantidadeinput[0].addEventListener('blur', () => {
                 totalValor = quantidadeinput[0].value * material.dataset.preco;
                 totalDiv.innerHTML = `R$${totalValor}`;
                 calcularValorFinal();
@@ -92,9 +94,51 @@ foreach ($materiais_no_carrinho as $material) {
             })
             let preco = document.querySelector('#subtotal');
             preco.innerHTML = `R$${valorFinal}`
+            return valorFinal;
         }
+
         calcularValorFinal();
-        </script>
+
+        let btnComprar = document.querySelector('#btn-comprar');
+
+        var createCheckoutSession = function(stripe) {
+            return fetch("../stripe_charge.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "aplication/json",
+                },
+                body: JSON.stringify({
+                    checkoutSession: 1,
+                    Price: calcularValorFinal(),
+                }),
+            }).then(function(result) {
+                return result.json();
+            });
+        };
+        var handleResult = function(result) {
+            if (result.error) {
+                console.log(result.error.message);
+            }
+            buyBtn.disabled = false;
+            buyBtn.textContent = 'Assinar agora';
+        };
+        var stripe = Stripe('<?php echo 'pk_test_51LfOQfE7cOap8gRqcklPycJSGQvNoo6m4r0RMTcSbpQ7c68emsX7sfQN8dXCL7BV5tHvoT2zXiXs7W7kJIK0kSZE00LwS768xH'; ?>');
+
+        btnComprar.addEventListener('click', (e) => {
+            btnComprar.disabled = true;
+            btnComprar.textContent = "Aguarde...";
+            console.log('Vasco');
+            createCheckoutSession().then(function(data) {
+                if (data.sessionId) {
+                    stripe.redirectToCheckout({
+                        sessionId: data.sessionId,
+                    }).then(handleResult);
+                } else {
+                    handleResult(data);
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>
