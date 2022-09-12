@@ -22,7 +22,7 @@ $qtd_carrinho = isset($_SESSION['carrinho']) ? count($_SESSION['carrinho']) : 0;
         </a>
         <ul class="opcoes">
             <li><a href="compra.php"> Comprar</a> </li>
-            <li> <a href="">Vender</a> </li>
+            <li> <a href="vender.php">Vender</a> </li>
             <li> <a href=""> Estoque</a> </li>
             <li> <a href="">  Nossa Loja</a></li>
         </ul>

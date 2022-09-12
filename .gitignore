@@ -4,3 +4,4 @@ ReciclaMais/php/pages/conexao.php
 /ReciclaMais/java/build/
 
 *.png
+/ReciclaMais/java/dist/

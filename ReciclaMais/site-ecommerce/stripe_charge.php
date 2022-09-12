@@ -22,10 +22,9 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 	exit;
 }
 $productPrice = $request->Price;
-
+$quantidade = $request->quantidade;
 //O Id do cliente será lido da Sessão
-$clienteId=1;
- 
+$clienteId= $_SESSION["id_usuario"];
 // Convert product price to cent 
 $stripeAmount = round($productPrice*100, 2); 
 
@@ -50,7 +49,7 @@ if(!empty($request->checkoutSession)){
             'mode' => 'payment',
             'success_url' => STRIPE_SUCCESS_URL.'?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => STRIPE_CANCEL_URL,
-            'metadata' => ['id_cliente' => $clienteId]
+            'metadata' => ['id_cliente' => $clienteId, json_encode($quantidade)]
         ]);
     }catch(Exception $e) { 
         $api_error = $e->getMessage(); 

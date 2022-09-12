@@ -93,7 +93,7 @@ foreach ($materiais_no_carrinho as $material) {
                 valorFinal += parseFloat(valor.textContent.substr(2));
             })
             let preco = document.querySelector('#subtotal');
-            preco.innerHTML = `R$${valorFinal}`
+            preco.innerHTML = `R$${valorFinal}`;
             return valorFinal;
         }
 
@@ -101,6 +101,21 @@ foreach ($materiais_no_carrinho as $material) {
 
         let btnComprar = document.querySelector('#btn-comprar');
 
+        const retornarMateriaisQuantidade = () => {
+            let materiaisQuantidade = [];
+            materiais.forEach((material, index) => {
+                let quantidade = document.getElementsByName(`quantidade-${material.dataset.id}`);
+                let materialId = material.dataset.id;
+
+                const quantidadeObj = {
+                    material: materialId,
+                    quantidade: quantidade[0].value
+                }
+
+                materiaisQuantidade.push(quantidadeObj);
+            })
+            return materiaisQuantidade;
+        }
         var createCheckoutSession = function(stripe) {
             return fetch("../stripe_charge.php", {
                 method: "POST",
@@ -110,6 +125,7 @@ foreach ($materiais_no_carrinho as $material) {
                 body: JSON.stringify({
                     checkoutSession: 1,
                     Price: calcularValorFinal(),
+                    quantidade: retornarMateriaisQuantidade()
                 }),
             }).then(function(result) {
                 return result.json();
@@ -123,11 +139,11 @@ foreach ($materiais_no_carrinho as $material) {
             buyBtn.textContent = 'Assinar agora';
         };
         var stripe = Stripe('<?php echo 'pk_test_51LfOQfE7cOap8gRqcklPycJSGQvNoo6m4r0RMTcSbpQ7c68emsX7sfQN8dXCL7BV5tHvoT2zXiXs7W7kJIK0kSZE00LwS768xH'; ?>');
-
         btnComprar.addEventListener('click', (e) => {
             btnComprar.disabled = true;
             btnComprar.textContent = "Aguarde...";
             console.log('Vasco');
+            
             createCheckoutSession().then(function(data) {
                 if (data.sessionId) {
                     stripe.redirectToCheckout({
@@ -138,6 +154,8 @@ foreach ($materiais_no_carrinho as $material) {
                 }
             });
         })
+        
+        
     </script>
 </body>
 
