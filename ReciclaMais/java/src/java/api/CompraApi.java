@@ -51,7 +51,7 @@ public class CompraApi extends HttpServlet {
         op.setTotal(dados.getDouble("total"));
 
         int idOp = OperacaoComercialDao.inserirCompra(op);
-        JSONArray materiaisArray = dados.getJSONArray("materias");
+        JSONArray materiaisArray = dados.getJSONArray("materiais");
         for (int i = 0; i < materiaisArray.length(); i++) {
             JSONObject materialObj = materiaisArray.getJSONObject(i);
 

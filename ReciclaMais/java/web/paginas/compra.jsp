@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/navegacao.css">
         <link rel="stylesheet" href="../css/compra.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 
         <title>ReciclaMaisRio | Compra</title>
     </head>
@@ -20,28 +21,18 @@
             <div class="fileira">
                 <div class="coletor">
                     <form action="" method="" class="coletor">
-                        <label for="coletor">
-                            <i class="bi bi-person-fill icone"></i>
-                        </label>
-                        <input type="text" name="coletor" id="coletor" placeholder="Digite o nome do coletor..." class="dados" required>
-                        <input type="submit" value="Enviar" class="dados">
+                        <input type="text" name="pesquisar-catador" id="search-catador" placeholder="Pesquise aqui..." >
+                        <label><p>Selecione o catador:</p></label>
+                        <select name="catador" id="catadores" class="produto select"></select>
                     </form>
                 </div>
                 <div class="informacao">
                     <div class="conteiner-info">
                         <form action="" method="">
                             <div class="material">
-                                <select name="material" class="produto">
-                                    <option selected disabled hidden>Escolha um produto</option>
-                                    <option value="1" class="produto">Papel</option>
-                                    <option value="2" class="produto">Madeira</option>
-                                    <option value="3" class="produto">Vidro</option>
-                                    <option value="4" class="produto">Plástico</option>
-                                    <option value="5" class="produto">Metal</option>
-                                    <option value="6" class="produto">Cobre</option>
-                                    <option value="7" class="produto">Alumínio</option>
-                                </select>
-                                <span class="seta"></span>
+                                <input type="text" name="pesquisar-material" id="search-material" placeholder="Pesquise aqui..." >
+                                <label><p>Selecione o material:</p></label>
+                                <select name="material" id="materiais" class="produto select"></select>
                             </div>
                             <div class="quantidade">
                                 <label for="produto">
@@ -85,13 +76,15 @@
                     </tr>
                     <tr class="total produtos">
                         <th>Total</th>
-                        <th>sem bonificação</th>
+                        <th>sem bonificaï¿½ï¿½o</th>
                         <th>R$ 600</th>
                     </tr>
                 </table>
             </div>
         </div>
-        <script></script>
+        <script src="../scripts/compra.js"></script>
+
+
     </body>
 
 </html>

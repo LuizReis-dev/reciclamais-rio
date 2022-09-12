@@ -28,6 +28,25 @@ public class CatadorDao {
         }
         return list;
     }
+     public static List<Catador> getCatadores() {
+        List<Catador> list = new ArrayList<Catador>();
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT id, nome, data_de_nascimento, cpf FROM catador ORDER BY id");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Catador catador = new Catador();
+                catador.setId(rs.getInt("id"));
+                catador.setNome(rs.getString("nome"));
+                catador.setData_de_nascimento(rs.getDate("data_de_nascimento"));
+                catador.setCpf(rs.getString("cpf"));
+                list.add(catador);
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return list;
+    }
 
     public static int getContagem() {
         int contagem = 0;

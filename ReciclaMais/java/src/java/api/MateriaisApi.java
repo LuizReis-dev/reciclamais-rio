@@ -25,7 +25,7 @@ public class MateriaisApi extends HttpServlet {
              JSONObject objetoMateriais = new JSONObject();
              objetoMateriais.put("id", listaMateriais.get(i).getId());
              objetoMateriais.put("nome", listaMateriais.get(i).getNome());
-             objetoMateriais.put("preco_por_kg", listaMateriais.get(i).getPreco_por_kg());
+             objetoMateriais.put("preco_compra_kg", listaMateriais.get(i).getPrecoCompraKg());
              retorno.put(objetoMateriais);
          }
          PrintWriter out = res.getWriter();

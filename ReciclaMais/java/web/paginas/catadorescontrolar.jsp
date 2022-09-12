@@ -22,7 +22,7 @@
             String pag = request.getParameter("pag");
             int id = Integer.parseInt(pag);
 
-            //Quantidade de Registros da Página
+            //Quantidade de Registros da Pï¿½gina
             int total = 2;
 
             if (id != 1) {
@@ -53,7 +53,7 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>CPF</th>
-                <th class="th-actions">Ações</th>
+                <th class="th-actions">Aï¿½ï¿½es</th>
                 </thead>
                 <c:forEach items="${lista}" var="catador">
                     <tr>
