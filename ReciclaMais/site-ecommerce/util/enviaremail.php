@@ -60,7 +60,6 @@ try {
     //Envio
     $mail->send();
     
-    echo 'Messagem enviada';
 } catch (Exception $e) {
     echo "Messagem não foi enviada. Mailer Error: {$mail->ErrorInfo}";
 }

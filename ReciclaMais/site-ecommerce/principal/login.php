@@ -21,9 +21,14 @@ if ($result->num_rows > 0) {
 		if ($row["acesso"] == "empresa") {
 			$verificado = password_verify($campoSenha, $row["senha"]);
 			if ($verificado) {
+				$sqlEmpresa = "SELECT * FROM empresa where id_usuario=".$row["id"];
 				$_SESSION['acesso'] = $row["acesso"];
 				$_SESSION['id_usuario'] = $row["id"];
-				header('location: index.php');
+				$resultEmpresa = $conn->query($sqlEmpresa);
+				$rowEmpresa = $resultEmpresa->fetch_assoc();
+				$_SESSION['id_empresa'] = $rowEmpresa["id"];
+
+				header('location:index.php');
 				exit;
 			} else {
 				header("location:login.html");

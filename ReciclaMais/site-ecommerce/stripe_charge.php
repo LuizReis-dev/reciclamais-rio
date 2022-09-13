@@ -24,7 +24,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 $productPrice = $request->Price;
 $quantidade = $request->quantidade;
 //O Id do cliente será lido da Sessão
-$clienteId= $_SESSION["id_usuario"];
+$clienteId= $_SESSION["id_empresa"];
 // Convert product price to cent 
 $stripeAmount = round($productPrice*100, 2); 
 
