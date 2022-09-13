@@ -15,15 +15,16 @@
     </head>
 
     <body>
-        <%@include file="navegacao.html"%>
 
         <div class="compra">
             <div class="fileira">
                 <div class="coletor">
-                    <form action="" method="" class="coletor">
+                    <form action="" method="" id="catador-form" class="coletor">
                         <input type="text" name="pesquisar-catador" id="search-catador" placeholder="Pesquise aqui..." >
                         <label><p>Selecione o catador:</p></label>
-                        <select name="catador" id="catadores" class="produto select"></select>
+                        <select name="catador" id="catadores" class="produto select"></select> 
+                        <input type="submit" name="enviar" id="add-catador" value="selecionar">
+                        <input type="submit" name="enviar" id="remover-catador" value="limpar">
                     </form>
                 </div>
                 <div class="informacao">
@@ -33,6 +34,8 @@
                                 <input type="text" name="pesquisar-material" id="search-material" placeholder="Pesquise aqui..." >
                                 <label><p>Selecione o material:</p></label>
                                 <select name="material" id="materiais" class="produto select"></select>
+                                
+
                             </div>
                             <div class="quantidade">
                                 <label for="produto">
@@ -62,7 +65,7 @@
                         <th colspan="3">Tabela de produtos</th>
                     </tr>
                     <tr>
-                        <th colspan="3">Coletor:</th>
+                        <th colspan="3" id="catador-div">Coletor:</th>
                     </tr>
                     <tr class="produtos">
                         <th>Cobre</th>

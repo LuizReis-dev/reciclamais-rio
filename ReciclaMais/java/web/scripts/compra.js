@@ -46,4 +46,29 @@ window.addEventListener('load', async () => {
         select.innerHTML = ''
         renderizar(valoresFiltrados, select)
     }
+    let catadorForm = document.querySelector('#catador-form');
+    catadorForm.addEventListener('click', (e) => {
+        e.preventDefault();
+    })
+
+    let objEnviar;
+    let catadorDiv = document.querySelector('#catador-div');
+    let addCatadorBtn = document.querySelector('#add-catador');
+    addCatadorBtn.addEventListener('click', () => {
+        const valorSelect = selectCatadores.value; 
+        console.log(valorSelect);
+        objEnviar = {
+            id_catador : valorSelect
+        }
+        console.log(objEnviar);
+        catadorDiv.innerHTML = `Catador: ${selectCatadores.options[selectCatadores.selectedIndex].text}`
+        
+    })
+    let removerCatadorBtn = document.querySelector('#remover-catador');
+    removerCatadorBtn.addEventListener('click', () =>{
+        console.log("vasco");
+        objEnviar.id_catador = null;
+        console.log(objEnviar);
+        catadorDiv.innerHTML = 'Catador: ';
+    })
 })

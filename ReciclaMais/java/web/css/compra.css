@@ -91,23 +91,6 @@ div.material {
     margin-bottom: 45px;
 }
 
-select.produto {
-    width: 375px;
-    height: 40px;
-    background-color: #fff;
-    color: rgb(59, 59, 59, 0.75);
-    padding: 5px 40px 5px 5px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 16px;
-    appearance: none;
-    transition: 0.5s;
-}
-
-select.produto:focus {
-    border: 2px solid #83BD75;
-}
-
 span.seta {
     width: 40px;
     height: 40px;
