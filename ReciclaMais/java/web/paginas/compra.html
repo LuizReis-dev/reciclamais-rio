@@ -29,7 +29,7 @@
                 </div>
                 <div class="informacao">
                     <div class="conteiner-info">
-                        <form action="" method="">
+                        <form id="material-form" action="" method="">
                             <div class="material">
                                 <input type="text" name="pesquisar-material" id="search-material" placeholder="Pesquise aqui..." >
                                 <label><p>Selecione o material:</p></label>
@@ -41,10 +41,10 @@
                                 <label for="produto">
                                     <i class="bi bi-clipboard-fill material"></i>
                                 </label>
-                                <input type="text" name="produto" id="produto" placeholder="Digite a quantidade..." class="quantidade">
+                                <input type="text" name="produto" id="qtd-material" placeholder="Digite a quantidade..." class="quantidade">
                             </div>
                             <div class="botoes">
-                                <button class="produtos">
+                                <button class="produtos" id="add-material" >
                                     <i class="bi bi-cart-plus-fill produto">
                                         <p class="fonte">Adicionar</p>
                                     </i>
@@ -66,20 +66,12 @@
                     </tr>
                     <tr>
                         <th colspan="3" id="catador-div">Coletor:</th>
-                    </tr>
-                    <tr class="produtos">
-                        <th>Cobre</th>
-                        <th>50Kg</th>
-                        <th>100$</th>
-                    </tr>
-                    <tr class="produtos">
-                        <th>Papel</th>
-                        <th>800Kg</th>
-                        <th>500$</th>
+                    <tr>
+
                     </tr>
                     <tr class="total produtos">
                         <th>Total</th>
-                        <th>sem bonifica��o</th>
+                        <th>sem bonificação</th>
                         <th>R$ 600</th>
                     </tr>
                 </table>

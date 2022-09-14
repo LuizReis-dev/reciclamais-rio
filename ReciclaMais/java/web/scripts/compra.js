@@ -24,7 +24,7 @@ window.addEventListener('load', async () => {
         }
 
         lista.forEach((valor) => {
-            select.innerHTML += `<option value="${valor.id}" >${valor.nome}</option>`
+            select.innerHTML += `<option data-preco="${valor.preco_compra_kg}" value="${valor.id}" >${valor.nome}</option>`
         })
     }
 
@@ -51,24 +51,55 @@ window.addEventListener('load', async () => {
         e.preventDefault();
     })
 
-    let objEnviar;
+    let objEnviar = {
+        id_catador: 0, 
+        total: 0, 
+        materiais : []
+    };
+    
     let catadorDiv = document.querySelector('#catador-div');
     let addCatadorBtn = document.querySelector('#add-catador');
     addCatadorBtn.addEventListener('click', () => {
         const valorSelect = selectCatadores.value; 
-        console.log(valorSelect);
-        objEnviar = {
-            id_catador : valorSelect
-        }
-        console.log(objEnviar);
+        objEnviar.id_catador = valorSelect;
         catadorDiv.innerHTML = `Catador: ${selectCatadores.options[selectCatadores.selectedIndex].text}`
         
     })
     let removerCatadorBtn = document.querySelector('#remover-catador');
     removerCatadorBtn.addEventListener('click', () =>{
-        console.log("vasco");
         objEnviar.id_catador = null;
-        console.log(objEnviar);
         catadorDiv.innerHTML = 'Catador: ';
     })
+    let materialForm = document.querySelector('#material-form');
+    materialForm.addEventListener('click', (e) => {
+        e.preventDefault();
+    })
+
+    let addMaterialBtn = document.querySelector("#add-material");
+    addMaterialBtn.addEventListener('click', () => {
+
+        let materialSelecionado = document.querySelector("#materiais");
+        let quantidadeSelecionada =document.querySelector("#qtd-material");
+
+        if(quantidadeSelecionada.value != ''){
+            materialObj = {
+                id_material: materialSelecionado.value,
+                total_em_kg: quantidadeSelecionada.value,
+                preco : materialSelecionado.options[materialSelecionado.selectedIndex].dataset.preco
+            }
+            objEnviar.materiais.push(materialObj);
+            renderizarMateriais();
+        } else {
+            window.alert('Digite uma quantidade');
+        }
+    })
+
+    let renderizarMateriais = () => {
+        let materiaisDiv = document.querySelector('.produtos-container');
+        materiaisDiv.innerHTML = ' vasco ';
+        let materiaisRenderizar = objEnviar.materiais;
+        materiaisRenderizar.forEach((material) => {
+        }) 
+    }
+
 })
