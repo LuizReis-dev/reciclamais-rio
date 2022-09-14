@@ -85,7 +85,8 @@ window.addEventListener('load', async () => {
             materialObj = {
                 id_material: materialSelecionado.value,
                 total_em_kg: quantidadeSelecionada.value,
-                preco : materialSelecionado.options[materialSelecionado.selectedIndex].dataset.preco
+                preco : materialSelecionado.options[materialSelecionado.selectedIndex].dataset.preco,
+                nome: materialSelecionado.options[materialSelecionado.selectedIndex].text
             }
             objEnviar.materiais.push(materialObj);
             renderizarMateriais();
@@ -96,9 +97,14 @@ window.addEventListener('load', async () => {
 
     let renderizarMateriais = () => {
         let materiaisDiv = document.querySelector('.produtos-container');
-        materiaisDiv.innerHTML = ' vasco ';
+        materiaisDiv.innerHTML = '';
         let materiaisRenderizar = objEnviar.materiais;
         materiaisRenderizar.forEach((material) => {
+            console.log(material);
+            materiaisDiv.innerHTML += `
+            <td>${material.nome}</td>
+            <td>Quantidade: ${material.total_em_kg}kg</td>
+            <td>R$${material.total_em_kg * material.preco}</td>`
         }) 
     }
 
