@@ -52,21 +52,21 @@ window.addEventListener('load', async () => {
     })
 
     let objEnviar = {
-        id_catador: 0, 
-        total: 0, 
-        materiais : []
+        id_catador: 0,
+        total: 0,
+        materiais: []
     };
-    
+
     let catadorDiv = document.querySelector('#catador-div');
     let addCatadorBtn = document.querySelector('#add-catador');
     addCatadorBtn.addEventListener('click', () => {
-        const valorSelect = selectCatadores.value; 
+        const valorSelect = selectCatadores.value;
         objEnviar.id_catador = valorSelect;
         catadorDiv.innerHTML = `Catador: ${selectCatadores.options[selectCatadores.selectedIndex].text}`
-        
+
     })
     let removerCatadorBtn = document.querySelector('#remover-catador');
-    removerCatadorBtn.addEventListener('click', () =>{
+    removerCatadorBtn.addEventListener('click', () => {
         objEnviar.id_catador = null;
         catadorDiv.innerHTML = 'Catador: ';
     })
@@ -77,35 +77,65 @@ window.addEventListener('load', async () => {
 
     let addMaterialBtn = document.querySelector("#add-material");
     addMaterialBtn.addEventListener('click', () => {
+        if (objEnviar.id_catador) {
+            let materialSelecionado = document.querySelector("#materiais");
+            let quantidadeSelecionada = document.querySelector("#qtd-material");
 
-        let materialSelecionado = document.querySelector("#materiais");
-        let quantidadeSelecionada =document.querySelector("#qtd-material");
-
-        if(quantidadeSelecionada.value != ''){
-            materialObj = {
-                id_material: materialSelecionado.value,
-                total_em_kg: quantidadeSelecionada.value,
-                preco : materialSelecionado.options[materialSelecionado.selectedIndex].dataset.preco,
-                nome: materialSelecionado.options[materialSelecionado.selectedIndex].text
+            if (quantidadeSelecionada.value != '') {
+                materialObj = {
+                    id_material: materialSelecionado.value,
+                    total_em_kg: parseFloat(quantidadeSelecionada.value),
+                    preco: parseFloat(materialSelecionado.options[materialSelecionado.selectedIndex].dataset.preco),
+                    nome: materialSelecionado.options[materialSelecionado.selectedIndex].text
+                }
+                objEnviar.materiais.push(materialObj);
+                renderizarMateriais();
+                calcularTotal();
+            } else {
+                window.alert('Digite uma quantidade');
             }
-            objEnviar.materiais.push(materialObj);
-            renderizarMateriais();
         } else {
-            window.alert('Digite uma quantidade');
+            window.alert('Selecione um catador');
         }
     })
+
+    let calcularTotal = () => {
+        let valorTotal = 0;
+        let materiaisCalcular = objEnviar.materiais;
+        materiaisCalcular.forEach((material) => {
+            valorTotal += (material.preco * material.total_em_kg);
+        })
+        objEnviar.total = valorTotal;
+        let precoDiv = document.querySelector('#preco-final');
+        precoDiv.innerHTML = `R$${valorTotal}`;
+    }
 
     let renderizarMateriais = () => {
         let materiaisDiv = document.querySelector('.produtos-container');
         materiaisDiv.innerHTML = '';
         let materiaisRenderizar = objEnviar.materiais;
         materiaisRenderizar.forEach((material) => {
-            console.log(material);
             materiaisDiv.innerHTML += `
             <td>${material.nome}</td>
             <td>Quantidade: ${material.total_em_kg}kg</td>
             <td>R$${material.total_em_kg * material.preco}</td>`
-        }) 
+        })
     }
+    let comprarBtn = document.querySelector("#comprar-btn");
+    comprarBtn.addEventListener('click', () => {
+        if (objEnviar.materiais.length) {
+            fetch('http://localhost:8080/JavaWeb/compra', {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(objEnviar)
+            })
+                .then(res => res.json())
+                .catch(console.log);
+        } else {
+            window.alert('Selecione um material')
+        }
+    })
 
 })

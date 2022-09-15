@@ -75,4 +75,7 @@ public class CompraApi extends HttpServlet {
         out.flush();
 
     }
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+         
+    }
 }
