@@ -1,13 +1,16 @@
 
 package api;
 
+import dao.BonificacaoDao;
+
 
 public class RelatorioBonificacao {
     
-     private int id_catador;
+    private int id_catador;
     private int id_material;
     private double total_vendido;
     private double meta_bonificacao_kg;
+    private double valor_bonificacao;
 
     public int getId_catador() {
         return id_catador;
@@ -39,5 +42,23 @@ public class RelatorioBonificacao {
 
     public void setMeta_bonificacao_kg(double meta_bonificacao_kg) {
         this.meta_bonificacao_kg = meta_bonificacao_kg;
+    }
+
+    public double getValor_bonificacao() {
+        return valor_bonificacao;
+    }
+
+    public void setValor_bonificacao(double valor_bonificacao) {
+        this.valor_bonificacao = valor_bonificacao;
+    }
+    
+    
+    public double valorABonificar(){
+        return this.getValor_bonificacao() * this.quantidadeBonificacoesMerecidas();
+    }
+    
+    public int quantidadeBonificacoesMerecidas(){
+        int bonificacoesRecebidas = BonificacaoDao.totalBonificacaoPorCatador(this.id_catador, this.id_material);
+        return (int) (this.total_vendido / this.meta_bonificacao_kg) - bonificacoesRecebidas;
     }
 }

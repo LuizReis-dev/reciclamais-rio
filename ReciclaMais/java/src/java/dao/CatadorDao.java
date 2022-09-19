@@ -36,7 +36,7 @@ public class CatadorDao {
 
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 RelatorioBonificacao relatorio = new RelatorioBonificacao();
@@ -44,10 +44,13 @@ public class CatadorDao {
                 relatorio.setId_material(rs.getInt("id_material"));
                 relatorio.setTotal_vendido(rs.getDouble("total_vendido"));
                 relatorio.setMeta_bonificacao_kg(rs.getDouble("meta_bonificacao_kg"));
-                list.add(relatorio);
+                relatorio.setValor_bonificacao(rs.getDouble("valor_bonificacao"));
+                if (relatorio.quantidadeBonificacoesMerecidas() > 0) {
+                    list.add(relatorio);
+                }
             }
             for (int i = 0; i < list.size(); i++) {
-                if(list.get(i).getTotal_vendido() >= list.get(i).getMeta_bonificacao_kg()){
+                if (list.get(i).getTotal_vendido() >= list.get(i).getMeta_bonificacao_kg()) {
                     listCatadoresBonificar.add(list.get(i));
                 }
             }
