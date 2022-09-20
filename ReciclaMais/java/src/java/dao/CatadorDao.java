@@ -36,7 +36,7 @@ public class CatadorDao {
 
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 RelatorioBonificacao relatorio = new RelatorioBonificacao();
@@ -45,6 +45,7 @@ public class CatadorDao {
                 relatorio.setTotal_vendido(rs.getDouble("total_vendido"));
                 relatorio.setMeta_bonificacao_kg(rs.getDouble("meta_bonificacao_kg"));
                 relatorio.setValor_bonificacao(rs.getDouble("valor_bonificacao"));
+                relatorio.setNome_catador(rs.getString("nome_catador"));
                 if (relatorio.quantidadeBonificacoesMerecidas() > 0) {
                     list.add(relatorio);
                 }

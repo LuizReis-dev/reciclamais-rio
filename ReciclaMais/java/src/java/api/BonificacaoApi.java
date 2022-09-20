@@ -30,7 +30,7 @@ public class BonificacaoApi extends HttpServlet {
             objetoCatadores.put("meta_bonificacao_kg", listaCatadores.get(i).getMeta_bonificacao_kg());
             objetoCatadores.put("valor_bonificar", listaCatadores.get(i).valorABonificar());
             objetoCatadores.put("quantidade_bonificacoes", listaCatadores.get(i).quantidadeBonificacoesMerecidas());
-
+            objetoCatadores.put("nome_catador", listaCatadores.get(i).getNome_catador());
             retorno.put(objetoCatadores);
         }
         PrintWriter out = res.getWriter();

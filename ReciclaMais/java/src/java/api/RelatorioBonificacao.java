@@ -7,6 +7,7 @@ import dao.BonificacaoDao;
 public class RelatorioBonificacao {
     
     private int id_catador;
+    private String nome_catador;
     private int id_material;
     private double total_vendido;
     private double meta_bonificacao_kg;
@@ -51,7 +52,14 @@ public class RelatorioBonificacao {
     public void setValor_bonificacao(double valor_bonificacao) {
         this.valor_bonificacao = valor_bonificacao;
     }
-    
+
+    public String getNome_catador() {
+        return nome_catador;
+    }
+
+    public void setNome_catador(String nome_catador) {
+        this.nome_catador = nome_catador;
+    }
     
     public double valorABonificar(){
         return this.getValor_bonificacao() * this.quantidadeBonificacoesMerecidas();
