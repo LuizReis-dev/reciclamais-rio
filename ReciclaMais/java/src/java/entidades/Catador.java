@@ -1,4 +1,5 @@
 package entidades;
+import dao.BonificacaoDao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -94,8 +95,11 @@ public class Catador {
                 idade--;
             }
         }
-        
         return idade;
+    }
+    
+    public int quantidadeBonificacoesMerecidas(int bonificacoesRecebidas, double totalVendido, double metaBonificacao){
+        return (int) (totalVendido / metaBonificacao) - bonificacoesRecebidas;
     }
 }
 

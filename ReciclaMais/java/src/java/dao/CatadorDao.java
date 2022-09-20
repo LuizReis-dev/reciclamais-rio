@@ -3,6 +3,9 @@ package dao;
 import api.RelatorioBonificacao;
 import java.util.List;
 import entidades.Catador;
+import entidades.MateriaisEmOperacaoComercial;
+import entidades.Material;
+import entidades.OperacaoComercial;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,37 +31,6 @@ public class CatadorDao {
             System.out.println(erro);
         }
         return list;
-    }
-
-    public static List<RelatorioBonificacao> getCatadoresBonificar() {
-        List<RelatorioBonificacao> list = new ArrayList<RelatorioBonificacao>();
-        List<RelatorioBonificacao> listCatadoresBonificar = new ArrayList<RelatorioBonificacao>();
-
-        try {
-            Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                RelatorioBonificacao relatorio = new RelatorioBonificacao();
-                relatorio.setId_catador(rs.getInt("id_catador"));
-                relatorio.setId_material(rs.getInt("id_material"));
-                relatorio.setTotal_vendido(rs.getDouble("total_vendido"));
-                relatorio.setMeta_bonificacao_kg(rs.getDouble("meta_bonificacao_kg"));
-                relatorio.setValor_bonificacao(rs.getDouble("valor_bonificacao"));
-                relatorio.setNome_catador(rs.getString("nome_catador"));
-                if (relatorio.quantidadeBonificacoesMerecidas() > 0) {
-                    list.add(relatorio);
-                }
-            }
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getTotal_vendido() >= list.get(i).getMeta_bonificacao_kg()) {
-                    listCatadoresBonificar.add(list.get(i));
-                }
-            }
-        } catch (Exception erro) {
-            System.out.println(erro);
-        }
-        return listCatadoresBonificar;
     }
 
     public static List<Catador> getCatadores() {
