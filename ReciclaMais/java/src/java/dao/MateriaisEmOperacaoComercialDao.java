@@ -11,23 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MateriaisEmOperacaoComercialDao {
-    
-    public static int inserirMaterialEmCompra(MateriaisEmOperacaoComercial materialEmOp){
-       int status = 0;  
-   try{
-        Connection con = ConnectionDao.getConnection();
-        PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO materias_em_op(id_operacao_comercial,id_material,total_em_kg) VALUES(?,?,?)");
-        ps.setInt(1, materialEmOp.getOperacaoComercial().getId());
-        ps.setInt(2, materialEmOp.getMaterial().getId());
-        ps.setDouble(3, materialEmOp.getQuantidadeEmKg());
-        status = ps.executeUpdate();
-    }catch(Exception erro){
-        System.out.println(erro);
-    }      
-       return status;
-   }
-    
-    
+
+    public static int inserirMaterialEmCompra(MateriaisEmOperacaoComercial materialEmOp) {
+        int status = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO materias_em_op(id_operacao_comercial,id_material,total_em_kg) VALUES(?,?,?)");
+            ps.setInt(1, materialEmOp.getOperacaoComercial().getId());
+            ps.setInt(2, materialEmOp.getMaterial().getId());
+            ps.setDouble(3, materialEmOp.getQuantidadeEmKg());
+            status = ps.executeUpdate();
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return status;
+    }
+
     public static List<MateriaisEmOperacaoComercial> getCatadoresBonificar() {
         List<MateriaisEmOperacaoComercial> list = new ArrayList<MateriaisEmOperacaoComercial>();
         try {
@@ -61,5 +60,22 @@ public class MateriaisEmOperacaoComercialDao {
             System.out.println(erro);
         }
         return list;
+    }
+
+    public static double totalVendidoPorMaterialECatador(int idCatador, int idMaterial) {
+        double totalVendido = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(materias_em_op.total_em_kg) as total_vendido FROM materias_em_op INNER JOIN operacao_comercial on materias_em_op.id_operacao_comercial = operacao_comercial.id WHERE id_material = ? AND id_catador = ?");
+            ps.setInt(1, idMaterial);
+            ps.setInt(2, idCatador);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                totalVendido = rs.getDouble("total_vendido");
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return totalVendido;
     }
 }
