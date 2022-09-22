@@ -68,5 +68,8 @@ public class Material {
     public void setPrecoVendaKg(double precoVendaKg) {
         this.precoVendaKg = precoVendaKg;
     }
+    public double valorABonificar(int bonificacoesMerecidas) {
+        return this.valorBonificacao * bonificacoesMerecidas;
+    }
     
 }

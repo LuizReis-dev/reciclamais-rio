@@ -1,6 +1,5 @@
 package dao;
 
-import api.RelatorioBonificacao;
 import java.util.List;
 import entidades.Catador;
 import entidades.MateriaisEmOperacaoComercial;

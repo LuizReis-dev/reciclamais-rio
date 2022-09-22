@@ -1,5 +1,6 @@
 package api;
 
+import dao.BonificacaoDao;
 import dao.CatadorDao;
 import dao.MateriaisEmOperacaoComercialDao;
 import entidades.Catador;
@@ -25,13 +26,17 @@ public class BonificacaoApi extends HttpServlet {
         JSONArray retorno = new JSONArray();
 
         for (int i = 0; i < listaCatadores.size(); i++) {
+            double totalVendido = MateriaisEmOperacaoComercialDao.totalVendidoPorMaterialECatador(listaCatadores.get(i).getOperacaoComercial().getCatador().getId(), listaCatadores.get(i).getMaterial().getId());
+            int bonificacoesRecebidas = BonificacaoDao.totalBonificacaoPorCatador(listaCatadores.get(i).getMaterial().getId(), listaCatadores.get(i).getOperacaoComercial().getCatador().getId());
+            
+            int qtdBonificacoesMerecidas = listaCatadores.get(i).getOperacaoComercial().getCatador().quantidadeBonificacoesMerecidas(bonificacoesRecebidas, totalVendido, listaCatadores.get(i).getMaterial().getMetaBonificacaoKg());
             JSONObject objetoCatadores = new JSONObject();
             objetoCatadores.put("id_catador", listaCatadores.get(i).getOperacaoComercial().getCatador().getId());
             objetoCatadores.put("id_material", listaCatadores.get(i).getMaterial().getId());
             objetoCatadores.put("meta_bonificacao_kg", listaCatadores.get(i).getMaterial().getMetaBonificacaoKg());
-            objetoCatadores.put("valor_vendido", MateriaisEmOperacaoComercialDao.totalVendidoPorMaterialECatador(listaCatadores.get(i).getOperacaoComercial().getCatador().getId(), listaCatadores.get(i).getMaterial().getId()));
-            //objetoCatadores.put("valor_bonificar", listaCatadores.get(i).valorABonificar());
-            //objetoCatadores.put("quantidade_bonificacoes", listaCatadores.get(i).quantidadeBonificacoesMerecidas());
+            objetoCatadores.put("total_vendido", totalVendido);
+            objetoCatadores.put("valor_bonificar", listaCatadores.get(i).getMaterial().valorABonificar(qtdBonificacoesMerecidas));
+            objetoCatadores.put("quantidade_bonificacoes", qtdBonificacoesMerecidas);
             objetoCatadores.put("nome_catador", listaCatadores.get(i).getOperacaoComercial().getCatador().getNome());
             retorno.put(objetoCatadores);
         }
