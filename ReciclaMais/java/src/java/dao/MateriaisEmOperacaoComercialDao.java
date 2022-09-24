@@ -31,7 +31,7 @@ public class MateriaisEmOperacaoComercialDao {
         List<MateriaisEmOperacaoComercial> list = new ArrayList<MateriaisEmOperacaoComercial>();
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id as id_operacao_comercial, operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Material material = new Material();
@@ -44,6 +44,7 @@ public class MateriaisEmOperacaoComercialDao {
                 catador.setNome(rs.getString("nome_catador"));
 
                 OperacaoComercial opComercial = new OperacaoComercial();
+                opComercial.setId(rs.getInt("id_operacao_comercial"));
                 opComercial.setCatador(catador);
 
                 MateriaisEmOperacaoComercial matOp = new MateriaisEmOperacaoComercial();
@@ -77,5 +78,23 @@ public class MateriaisEmOperacaoComercialDao {
             System.out.println(erro);
         }
         return totalVendido;
+    }
+
+    public static int ultimaTransacaoPorCatadorEMaterial(int idCatador, int idMaterial) {
+        int idMatEmOp = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT materias_em_op.id FROM materias_em_op INNER JOIN operacao_comercial on operacao_comercial.id = materias_em_op.id_operacao_comercial WHERE operacao_comercial.id_catador = ? AND  materias_em_op.id_material = ? ORDER BY materias_em_op.id DESC LIMIT 1;");
+            ps.setInt(1, idCatador);
+            ps.setInt(2, idMaterial);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                idMatEmOp = rs.getInt("id");
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return idMatEmOp;
     }
 }
