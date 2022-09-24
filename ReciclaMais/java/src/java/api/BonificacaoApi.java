@@ -38,6 +38,7 @@ public class BonificacaoApi extends HttpServlet {
             objetoCatadores.put("id_material", listaCatadores.get(i).getMaterial().getId());
             objetoCatadores.put("meta_bonificacao_kg", listaCatadores.get(i).getMaterial().getMetaBonificacaoKg());
             objetoCatadores.put("total_vendido", totalVendido);
+            objetoCatadores.put("nome_material", listaCatadores.get(i).getMaterial().getNome());
             objetoCatadores.put("valor_bonificar", listaCatadores.get(i).getMaterial().valorABonificar(qtdBonificacoesMerecidas));
             objetoCatadores.put("quantidade_bonificacoes", qtdBonificacoesMerecidas);
             objetoCatadores.put("id_materiais_em_operacao_comercial", ultimaTransacao);

@@ -31,13 +31,14 @@ public class MateriaisEmOperacaoComercialDao {
         List<MateriaisEmOperacaoComercial> list = new ArrayList<MateriaisEmOperacaoComercial>();
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id as id_operacao_comercial, operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.id as id_operacao_comercial, operacao_comercial.id_catador, materias_em_op.id_material, catador.nome as nome_catador, SUM(materias_em_op.total_em_kg) as total_vendido, material.meta_bonificacao_kg, material.nome as nome_material ,material.valor_bonificacao FROM materias_em_op INNER JOIN operacao_comercial on id_operacao_comercial = operacao_comercial.id INNER JOIN material on materias_em_op.id_material = material.id INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY operacao_comercial.id_catador, materias_em_op.id_material;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Material material = new Material();
                 material.setId(rs.getInt("id_material"));
                 material.setMetaBonificacaoKg(rs.getInt("meta_bonificacao_kg"));
                 material.setValorBonificacao(rs.getInt("valor_bonificacao"));
+                material.setNome(rs.getString("nome_material"));
 
                 Catador catador = new Catador();
                 catador.setId(rs.getInt("id_catador"));
