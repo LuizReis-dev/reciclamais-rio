@@ -24,4 +24,9 @@ window.addEventListener('load', async () => {
             console.log(botao.parentNode.parentNode);
         })
     })
+    let btnFecharModal = document.querySelector('.fechar-modal');
+    let modal = document.querySelector('.modal');
+    btnFecharModal.addEventListener('click', () =>{
+        modal.style.display = 'none';
+    })
 });
