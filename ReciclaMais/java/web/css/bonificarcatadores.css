@@ -29,6 +29,7 @@ body{
     width: 300px;
     border-radius: 5px;
     margin: 18px 0px;
+    color: white;
 }
 .btn-confirmar {
     background-color: white;
