@@ -9,7 +9,7 @@ window.addEventListener('load', async () => {
     const tabelaCatadores = document.querySelector('.tabela-controlar');
 
     catadores.forEach((catador) => {
-        tabelaCatadores.innerHTML += `<tr>
+        tabelaCatadores.innerHTML += `<tr data-valor="${catador.valor_bonificar}" data-qtdreferente="${catador.quantidade_bonificacoes}" data-idmatop="${catador.id_materiais_em_operacao_comercial}">
             <td>${catador.nome_catador}</td>
             <td>${catador.nome_material}</td>
             <td>${catador.total_vendido} kg</td>
@@ -18,14 +18,28 @@ window.addEventListener('load', async () => {
             </tr>`
     });
 
+    let bonificarFormObj = {
+        id_material_em_op : 0,
+        quantidade_referente : 0,
+        valor_recomendado : 0
+    }
+
     let botoesBonificar = document.querySelectorAll('.btn-bonificar');
     botoesBonificar.forEach((botao) => {
         botao.addEventListener('click', ()=> {
-            console.log(botao.parentNode.parentNode);
+            let row = botao.parentNode.parentNode;
+            bonificarFormObj.id_material_em_op = row.dataset.idmatop;
+            bonificarFormObj.quantidade_referente = row.dataset.qtdreferente;
+            bonificarFormObj.valor_recomendado = row.dataset.valor;
+            montarBonificarForm();
+            console.log(bonificarFormObj);
         })
     })
-    let btnFecharModal = document.querySelector('.fechar-modal');
     let modal = document.querySelector('.modal');
+    let montarBonificarForm = () => {
+        modal.style.display = 'flex';
+    }
+    let btnFecharModal = document.querySelector('.fechar-modal');
     btnFecharModal.addEventListener('click', () =>{
         modal.style.display = 'none';
     })
