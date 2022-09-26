@@ -3,18 +3,27 @@ package entidades;
 public class Bonificacao {
     private int id;
     private double valor;
-    private Catador catador;
+    private MateriaisEmOperacaoComercial matEmOp;
+    private String status;
+    private int quantidadeReferente;
 
     public Bonificacao() {
     }
 
-    public Bonificacao(double valor, Catador catador) {
+    public Bonificacao(int id, double valor, MateriaisEmOperacaoComercial matEmOp, String status, int quantidadeReferente) {
+        this.id = id;
         this.valor = valor;
-        this.catador = catador;
+        this.matEmOp = matEmOp;
+        this.status = status;
+        this.quantidadeReferente = quantidadeReferente;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getValor() {
@@ -25,13 +34,29 @@ public class Bonificacao {
         this.valor = valor;
     }
 
-    public Catador getCatador() {
-        return catador;
+    public MateriaisEmOperacaoComercial getMatEmOp() {
+        return matEmOp;
     }
 
-    public void setCatador(Catador catador) {
-        this.catador = catador;
+    public void setMatEmOp(MateriaisEmOperacaoComercial matEmOp) {
+        this.matEmOp = matEmOp;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getQuantidadeReferente() {
+        return quantidadeReferente;
+    }
+
+    public void setQuantidadeReferente(int quantidadeReferente) {
+        this.quantidadeReferente = quantidadeReferente;
+    }
+ 
     
 }
