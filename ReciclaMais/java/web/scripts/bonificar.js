@@ -63,8 +63,15 @@ window.addEventListener('load', async () => {
                 body: JSON.stringify(bonificarFormObj)
             })
                 .then(res => res.json())
-                .then(console.log)
+                .then(res => finalizarBonificacao(res))
                 .catch(console.log); 
         }
     }) 
+    let finalizarBonificacao = (res) =>{
+        if(res.status = 1) {
+            location.reload()
+        } else {
+            window.alert('Ocorreu um erro, tente novamente!');
+        }
+    }
 });

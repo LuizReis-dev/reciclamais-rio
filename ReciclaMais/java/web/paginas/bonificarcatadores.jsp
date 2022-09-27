@@ -14,10 +14,12 @@
 </head>
 
 <body>
+    <%@include file="navegacao.html"%>
+
     <div class="conteudo-principal">
         <div class="opcoes">
             <a id="selecionado" class="opcao" href="#">Bonificar</a>
-            <a class="opcao" href="#">Ultimas Bonificações</a>
+            <a class="opcao" href="#">Ultimas Bonificacoes</a>
         </div>
 
         <table class="tabela-controlar">
@@ -26,7 +28,7 @@
                 <th>Material referente</th>
                 <th>Total Vendido</th>
                 <th>Valor recomendado</th>
-                <th class="th-actions">Ações</th>
+                <th class="th-actions">Acoes</th>
             </thead>
         </table>
         <div class="modal">
