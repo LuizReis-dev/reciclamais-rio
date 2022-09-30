@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class BonificacaoDao {
-    
+
     public static int totalBonificacaoPorCatador(int idCatador, int idMaterial) {
         int contagem = 0;
         try {
@@ -23,6 +23,7 @@ public class BonificacaoDao {
         }
         return contagem;
     }
+
     public static int inserirBonificacao(Bonificacao bonificacao) {
         int status = 0;
         try {
@@ -38,5 +39,22 @@ public class BonificacaoDao {
             System.out.println(erro);
         }
         return status;
+    }
+
+    public static double totalAPagarPorCatador(int idCatador) {
+        int total = 0;
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(valor) as valor FROM bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on materias_em_op.id_operacao_comercial = operacao_comercial.id WHERE status = 'pendente' AND operacao_comercial.id_catador = ?");
+            ps.setInt(1, idCatador);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                total = rs.getInt("valor");
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+
+        return total;
     }
 }
