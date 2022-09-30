@@ -53,7 +53,7 @@
                     </div>
                     <div class="dados-produto">
                         <select name="material" id="materiais" class="produto select"></select>
-                        <span id="preco-material">R$50</span>
+                        <span id="preco-material"></span>
                     </div>
                     <div class="botoes">
                         <button class="produtos" id="add-material">Adicionar</button>
@@ -76,7 +76,7 @@
                 <tfoot>
                     <tr class="total produtos">
                         <th>Total</th>
-                        <th>sem bonificação</th>
+                        <th id="bonificado">sem bonificação</th>
                         <th id="preco-final"></th>
                     </tr>
                 </tfoot>

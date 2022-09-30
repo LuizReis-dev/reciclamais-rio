@@ -9,6 +9,12 @@ const buscarMateriais = async () => {
     return data;
 }
 
+const buscarTotalBonificacao = async (idCatador) => {
+    const res = await fetch(`http://localhost:8080/JavaWeb/totalabonificarporcatador?id_catador=${idCatador}`);
+    const data = await res.json();
+    return data;
+}
+
 
 window.addEventListener('load', async () => {
     const catadores = await buscarCatadores();
@@ -69,22 +75,49 @@ window.addEventListener('load', async () => {
     let objEnviar = {
         id_catador: 0,
         total: 0,
-        materiais: []
+        materiais: [],
+        bonificacao: 0
     };
 
     let catadorDiv = document.querySelector('#catador-div');
     let addCatadorBtn = document.querySelector('#add-catador');
-    addCatadorBtn.addEventListener('click', () => {
+    addCatadorBtn.addEventListener('click', async () => {
+        objEnviar.total = 0;
+        objEnviar.bonificacao = 0;
+        calcularTotal();
         const valorSelect = selectCatadores.value;
         objEnviar.id_catador = valorSelect;
         catadorDiv.innerHTML = `Catador: ${selectCatadores.options[selectCatadores.selectedIndex].text}`;
-
-    })
+        let totalAPagar =  await buscarTotalBonificacao(valorSelect);
+        if(totalAPagar.total) {
+            let bonificacao = totalAPagar.total;
+            objEnviar.bonificacao = bonificacao;
+            mostrarBonificado();
+            calcularTotal();
+        } else {
+            objEnviar.bonificacao = 0;
+            mostrarBonificado();
+        }    
+    });
+    let mostrarBonificado = () => {
+        let bonificacaoDiv = document.querySelector('#bonificado')
+        let bonificacao = objEnviar.bonificacao;
+        if(bonificacao > 0) {
+            bonificacaoDiv.innerHTML = "Catador bonificado"
+        } else {
+            bonificacaoDiv.innerHTML = "Sem bonificacao"
+        }
+    }
+    
     let removerCatadorBtn = document.querySelector('#remover-catador');
     removerCatadorBtn.addEventListener('click', () => {
         objEnviar.id_catador = null;
         objEnviar.materiais = [];
         renderizarMateriais();
+        objEnviar.bonificacao = 0;
+        objEnviar.total = 0;
+        calcularTotal();
+        mostrarBonificado();
         catadorDiv.innerHTML = 'Catador: ';
     })
     let materialForm = document.querySelector('#material-form');
@@ -119,6 +152,7 @@ window.addEventListener('load', async () => {
     removerMaterialBtn.addEventListener('click', ()=>{
         objEnviar.materiais.pop();
         renderizarMateriais();
+        calcularTotal();
     });
 
     let calcularTotal = () => {
@@ -128,6 +162,7 @@ window.addEventListener('load', async () => {
             valorTotal += (material.preco * material.total_em_kg);
         })
         objEnviar.total = valorTotal;
+        valorTotal += objEnviar.bonificacao;
         let precoDiv = document.querySelector('#preco-final');
         precoDiv.innerHTML = `R$${valorTotal}`;
     }
@@ -145,6 +180,7 @@ window.addEventListener('load', async () => {
     }
     let comprarBtn = document.querySelector("#comprar-btn");
     comprarBtn.addEventListener('click', () => {
+        objEnviar.total += objEnviar.bonificacao;
         if (objEnviar.materiais.length) {
             fetch('http://localhost:8080/JavaWeb/compra', {
                 method: "POST",
@@ -165,7 +201,8 @@ window.addEventListener('load', async () => {
         objEnviar = {
             id_catador: 0,
             total: 0,
-            materiais: []
+            materiais: [],
+            bonificacao: 0
         };
         renderizarMateriais();
         calcularTotal();
