@@ -57,4 +57,15 @@ public class BonificacaoDao {
 
         return total;
     }
+
+    public static void confirmandoBonificacoes(int idCatador) {
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on operacao_comercial.id = materias_em_op.id_operacao_comercial SET status = \"pago\" WHERE operacao_comercial.id_catador = ?;");
+            ps.setInt(1, idCatador);
+            ps.executeUpdate();
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+    }
 }

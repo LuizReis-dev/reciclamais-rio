@@ -5,6 +5,7 @@
  */
 package api;
 
+import dao.BonificacaoDao;
 import dao.MateriaisEmOperacaoComercialDao;
 import dao.OperacaoComercialDao;
 import entidades.Catador;
@@ -45,7 +46,7 @@ public class CompraApi extends HttpServlet {
         res.addHeader("Access-Control-Allow-Origin", "null");
         Catador catador = new Catador();
         catador.setId(dados.getInt("id_catador"));
-
+        
         OperacaoComercial op = new OperacaoComercial();
         op.setCatador(catador);
         op.setTotal(dados.getDouble("total"));
@@ -67,6 +68,10 @@ public class CompraApi extends HttpServlet {
             matEmOp.setOperacaoComercial(opC);
 
             int status = MateriaisEmOperacaoComercialDao.inserirMaterialEmCompra(matEmOp);
+        }
+        double bonificacao = dados.getDouble("bonificacao");
+        if(bonificacao > 0) {
+            BonificacaoDao.confirmandoBonificacoes(catador.getId());
         }
         JSONObject retorno = new JSONObject();
         retorno.put("Situação", "Compra registrada");
