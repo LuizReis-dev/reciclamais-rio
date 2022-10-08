@@ -44,10 +44,10 @@ public class LoginApi extends HttpServlet {
         } else {
             retorno.put("autorizacao", true);
             retorno.put("Mensagem", "Usuário logado");
+            req.getSession().setAttribute("funcionarioId", funcionario.getId());
             out.print(retorno.toString());
-
             out.flush();
-         
+
         }
     }
 
