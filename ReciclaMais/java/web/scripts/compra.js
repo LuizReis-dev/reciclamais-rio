@@ -48,14 +48,14 @@ window.addEventListener('load', async () => {
         mostrarPrecoProduto();
     })
 
-    selectMateriais.addEventListener('click', ()=> {
+    selectMateriais.addEventListener('click', () => {
         mostrarPrecoProduto();
     });
 
     let mostrarPrecoProduto = () => {
         let divPreco = document.querySelector('#preco-material');
         let precoMaterial = selectMateriais.options[selectMateriais.selectedIndex].dataset.preco;
-        if(precoMaterial) { 
+        if (precoMaterial) {
             divPreco.innerHTML = `R$${precoMaterial}`;
         } else {
             divPreco.innerHTML = 'R$';
@@ -74,7 +74,8 @@ window.addEventListener('load', async () => {
 
     let objEnviar = {
         id_catador: 0,
-        total: 0,
+        total_sugerido: 0,
+        total_final: 0,
         materiais: [],
         bonificacao: 0
     };
@@ -82,14 +83,14 @@ window.addEventListener('load', async () => {
     let catadorDiv = document.querySelector('#catador-div');
     let addCatadorBtn = document.querySelector('#add-catador');
     addCatadorBtn.addEventListener('click', async () => {
-        objEnviar.total = 0;
+        objEnviar.total_sugerido = 0;
         objEnviar.bonificacao = 0;
         calcularTotal();
         const valorSelect = selectCatadores.value;
         objEnviar.id_catador = valorSelect;
         catadorDiv.innerHTML = `Catador: ${selectCatadores.options[selectCatadores.selectedIndex].text}`;
-        let totalAPagar =  await buscarTotalBonificacao(valorSelect);
-        if(totalAPagar.total) {
+        let totalAPagar = await buscarTotalBonificacao(valorSelect);
+        if (totalAPagar.total) {
             let bonificacao = totalAPagar.total;
             objEnviar.bonificacao = bonificacao;
             mostrarBonificado();
@@ -97,25 +98,25 @@ window.addEventListener('load', async () => {
         } else {
             objEnviar.bonificacao = 0;
             mostrarBonificado();
-        }    
+        }
     });
     let mostrarBonificado = () => {
         let bonificacaoDiv = document.querySelector('#bonificado')
         let bonificacao = objEnviar.bonificacao;
-        if(bonificacao > 0) {
+        if (bonificacao > 0) {
             bonificacaoDiv.innerHTML = "Catador bonificado"
         } else {
             bonificacaoDiv.innerHTML = "Sem bonificacao"
         }
     }
-    
+
     let removerCatadorBtn = document.querySelector('#remover-catador');
     removerCatadorBtn.addEventListener('click', () => {
         objEnviar.id_catador = null;
         objEnviar.materiais = [];
         renderizarMateriais();
         objEnviar.bonificacao = 0;
-        objEnviar.total = 0;
+        objEnviar.total_sugerido = 0;
         calcularTotal();
         mostrarBonificado();
         catadorDiv.innerHTML = 'Catador: ';
@@ -149,7 +150,7 @@ window.addEventListener('load', async () => {
         }
     })
     let removerMaterialBtn = document.querySelector('#remover-material');
-    removerMaterialBtn.addEventListener('click', ()=>{
+    removerMaterialBtn.addEventListener('click', () => {
         objEnviar.materiais.pop();
         renderizarMateriais();
         calcularTotal();
@@ -161,7 +162,7 @@ window.addEventListener('load', async () => {
         materiaisCalcular.forEach((material) => {
             valorTotal += (material.preco * material.total_em_kg);
         })
-        objEnviar.total = valorTotal;
+        objEnviar.total_sugerido = valorTotal;
         valorTotal += objEnviar.bonificacao;
         let precoDiv = document.querySelector('#preco-final');
         precoDiv.innerHTML = `R$${valorTotal}`;
@@ -178,29 +179,98 @@ window.addEventListener('load', async () => {
             <td>R$${material.total_em_kg * material.preco}</td>`
         })
     }
+    let finalizarForm = document.querySelector('.modal-finalizar');
     let comprarBtn = document.querySelector("#comprar-btn");
     comprarBtn.addEventListener('click', () => {
-        objEnviar.total += objEnviar.bonificacao;
+        //objEnviar.total_sugerido += objEnviar.bonificacao;
         if (objEnviar.materiais.length) {
-            fetch('http://localhost:8080/JavaWeb/compra', {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                },
-                body: JSON.stringify(objEnviar)
-            })
-                .then(res => res.json())
-                .then(finalizarCompra())
-                .catch(console.log);
+            montarFinalizarForm()
+
+            //     fetch('http://localhost:8080/JavaWeb/compra', {
+            //         method: "POST",
+            //         headers: {
+            //             "Content-type": "application/json; charset=UTF-8"
+            //         },
+            //         body: JSON.stringify(objEnviar)
+            //     })
+            //         .then(res => res.json())
+            //         .then(finalizarCompra())
+            //         .catch(console.log);
         } else {
             window.alert('Selecione um material');
         }
     })
 
+    let montarFinalizarForm = async () => {
+        let bonificarFixo = await bonificarPreco();
+        document.querySelector('.sugestao-preco').innerHTML = `Preco sugerido: R$${objEnviar.total_sugerido}`;
+        if (bonificarFixo.total > 0) {
+            document.querySelector('.valor-bonificacao').innerHTML = `Valor da bonificação: R$${bonificarFixo.total} Deseja aplicar?`;
+        } else {
+            document.querySelector('.valor-bonificacao').style.display = 'none';
+            document.querySelector('#bonificar-checkbox').style.display = 'none';
+        }
+        if (objEnviar.total_final > 0) {
+            document.querySelector('.preco-finalizar').innerHTML = `Valor final: R$${objEnviar.total_final + objEnviar.bonificacao}`;
+        } else {
+            document.querySelector('.preco-finalizar').innerHTML = `Valor final: R$${objEnviar.total_sugerido + objEnviar.bonificacao}`;
+        }
+        finalizarForm.style.display = 'block';
+    }
+
+    let precoFinalInput = document.querySelector('#preco-final-input');
+    precoFinalInput.addEventListener('input', () => {
+        objEnviar.total_final = parseFloat(precoFinalInput.value);
+        montarFinalizarForm()
+    });
+
+    document.querySelector('.fechar-form').addEventListener('click', () => {
+        finalizarForm.style.display = 'none';
+    });
+    let bonificarCheckbox = document.querySelector('#bonificar-checkbox');
+    bonificarCheckbox.addEventListener('click', async () => {
+        let bonificarFixo = await bonificarPreco();
+        console.log(bonificarFixo.total);
+        if (bonificarCheckbox.checked) {
+            objEnviar.bonificacao = bonificarFixo.total;
+            montarFinalizarForm();
+        } else {
+            objEnviar.bonificacao = 0;
+            montarFinalizarForm();
+        }
+    });
+
+    document.querySelector('.btn-confirmar').addEventListener(('click'), (e) => {
+        e.preventDefault();
+        objEnviar.total_sugerido += objEnviar.bonificacao
+        if (objEnviar.total_final == 0) {
+            objEnviar.total_final = objEnviar.total_sugerido;
+        } else {
+            objEnviar.total_final += objEnviar.bonificacao;
+        }
+
+        fetch('http://localhost:8080/JavaWeb/compra', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify(objEnviar)
+        })
+            .then(res => res.json())
+            .then(finalizarCompra())
+            .catch(console.log);
+            
+        console.log(objEnviar)
+    });
+
+    let bonificarPreco = async () => {
+        return await buscarTotalBonificacao(objEnviar.id_catador);
+    }
     let finalizarCompra = () => {
         objEnviar = {
             id_catador: 0,
-            total: 0,
+            total_sugerido: 0,
+            total_final: 0,
             materiais: [],
             bonificacao: 0
         };

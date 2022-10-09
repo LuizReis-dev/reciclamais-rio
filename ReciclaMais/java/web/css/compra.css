@@ -1,4 +1,3 @@
-
 #pagina {
     width: 100vw;
     height: 100vh;
@@ -7,6 +6,7 @@
     max-width: 2000px;
     max-height: 1400px;
     background: white;
+    font-family: 'Arial';
     display: grid;
     overflow: hidden;
     transition: 0.5s;
@@ -524,4 +524,58 @@ table.produto {
     box-shadow: -5px 0 0 #4E944F,
         -5px 0 0 #4E944F;
     transition-delay: 0s, 0.5s, 1s, 1s;
+}
+
+.modal-finalizar {
+    display: none;
+    box-shadow: 2px 4px 11px 4px rgba(0, 0, 0, 0.267);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 430px;
+    height: 230px;
+    z-index: 200;
+    border-radius: 20px;
+    background-color: white;
+}
+.modal-finalizar h3 {
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    padding-top: 3px;
+    color: white;
+    background-color: #4E944F;
+}
+.modal-finalizar i {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+.modal-finalizar form {
+    padding-left: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.agrupamento {
+    margin: 5px 0px;
+}
+
+.btn-confirmar {
+    color: #fff;
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+    background-color: #4E944F;
+    align-self: center;
+    margin-bottom: 10px;
 }
