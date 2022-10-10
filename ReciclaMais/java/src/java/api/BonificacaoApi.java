@@ -31,7 +31,7 @@ public class BonificacaoApi extends HttpServlet {
 
         for (int i = 0; i < listaCatadores.size(); i++) {
             double totalVendido = MateriaisEmOperacaoComercialDao.totalVendidoPorMaterialECatador(listaCatadores.get(i).getOperacaoComercial().getCatador().getId(), listaCatadores.get(i).getMaterial().getId());
-            int bonificacoesRecebidas = BonificacaoDao.totalBonificacaoPorCatador(listaCatadores.get(i).getMaterial().getId(), listaCatadores.get(i).getOperacaoComercial().getCatador().getId());
+            int bonificacoesRecebidas = BonificacaoDao.totalBonificacaoPorCatador(listaCatadores.get(i).getOperacaoComercial().getCatador().getId(), listaCatadores.get(i).getMaterial().getId());
             int qtdBonificacoesMerecidas = listaCatadores.get(i).getOperacaoComercial().getCatador().quantidadeBonificacoesMerecidas(bonificacoesRecebidas, totalVendido, listaCatadores.get(i).getMaterial().getMetaBonificacaoKg());
             int ultimaTransacao = MateriaisEmOperacaoComercialDao.ultimaTransacaoPorCatadorEMaterial(listaCatadores.get(i).getOperacaoComercial().getCatador().getId(), listaCatadores.get(i).getMaterial().getId());
             JSONObject objetoCatadores = new JSONObject();
@@ -45,7 +45,6 @@ public class BonificacaoApi extends HttpServlet {
             objetoCatadores.put("quantidade_bonificacoes", qtdBonificacoesMerecidas);
             objetoCatadores.put("id_materiais_em_operacao_comercial", ultimaTransacao);
             objetoCatadores.put("nome_catador", listaCatadores.get(i).getOperacaoComercial().getCatador().getNome());
-
             retorno.put(objetoCatadores);
         }
         PrintWriter out = res.getWriter();
