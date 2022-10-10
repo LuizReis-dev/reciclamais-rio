@@ -12,9 +12,10 @@ public class OperacaoComercialDao {
         int idOperacaoComercial = 0;
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO operacao_comercial(id_catador,tipo,total) VALUES(?,'c',?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO operacao_comercial(id_catador,tipo,total_sugerido, total_final) VALUES(?,'c',?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, operacaoComercial.getCatador().getId());
-            ps.setDouble(2, operacaoComercial.getTotal());
+            ps.setDouble(2, operacaoComercial.getTotal_sugerido());
+            ps.setDouble(3, operacaoComercial.getTotal_final());
             ps.executeUpdate();
 
             ResultSet chaveGerada = ps.getGeneratedKeys();

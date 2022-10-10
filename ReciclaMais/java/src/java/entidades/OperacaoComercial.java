@@ -6,29 +6,29 @@ public class OperacaoComercial {
     private Catador catador;
     private Empresa empresa;
     private char tipo;
-    private double total;
+    private double total_sugerido;
+    private double total_final;
 
     public OperacaoComercial() {
     }
 
-    public OperacaoComercial(Catador catador, char tipo, double total) {
+    public OperacaoComercial(int id, Catador catador, Empresa empresa, char tipo, double total_sugerido, double total_final) {
+        this.id = id;
         this.catador = catador;
-        this.tipo = tipo;
-        this.total = total;
-    }
-
-    public OperacaoComercial(Empresa empresa, char tipo, double total) {
         this.empresa = empresa;
         this.tipo = tipo;
-        this.total = total;
+        this.total_sugerido = total_sugerido;
+        this.total_final = total_final;
     }
 
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public Catador getCatador() {
         return catador;
     }
@@ -53,14 +53,21 @@ public class OperacaoComercial {
         this.tipo = tipo;
     }
 
-    public double getTotal() {
-        return total;
+    public double getTotal_sugerido() {
+        return total_sugerido;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotal_sugerido(double total_sugerido) {
+        this.total_sugerido = total_sugerido;
+    }
+
+    public double getTotal_final() {
+        return total_final;
+    }
+
+    public void setTotal_final(double total_final) {
+        this.total_final = total_final;
     }
     
     
 }
-

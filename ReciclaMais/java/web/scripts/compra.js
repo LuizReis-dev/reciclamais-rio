@@ -275,6 +275,8 @@ window.addEventListener('load', async () => {
             bonificacao: 0
         };
         renderizarMateriais();
+        finalizarForm.style.display = 'none';
+        precoFinalInput.value = ' ';
         calcularTotal();
         catadorDiv.innerHTML = 'Catador: ';
         window.alert('Compra Finalizada!');
