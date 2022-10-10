@@ -15,6 +15,7 @@
 
 <body>
     <%@include file="navegacao.html"%>
+    <%@include file="controledeacesso.jsp"%>
 
     <div class="conteudo-principal">
         <div class="opcoes">

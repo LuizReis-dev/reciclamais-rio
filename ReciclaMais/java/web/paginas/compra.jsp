@@ -20,6 +20,7 @@
 <body>
 
     <div id="pagina" class="compra">
+        <%@include file="controledeacesso.jsp"%>
         <%@include file="navegacao.html" %>
             <div class="coletor">
                 <form action="" method="" id="catador-form" class="coletor">

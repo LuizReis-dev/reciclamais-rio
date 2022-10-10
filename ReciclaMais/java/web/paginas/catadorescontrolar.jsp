@@ -18,6 +18,8 @@
 
     <body>
         <%@include file="navegacao.html"%>
+        <%@include file="controledeacesso.jsp"%>
+
         <%
             String pag = request.getParameter("pag");
             int id = Integer.parseInt(pag);

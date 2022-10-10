@@ -19,6 +19,7 @@
 
     <body>
         <%@include file="navegacao.html"%>
+        <%@include file="controledeacesso.jsp"%>
 
         <div class="conteudo-principal">
             <div class="opcoes">
@@ -31,7 +32,7 @@
                     String pag = request.getParameter("pag");
                     int id = Integer.parseInt(pag);
 
-                    //Quantidade de Registros da Página
+                    //Quantidade de Registros da Pï¿½gina
                     int total = 5;
 
                     if (id != 1) {
@@ -53,8 +54,8 @@
                 <thead>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Preço Venda por kg</th>
-                <th class="th-actions">Ações</th>
+                <th>Preï¿½o Venda por kg</th>
+                <th class="th-actions">Aï¿½ï¿½es</th>
                 </thead>
                 <c:forEach items="${lista}" var="material">
                     <tr>

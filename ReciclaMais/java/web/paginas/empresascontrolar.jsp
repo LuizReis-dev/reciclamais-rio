@@ -28,10 +28,13 @@
             </div>
             <table class="tabela-controlar">
                 <%
+
+                    <%@include file="controledeacesso.jsp"%>
+
                     String pag = request.getParameter("pag");
                     int id = Integer.parseInt(pag);
 
-                    //Quantidade de Registros da Página
+                    //Quantidade de Registros da Pï¿½gina
                     int total = 5;
 
                     if (id != 1) {
@@ -55,7 +58,7 @@
                 <th>Nome</th>
                 <th>Ramo</th>
                 <th>CNPJ</th>
-                <th class="th-actions">Ações</th>
+                <th class="th-actions">Aï¿½ï¿½es</th>
                 </thead>
                 <c:forEach items="${lista}" var="empresa">
                     <tr>

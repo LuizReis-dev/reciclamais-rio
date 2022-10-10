@@ -19,8 +19,6 @@ public class FuncionarioDao {
             if(rs.next()) {
                 if(rs.getString("senha").equals(senha)) {
                     funcionario.setId(rs.getInt("id"));
-                    funcionario.setCpf(rs.getString("cpf"));
-                    funcionario.setEmail(rs.getString("email"));
                     funcionario.setFuncao(rs.getString("funcao"));
                     funcionario.setTelefone(rs.getString("telefone"));
                     funcionario.setUsuario(rs.getString("usuario"));
