@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
-@WebServlet(name = "LoginApi", urlPatterns = {"/Login"})
+@WebServlet(name = "LoginApi", urlPatterns = {"/login"})
 public class LoginApi extends HttpServlet {
 
     @Override
@@ -27,9 +27,9 @@ public class LoginApi extends HttpServlet {
         }
         JSONObject dados = new JSONObject(jb.toString());
 
-        String usuario = dados.getString("usuario");
+        String login = dados.getString("login");
         String senha = dados.getString("senha");
-        Funcionario funcionario = FuncionarioDao.login(usuario, senha);
+        Funcionario funcionario = FuncionarioDao.login(login, senha);
         System.out.println(Objects.isNull(funcionario));
         PrintWriter out = res.getWriter();
         res.setContentType("application/json");

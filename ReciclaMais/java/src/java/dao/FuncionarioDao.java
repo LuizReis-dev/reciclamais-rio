@@ -8,12 +8,12 @@ import java.util.Objects;
 
 public class FuncionarioDao {
 
-    public static Funcionario login(String usuario, String senha) {
+    public static Funcionario login(String login, String senha) {
         Funcionario funcionario = new Funcionario();
         try {
             Connection conn = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement("SELECT * FROM Funcionario Where usuario = ?");
-            ps.setString(1, usuario);
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement("SELECT * FROM Funcionario Where login = ?");
+            ps.setString(1, login);
             ResultSet rs = ps.executeQuery();
            
             if(rs.next()) {
