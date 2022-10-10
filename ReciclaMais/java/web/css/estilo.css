@@ -1,0 +1,74 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+* {
+    font-family: 'Montserrat', 'Nunito', 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    z-index: 0;
+}
+
+:root {
+    /* plano de fundo */
+    --backgroundC: linear-gradient(120deg, var(--verdeC1), var(--verdeC2), var(--verdeC3), var(--verdeC4));
+
+    /* imagens */
+    --banner: url(../images/banner.png);
+    --logo: url(../images/logo.png);
+    --cristobranco: url(../images/cristobranco.png);
+    --cristopreto: url(../images/cristopreto.png);
+    --reciclamaisrio: url(../images/reciclamaisrio.jpg);
+
+    /* cores */
+    --verdeC1: #E9EFC0;
+    --verdeC2: #B4E197;
+    --verdeC3: #83BD75;
+    --verdeC4: #4E944F;
+
+    --preto: #000000;
+    --branco: #ffffff;
+
+
+    /* números */
+    --max: 100%;
+    --tempo: 0.5s;
+}
+
+#pagina {
+    min-width: 100vw;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    background: var(--backgroundC);
+    display: grid;
+    overflow: hidden;
+    transition: var(--tempo);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: var(--max);
+    background-color: #E1E8EB;
+}
+
+::-webkit-scrollbar-track {
+    border: 2px solid #E1E8EB;
+    box-shadow: inset 0 0 5px #4E944F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B4E197;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0cf80;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #83bb5d;
+}
