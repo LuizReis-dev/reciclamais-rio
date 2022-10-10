@@ -374,7 +374,7 @@ table.produto {
     height: 100%;
     font-family: Arial;
     background-color: #4E944F;
-    border-bottom: 1px solid #4E944F;
+    border-bottom: 1px solid #83BD75;
     color: #fff;
     font-size: 20px;
     letter-spacing: 8px;
@@ -400,7 +400,8 @@ table.produto {
 
 .produto tbody {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 75px);
+    background: transparent;
 }
 
 .produto tbody tr {
@@ -416,18 +417,24 @@ table.produto {
 .produto tbody tr:hover {
     color: #83BD75;
     font-weight: 700;
+    letter-spacing: 2px;
 }
 
-.produto tbody tr th {
+.produto tbody tr td {
+    width: 30%;
     text-align: center;
 }
 
 .produto tfoot {
-    height: 28px;
+    height: 35px;
     background-color: #83BD75;
     color: #fff;
-    text-transform: lowercase;
     font-size: 16px;
+}
+
+.total produtos{
+    width: 100%;
+    height: 100%;
 }
 
 .produto tfoot tr th:last-of-type {
