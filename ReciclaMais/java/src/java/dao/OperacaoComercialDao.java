@@ -40,7 +40,7 @@ public class OperacaoComercialDao {
         List<OperacaoComercial> list = new ArrayList<OperacaoComercial>();
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM `operacao_comercial` WHERE DATE(data) = '?'");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM `operacao_comercial` WHERE DATE(data) = ?");
             ps.setString(1, dia);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
