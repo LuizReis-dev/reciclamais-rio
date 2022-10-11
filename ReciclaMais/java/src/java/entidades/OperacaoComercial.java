@@ -8,17 +8,19 @@ public class OperacaoComercial {
     private char tipo;
     private double total_sugerido;
     private double total_final;
-
+    private Funcionario funcionario;
+    
     public OperacaoComercial() {
     }
 
-    public OperacaoComercial(int id, Catador catador, Empresa empresa, char tipo, double total_sugerido, double total_final) {
+    public OperacaoComercial(int id, Catador catador, Empresa empresa, char tipo, double total_sugerido, double total_final, Funcionario funcionario) {
         this.id = id;
         this.catador = catador;
         this.empresa = empresa;
         this.tipo = tipo;
         this.total_sugerido = total_sugerido;
         this.total_final = total_final;
+        this.funcionario = funcionario;
     }
 
     public int getId() {
@@ -67,6 +69,13 @@ public class OperacaoComercial {
 
     public void setTotal_final(double total_final) {
         this.total_final = total_final;
+    }
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
     
     

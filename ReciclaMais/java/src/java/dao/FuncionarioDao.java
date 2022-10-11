@@ -21,7 +21,6 @@ public class FuncionarioDao {
                     funcionario.setId(rs.getInt("id"));
                     funcionario.setFuncao(rs.getString("funcao"));
                     funcionario.setTelefone(rs.getString("telefone"));
-                    funcionario.setUsuario(rs.getString("usuario"));
                     funcionario.setNome(rs.getString("nome"));
                 } else {
                     funcionario = null;

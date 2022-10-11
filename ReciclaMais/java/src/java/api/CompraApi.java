@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +10,7 @@ import dao.BonificacaoDao;
 import dao.MateriaisEmOperacaoComercialDao;
 import dao.OperacaoComercialDao;
 import entidades.Catador;
+import entidades.Funcionario;
 import entidades.MateriaisEmOperacaoComercial;
 import entidades.Material;
 import entidades.OperacaoComercial;
@@ -52,7 +54,13 @@ public class CompraApi extends HttpServlet {
         op.setTotal_sugerido(dados.getDouble("total_sugerido"));
         op.setTotal_final(dados.getDouble("total_final"));
         
+        Funcionario funcionario = new Funcionario();
+        funcionario.setId((Integer.parseInt((String)req.getSession().getAttribute("funcionarioId"))));
+        op.setFuncionario(funcionario);
+        
         int idOp = OperacaoComercialDao.inserirCompra(op);
+        
+        
         JSONArray materiaisArray = dados.getJSONArray("materiais");
         for (int i = 0; i < materiaisArray.length(); i++) {
             JSONObject materialObj = materiaisArray.getJSONObject(i);
@@ -75,7 +83,9 @@ public class CompraApi extends HttpServlet {
             BonificacaoDao.confirmandoBonificacoes(catador.getId());
         }
         JSONObject retorno = new JSONObject();
-        retorno.put("Situação", "Compra registrada");
+        String usuario = (String) req.getSession().getAttribute("funcionarioId");
+        
+        retorno.put("Situação", usuario);
         
         out.print(retorno.toString());
         out.flush();

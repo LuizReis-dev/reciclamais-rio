@@ -47,7 +47,6 @@ public class LoginApi extends HttpServlet {
             req.getSession().setAttribute("funcionarioId", Integer.toString(funcionario.getId()));
             out.print(retorno.toString());
             out.flush();
-
         }
     }
 
