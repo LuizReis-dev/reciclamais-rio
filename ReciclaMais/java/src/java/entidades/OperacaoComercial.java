@@ -1,5 +1,7 @@
 package entidades;
 
+import java.sql.Date;
+
 public class OperacaoComercial {
 
     private int id;
@@ -9,11 +11,12 @@ public class OperacaoComercial {
     private double total_sugerido;
     private double total_final;
     private Funcionario funcionario;
+    private Date data;
     
     public OperacaoComercial() {
     }
 
-    public OperacaoComercial(int id, Catador catador, Empresa empresa, char tipo, double total_sugerido, double total_final, Funcionario funcionario) {
+    public OperacaoComercial(int id, Catador catador, Empresa empresa, char tipo, double total_sugerido, double total_final, Funcionario funcionario, Date date) {
         this.id = id;
         this.catador = catador;
         this.empresa = empresa;
@@ -76,6 +79,14 @@ public class OperacaoComercial {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
     
     
