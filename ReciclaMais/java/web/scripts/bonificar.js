@@ -42,7 +42,7 @@ window.addEventListener('load', async () => {
     let modal = document.querySelector('.modal');
     let montarBonificarForm = () => {
         console.log(document.querySelector('#catador-nome'))
-        document.querySelector('#catador-nome').innerHTML = "Catador: " + bonificarFormObj.nome;
+        document.querySelector('#catador-nome').innerHTML = "Catador: " + bonificarFormObj.nome.split(' ')[0];
         qtdInput.placeholder = "Valor sugerido: R$" + bonificarFormObj.valor_recomendado;
         modal.style.display = 'flex';
     }
