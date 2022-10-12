@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/editarform.css">
     </head>
     <body>
+        <%@include file="controledeacesso.jsp"%>
 
         <div id="pagina">
             <div class="conteiner">
@@ -17,7 +18,7 @@
                     <input type="text" name="nome" id="" placeholder="nome">>
                     <input type="text" name="email" id="" placeholder="email">
                     <input type="text" name="cpf" id="" placeholder="cpf">
-                    <input type="text" name="endereco" id="" placeholder="endereço">
+                    <input type="text" name="endereco" id="" placeholder="endereï¿½o">
 
                     <input type="text" name="telefone" id="" placeholder="telefone">
                     <input type="submit" value="enviar" style="background-color: green;">

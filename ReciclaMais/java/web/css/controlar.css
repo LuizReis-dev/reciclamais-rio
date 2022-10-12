@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: red;
 }
 
 .opcoes {
@@ -49,6 +50,8 @@ body {
     width: 90%;
     border-collapse: collapse;
     font-family: 'Arial';
+    overflow-y: scroll;
+    height: 80vh;
 }
 
 .tabela-controlar thead {
