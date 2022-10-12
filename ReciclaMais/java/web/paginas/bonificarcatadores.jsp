@@ -20,7 +20,7 @@
     <div class="conteudo-principal">
         <div class="opcoes">
             <a id="selecionado" class="opcao" href="#">Bonificar</a>
-            <a class="opcao" href="#">Ultimas Bonificacoes</a>
+            <a class="opcao" href="ultimasbonificacoes.jsp?pag=1">Ultimas Bonificacoes</a>
         </div>
 
         <table class="tabela-controlar">
