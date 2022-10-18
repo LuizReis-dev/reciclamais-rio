@@ -1,9 +1,6 @@
 body{
     background-color: #E9EFC0;
 }
-.opcoes a {
-    width: 250px;
-}
 
 .modal {
     display: none;

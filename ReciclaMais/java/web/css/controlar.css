@@ -1,19 +1,17 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Arial';
-}
+@import url(estilo.css);
 
-body {
-    display: flex;
+#pagina {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "navegacao conteudo";
 }
 
 .conteudo-principal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: red;
+    grid-area: conteudo;
+    user-select: none;
 }
 
 .opcoes {
@@ -25,16 +23,20 @@ body {
 .opcao {
     font-size: 22px;
     font-family: 'Arial';
-    border: 1px solid #E9EFC0;
-    color: #83BD75;
-    width: 200px;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 300px;
     border-radius: 2px;
     margin-top: 10px;
-
+    text-align: center;
+    text-decoration: none;
+    transition: .5s;
+    padding: 10px;
 }
 
 .opcao:hover {
-    color: #4E944F;
+    letter-spacing: 0.1em;
+    font-weight: 700;
 }
 
 #selecionado {
@@ -42,6 +44,7 @@ body {
     color: #fff;
     border: none;
     pointer-events: none;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 .tabela-controlar {
@@ -50,8 +53,6 @@ body {
     width: 90%;
     border-collapse: collapse;
     font-family: 'Arial';
-    overflow-y: scroll;
-    height: 80vh;
 }
 
 .tabela-controlar thead {
@@ -59,28 +60,22 @@ body {
     height: 8vh;
     color: #fafafa;
 }
-
+.tabela-controlar tr {
+    height: 75px;
+    border-bottom: 1px solid #63419656;
+}
 .tabela-controlar th {
     width: 90px;
 }
 
 .tabela-controlar td {
     text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #63419656;
 }
 
 .tabela-controlar td button {
     text-align: center;
     margin-top: 10px;
     border-bottom: 1px solid #63419628;
-}
-
-.acoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 40px;
 }
 
 .buttons-template {
@@ -102,9 +97,8 @@ body {
 }
 
 .olho {
-    color: #4E944F;
+    color: #000;
     margin-right: 20px;
-
 }
 
 .btn-add {
@@ -159,7 +153,7 @@ body {
     margin-top: 10px;
 }
 .pagination {
-    color: red;
+    color: green;
     font-size: 20px;
     width: 140px;
     display: flex;
@@ -167,18 +161,10 @@ body {
     justify-content: center;
     margin-bottom: 5px;
 }
-.pagination a {
-    color: green;
-}
 .escolha {
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.inativo{
-    color: red;
-}
-.ativo {
-    color: green;
-}

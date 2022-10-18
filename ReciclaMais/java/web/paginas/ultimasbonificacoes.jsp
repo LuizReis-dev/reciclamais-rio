@@ -13,14 +13,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Controlar catadores</title>
-        <link rel="import" href="navegacao.html">
+        <title>ReciclaMaisRio | Controlar catadores</title>
         <link rel="stylesheet" href="../css/controlar.css">
-        <link rel="stylesheet" href="../css/navegacao.css">
         <link rel="stylesheet" href="../css/bonificarcatadores.css">
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     </head>
 
     <body>
+        <div id="pagina">
         <%@include file="navegacao.html"%>
         <%@include file="controledeacesso.jsp"%>
 
@@ -77,7 +77,7 @@
                 </div>  
             </div>
         </div>
-
+        </div>
     </body>
 
 </html>
