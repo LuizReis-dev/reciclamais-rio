@@ -50,7 +50,7 @@ public class BonificacaoDao {
         int total = 0;
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(valor) as valor FROM bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on materias_em_op.id_operacao_comercial = operacao_comercial.id WHERE status = 'pendente' AND operacao_comercial.id_catador = ?");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(valor) as valor FROM bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on materias_em_op.id_operacao_comercial = operacao_comercial.id WHERE bonificacao.status = 'pendente' AND operacao_comercial.id_catador = ?");
             ps.setInt(1, idCatador);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -66,7 +66,7 @@ public class BonificacaoDao {
     public static void confirmandoBonificacoes(int idCatador) {
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on operacao_comercial.id = materias_em_op.id_operacao_comercial SET status = \"pago\" WHERE operacao_comercial.id_catador = ?;");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE bonificacao INNER JOIN materias_em_op on bonificacao.id_mat_em_op = materias_em_op.id INNER JOIN operacao_comercial on operacao_comercial.id = materias_em_op.id_operacao_comercial SET bonificacao.status = \"pago\" WHERE operacao_comercial.id_catador = ?;");
             ps.setInt(1, idCatador);
             ps.executeUpdate();
         } catch (Exception erro) {
