@@ -144,4 +144,30 @@ public class OperacaoComercialDao {
         return compras;
         
     }
+    
+    public static List<Integer> getTotalVendasPorMes(String ano) {
+        List<Integer> vendas = new ArrayList<Integer>();
+
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement psVenda = (PreparedStatement) con.prepareStatement("SELECT MONTH(data) as mes, COUNT(id) as total FROM operacao_comercial WHERE tipo = 'v' AND YEAR(data) = ? GROUP BY MONTH(data) ORDER BY mes; ");
+            psVenda.setString(1, ano);
+
+            LocalDate diaDeHoje = LocalDate.now();
+            int mesDeHoje = diaDeHoje.getMonthValue();
+
+            for (int i = 0; i < mesDeHoje; i++) {
+                vendas.add(i, 0);
+            }
+
+            ResultSet rsCompra = psVenda.executeQuery();
+            while (rsCompra.next()) {
+                vendas.set(rsCompra.getInt("mes") - 1, rsCompra.getInt("total"));
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return vendas;
+        
+    }
 }

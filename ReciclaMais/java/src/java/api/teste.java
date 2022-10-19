@@ -27,7 +27,7 @@ public class teste extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Integer> lista = OperacaoComercialDao.getTotalComprasPorMes("2022");
+        List<Integer> lista = OperacaoComercialDao.getTotalVendasPorMes("2022");
         JSONObject retorno = new JSONObject();
         retorno.put("teste", lista);
 
