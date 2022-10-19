@@ -29,7 +29,7 @@
                 int id = Integer.parseInt(pag);
 
                 //Quantidade de Registros da Pï¿½gina
-                int total = 2;
+                int total = 5;
 
                 if (id != 1) {
                     id = id - 1;

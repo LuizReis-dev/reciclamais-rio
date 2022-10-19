@@ -117,7 +117,7 @@
                                 label: "Compra",
                                         data: Object.values(valores),
                                         backgroundColor: [
-                                                "rgba(144,238,144, 0.2)",
+                                                "rgb(144,238,144)",
                                         ]
                                 }]
                         }
