@@ -6,6 +6,7 @@
 package api;
 
 import dao.BonificacaoDao;
+import dao.OperacaoComercialDao;
 import entidades.Bonificacao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +27,7 @@ public class teste extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Bonificacao> lista = BonificacaoDao.getBonificacoes(1, 5);
+        List<Double> lista = OperacaoComercialDao.getLucroPorMes("2022");
         JSONObject retorno = new JSONObject();
         retorno.put("teste", lista);
 

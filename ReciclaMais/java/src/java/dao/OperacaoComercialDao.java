@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -74,4 +76,46 @@ public class OperacaoComercialDao {
         return list;
     }
 
+    public static List<Double> getLucroPorMes(String ano) {
+        List<Double> lucroPorMes = new ArrayList<Double>();
+        List<Double> compras = new ArrayList<Double>();
+        List<Double> vendas = new ArrayList<Double>();
+
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement psCompra = (PreparedStatement) con.prepareStatement("SELECT MONTH(data) as mes, SUM(total_final) as total FROM operacao_comercial WHERE tipo = 'c' AND YEAR(data) = ? GROUP BY MONTH(data) ORDER BY mes; ");
+            psCompra.setString(1, ano);
+
+            PreparedStatement psVenda = (PreparedStatement) con.prepareStatement("SELECT MONTH(data) as mes, SUM(total_final) as total FROM operacao_comercial WHERE tipo = 'v' AND YEAR(data) = ? GROUP BY MONTH(data) ORDER BY mes; ");
+            psVenda.setString(1, ano);
+
+            LocalDate diaDeHoje = LocalDate.now();
+            int mesDeHoje = diaDeHoje.getMonthValue();
+
+            for (int i = 0; i < mesDeHoje; i++) {
+                compras.add(i, 0.0);
+                lucroPorMes.add(i, 0.0);
+                vendas.add(i, 0.0);
+            }
+            
+            ResultSet rsCompra = psCompra.executeQuery();
+            while (rsCompra.next()) {
+                compras.set(rsCompra.getInt("mes") - 1, rsCompra.getDouble("total"));
+            }
+            
+            ResultSet rsVenda = psVenda.executeQuery();
+            while (rsVenda.next()) {
+                vendas.set(rsVenda.getInt("mes") - 1, rsVenda.getDouble("total"));
+            }
+            
+            for (int i = 0; i < mesDeHoje; i++) {
+                lucroPorMes.set(i, vendas.get(i) - compras.get(i));
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+
+        return lucroPorMes;
+
+    }
 }
