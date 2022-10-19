@@ -127,22 +127,7 @@ div.coletor {
     transition: 0.5s;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-}
-
-.botoes input:hover {
-    width: 120px;
-    background-color: #4E944F;
-    letter-spacing: 3px;
-    box-shadow: 0 0 10px #4E944F,
-        0 0 20px #4E944F;
-}
-
-.botoes input:hover:nth-child(1) {
-    margin-right: 25px;
-}
-
-.botoes input:hover:nth-child(2) {
-    margin-left: 25px;
+    cursor: pointer;
 }
 
 div.informacao {
@@ -324,22 +309,7 @@ div.informacao {
     transition: 0.5s;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-}
-
-.botoes button:hover {
-    width: 120px;
-    background-color: #4E944F;
-    letter-spacing: 3px;
-    box-shadow: 0 0 10px #4E944F,
-        0 0 20px #4E944F;
-}
-
-.botoes button:hover:nth-child(1) {
-    margin-right: 25px;
-}
-
-.botoes button:hover:nth-child(2) {
-    margin-left: 25px;
+    cursor: pointer;
 }
 
 div.produtos {
@@ -549,19 +519,27 @@ table.produto {
     background-color: white;
 }
 .modal-finalizar h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 100%;
-    height: 30px;
+    height: 50px;
     padding: 0;
     padding-top: 3px;
     color: white;
     background-color: #4E944F;
+    border-radius: 20px 20px 0 0;
+    text-transform: uppercase;
 }
 .modal-finalizar i {
     position: absolute;
-    right: 0;
+    top: 5px;
+    right: 20px;
+    font-size: 40px;
     cursor: pointer;
 }
+
 .modal-finalizar form {
     padding-left: 10px;
     margin-top: 10px;
@@ -573,7 +551,11 @@ table.produto {
 .agrupamento {
     margin: 5px 0px;
 }
-
+.modal-finalizar #preco-final-input{
+    margin-left: 5px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
 .btn-confirmar {
     color: #fff;
     width: 70%;

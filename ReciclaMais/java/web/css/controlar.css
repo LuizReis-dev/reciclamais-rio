@@ -168,3 +168,8 @@
     align-items: flex-start;
 }
 
+a{
+    color: #fff;
+    margin:0 3px;
+    text-decoration: none;
+}
