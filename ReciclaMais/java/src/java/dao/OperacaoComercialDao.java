@@ -97,17 +97,17 @@ public class OperacaoComercialDao {
                 lucroPorMes.add(i, 0.0);
                 vendas.add(i, 0.0);
             }
-            
+
             ResultSet rsCompra = psCompra.executeQuery();
             while (rsCompra.next()) {
                 compras.set(rsCompra.getInt("mes") - 1, rsCompra.getDouble("total"));
             }
-            
+
             ResultSet rsVenda = psVenda.executeQuery();
             while (rsVenda.next()) {
                 vendas.set(rsVenda.getInt("mes") - 1, rsVenda.getDouble("total"));
             }
-            
+
             for (int i = 0; i < mesDeHoje; i++) {
                 lucroPorMes.set(i, vendas.get(i) - compras.get(i));
             }
@@ -117,5 +117,31 @@ public class OperacaoComercialDao {
 
         return lucroPorMes;
 
+    }
+
+    public static List<Integer> getTotalComprasPorMes(String ano) {
+        List<Integer> compras = new ArrayList<Integer>();
+
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement psCompra = (PreparedStatement) con.prepareStatement("SELECT MONTH(data) as mes, COUNT(id) as total FROM operacao_comercial WHERE tipo = 'c' AND YEAR(data) = ? GROUP BY MONTH(data) ORDER BY mes; ");
+            psCompra.setString(1, ano);
+
+            LocalDate diaDeHoje = LocalDate.now();
+            int mesDeHoje = diaDeHoje.getMonthValue();
+
+            for (int i = 0; i < mesDeHoje; i++) {
+                compras.add(i, 0);
+            }
+
+            ResultSet rsCompra = psCompra.executeQuery();
+            while (rsCompra.next()) {
+                compras.set(rsCompra.getInt("mes") - 1, rsCompra.getInt("total"));
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return compras;
+        
     }
 }
