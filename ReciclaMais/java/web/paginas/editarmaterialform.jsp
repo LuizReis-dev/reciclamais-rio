@@ -42,29 +42,29 @@
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="meta_bonificacao" id="meta_bonificacao" value="<%=material.getMetaBonificacaoKg()%>">
-                            <label class="label" for="meta_bonificacao">Meta</label>
+                            <input class="input" type="text" name="metaBonificacaoKg" id="meta_bonificacao" value="<%=material.getMetaBonificacaoKg()%>">
+                            <label class="label" for="meta_bonificacao">Meta Bonificação por Kg</label>
                             <span class="input_span">
                                 <i class="bi bi-currency-dollar icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="valor_bonificacao" id="valor_bonificacao" value="<%=material.getValorBonificacao()%>">
-                            <label class="label" for="valor_bonificacao">Valor</label>
+                            <input class="input" type="text" name="valorBonificacaoKg" id="valor_bonificacao" value="<%=material.getValorBonificacao()%>">
+                            <label class="label" for="valor_bonificacao">Valor da Bonificação por Kg</label>
                             <span class="input_span">
                                 <i class="bi bi-cash-coin icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="preco_compra_kg" id="preco_compra_kg" value="<%=material.getPrecoCompraKg()%>">
-                            <label class="label" for="preco_compra_kg">Preço kg</label>
+                            <input class="input" type="text" name="precoCompraKg" id="preco_compra_kg" value="<%=material.getPrecoCompraKg()%>">
+                            <label class="label" for="preco_compra_kg">Preço Compra Kg</label>
                             <span class="input_span">
                                 <i class="bi bi-tag-fill icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="preco_venda_kg" id="preco_venda_kg" value="<%=material.getPrecoVendaKg()%>">
-                            <label class="label" for="preco_venda_kg">Preço venda</label>
+                            <input class="input" type="text" name="precoVendaKg" id="preco_venda_kg" value="<%=material.getPrecoVendaKg()%>">
+                            <label class="label" for="preco_venda_kg">Preço Venda Kg</label>
                             <span class="input_span">
                                 <i class="bi bi-wallet icone"></i>
                             </span>

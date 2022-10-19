@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="entidades.OperacaoComercial"%>
@@ -23,49 +24,58 @@
     </head>
 
     <body>
-        <%@include file="navegacao.html"%>
         <%@include file="controledeacesso.jsp"%>
-
         <%            
-            String dia = request.getParameter("data");
+            String dia;
+
+            if (request.getParameter("data") != null) {
+                dia = request.getParameter("data");
+            } else {
+                LocalDate diaDeHoje = LocalDate.now();
+                dia = diaDeHoje.toString();
+            }
 
             List<OperacaoComercial> lista = OperacaoComercialDao.getOpComercialPorDia(dia);
 
             System.out.print(lista);
             request.setAttribute("lista", lista);
-            
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date diaf = sdf.parse(dia);
             sdf.applyPattern("dd/MM/yyyy");
             String diaFormat = sdf.format(diaf);
         %>
-        <div class="conteudo-principal">
-            <h1>Compras do dia: <%= diaFormat%></h1>
-            <div class="opcoes">
-                <form action="ultimascompras.jsp">
-                    <label for="data">Escolha um dia: </label>
-                    <input type="date" name="data" id="data" required>
-                    <input type="submit" value="selecionar">
-                </form>
+        <div id ="pagina">
+            <%@include file="navegacao.html"%>
+
+            <div class="conteudo-principal">
+                <h1>Compras do dia: <%= diaFormat%></h1>
+                <div class="opcoes">
+                    <form action="ultimascompras.jsp">
+                        <label for="data">Escolha um dia: </label>
+                        <input type="date" name="data" id="data" required>
+                        <input type="submit" value="selecionar">
+                    </form>
+                </div>
+
+                <table class="tabela-controlar">
+                    <thead>
+                    <th>Id</th>
+                    <th>Valor Sugerido</th>
+                    <th>Valor Final</th>
+                    <th>Funcionario</th>
+                    </thead>
+                    <c:forEach items="${lista}" var="op">
+                        <tr>
+                            <td>${op.getId()}</td>
+                            <td>${op.getTotal_sugerido()}</td>
+                            <td>${op.getTotal_final()}</td>
+                            <td>${op.getFuncionario().getNome()}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
             </div>
-
-            <table class="tabela-controlar">
-                <thead>
-                <th>Id</th>
-                <th>Valor Sugerido</th>
-                <th>Valor Final</th>
-                <th>Funcionario</th>
-                </thead>
-                <c:forEach items="${lista}" var="op">
-                    <tr>
-                        <td>${op.getId()}</td>
-                        <td>${op.getTotal_sugerido()}</td>
-                        <td>${op.getTotal_final()}</td>
-                        <td>${op.getFuncionario().getNome()}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-
         </div>
     </body>
 

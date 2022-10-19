@@ -36,28 +36,28 @@
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="meta_bonificacao" id="meta_bonificacao">
-                            <label class="label" for="meta_bonificacao">Meta</label>
+                            <input class="input" type="text" name="metaBonificacaoKg" id="meta_bonificacao">
+                            <label class="label" for="meta_bonificacao">Meta Bonificação por KG</label>
                             <span class="input_span">
                                 <i class="bi bi-currency-dollar icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="valor_bonificacao" id="valor_bonificacao">
-                            <label class="label" for="valor_bonificacao">Valor</label>
+                            <input class="input" type="text" name="valorBonificacao" id="valor_bonificacao">
+                            <label class="label" for="valor_bonificacao">Valor da Bonificação por KG</label>
                             <span class="input_span">
                                 <i class="bi bi-cash-coin icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="preco_compra_kg" id="preco_compra_kg">
+                            <input class="input" type="text" name="precoCompraKg" id="preco_compra_kg">
                             <label class="label" for="preco_compra_kg">Preço kg</label>
                             <span class="input_span">
                                 <i class="bi bi-tag-fill icone"></i>
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="preco_venda_kg" id="preco_venda_kg">
+                            <input class="input" type="text" name="precoVendaKg" id="preco_venda_kg">
                             <label class="label" for="preco_venda_kg">Preço venda</label>
                             <span class="input_span">
                                 <i class="bi bi-wallet icone"></i>

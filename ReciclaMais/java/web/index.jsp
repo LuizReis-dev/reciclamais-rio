@@ -73,6 +73,14 @@
                         </div>
                         <span class="descricao">Bonificar</span>
                     </div>
+                    <div class="opcao">
+                        <div class="logo">
+                            <a href="./paginas/ultimascompras.jsp">
+                                <i class="bi bi-clock"></i>
+                            </a>
+                        </div>
+                        <span class="descricao">Histórico de compras</span>
+                    </div>
                 </div>
             </div>
         </div>
