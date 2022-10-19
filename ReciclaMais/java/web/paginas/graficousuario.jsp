@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/controlar.css">
+        <link rel="stylesheet" href="../css/relatorios.css">
         <title>Controle</title>
     </head>
 
@@ -28,40 +28,48 @@
                 <div class="grafico">
                     <h2>Quantidade de Usuários por função</h2>
                     <canvas id="myChart" height='200'></canvas>
-                    <div class="funcoes"></div>
                 </div>
             </div>
             <div class="section">
                 <section>
                     <h2>Gráficos</h2>
-                    <div class="grafico-opcao" tabindex="1">
-                        <i class="bi bi-coin"></i>
+                    <a href="graficofinanceiro.jsp">
+                        <div class="grafico-opcao" tabindex="1">
+                            <i class="bi bi-coin"></i>
 
-                        <span class="descricao-grafico">Financeiro</span>
-                    </div>
-                    <div class="grafico-opcao" tabindex="1">
-                        <i class="bi bi-basket"></i>
+                            <span class="descricao-grafico">Financeiro</span>
+                        </div>
+                    </a>
+                    <a href="graficomaterial.jsp">
+                        <div class="grafico-opcao" tabindex="1">
+                            <i class="bi bi-basket"></i>
 
-                        <span class="descricao-grafico">Materiais</span>
-                    </div>
+                            <span class="descricao-grafico">Materiais</span>
+                        </div>
+                    </a>
                     <div class="grafico-opcao" tabindex="1">
                         <i class="bi bi-people"></i>
-
                         <span class="descricao-grafico">Usuários</span>
                     </div>
-                    <div class="grafico-opcao" tabindex="1">
-                        <i></i>
+                    <a href="graficocompras.jsp">
+                        <div class="grafico-opcao" tabindex="1">
+                            <i class="bi bi-cart2"></i>
+                            <span class="descricao-grafico">Compras</span>
+                        </div>   
+                    </a>
+                    <a href="graficovendas.jsp"> 
+                        <div class="grafico-opcao" tabindex="1">
+                            <i class="bi bi-cash"></i>
+                            <span class="descricao-grafico">Vendas</span>
+                        </div>
+                    </a>
+                    <a href="ranking.jsp">
+                        <div class="grafico-opcao" tabindex="1">
+                            <i class="bi bi-award"></i>
+                            <span class="descricao-grafico">Rakings</span>
+                        </div>
+                    </a>
 
-                        <span class="descricao-grafico">teste4</span>
-                    </div>
-                    <div class="grafico-opcao" tabindex="1">
-                        <i></i>
-
-                        <span class="descricao-grafico">teste5</span>
-                    </div>
-                    <div class="grafico-opcao" tabindex="1">
-                        <i></i>
-                    </div>
                 </section>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
