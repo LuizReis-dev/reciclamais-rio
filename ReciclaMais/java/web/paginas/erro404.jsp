@@ -13,7 +13,7 @@
 
         <title>Erro 404</title>
     </head>
-    <body style="background-color: #E9EFC0; color: green; display: flex; justify-content: center;">
+    <body style="background: linear-gradient(120deg, #E9EFC0, #B4E197, #83BD75, #4E944F); color: #fff; display: flex; justify-content: center; height:100vh;">
         <div class="erro" style="margin-top: 200px; font-family: Arial; font-size: 50px; display: flex; flex-direction:column; align-items: center;">
             <h1>Erro 404</h1>
             <p>Tente novamente mais Tarde</p>

@@ -210,7 +210,6 @@
 }
 
 .escolha {
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -319,6 +318,16 @@ section h2 {
     z-index: -1;
 }
 
-#selecionado {
-    
+#selecionado .grafico-opcao{
+    background-color: #83BD75;
+    border: none;
+    box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.4),
+    inset 4px 4px 6px -1px rgba(180, 225, 151);
+}
+
+#selecionado .descricao-grafico {
+    bottom: -50px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
