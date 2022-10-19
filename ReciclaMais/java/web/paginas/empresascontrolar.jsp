@@ -18,69 +18,66 @@
     </head>
 
     <body>
-        <%@include file="navegacao.html"%>
+        <%@include file="controledeacesso.jsp"%>
+        <div id="pagina">
+            <%@include file="navegacao.html"%>
 
-        <div class="conteudo-principal">
-            <div class="opcoes">
-                <a class="opcao" href="catadorescontrolar.jsp?pag=1">Catadores</a>
-                <a id="selecionado" class="opcao" href="#s">Empresas</a>
-                <a class="opcao" href="materiaiscontrolar.jsp?pag=1">Materiais</a>
-            </div>
-            <table class="tabela-controlar">
-                <%
+            <div class="conteudo-principal">
+                <div class="opcoes">
+                    <a class="opcao" href="catadorescontrolar.jsp?pag=1">Catadores</a>
+                    <a id="selecionado" class="opcao" href="#s">Empresas</a>
+                    <a class="opcao" href="materiaiscontrolar.jsp?pag=1">Materiais</a>
+                </div>
+                <table class="tabela-controlar">
+                    <%                    String pag = request.getParameter("pag");
+                        int id = Integer.parseInt(pag);
 
-                    <%@include file="controledeacesso.jsp"%>
+                        //Quantidade de Registros da Pï¿½gina
+                        int total = 5;
 
-                    String pag = request.getParameter("pag");
-                    int id = Integer.parseInt(pag);
+                        if (id != 1) {
+                            id = id - 1;
+                            id = id * total + 1;
+                        }
+                        List<Empresa> lista = EmpresaDao.getEmpresas(id, total);
+                        request.setAttribute("lista", lista);
 
-                    //Quantidade de Registros da Pï¿½gina
-                    int total = 5;
+                        int contagem = EmpresaDao.getContagem();
+                        int i;
+                        request.setAttribute("contagem", contagem);
+                        if (contagem % total == 0) {
+                            contagem = contagem / total;
+                        } else {
+                            contagem = contagem / total + 1;
+                        }
+                    %>
+                    <thead>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Ramo</th>
+                    <th>CNPJ</th>
+                    <th class="th-actions">Ações</th>
+                    </thead>
+                    <c:forEach items="${lista}" var="empresa">
+                        <tr>
+                            <td>${empresa.getId()}</td>
+                            <td>${empresa.getNome()}</td>                
+                            <td>${empresa.getRamo()}</td> 
+                            <td>${empresa.getCnpj()}</td>
+                            <td class='acoes'><a class="${empresa.getUsuario().getStatus()}" href='bloquearusuario.jsp?id=${empresa.getUsuario().getId()}'><i class="bi bi-lightbulb-off-fill"></i></a><a href='editarempresaform.jsp?id=${empresa.getId()}'><i class='bi bi-eye olho'></i></a> <a href='excluirempresa.jsp?id=${empresa.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button></a></td>
+                        </tr>
+                    </c:forEach>
 
-                    if (id != 1) {
-                        id = id - 1;
-                        id = id * total + 1;
-                    }
-                    List<Empresa> lista = EmpresaDao.getEmpresas(id, total);
-                    request.setAttribute("lista", lista);
-
-                    int contagem = EmpresaDao.getContagem();
-                    int i;
-                    request.setAttribute("contagem", contagem);
-                    if (contagem % total == 0) {
-                        contagem = contagem / total;
-                    } else {
-                        contagem = contagem / total + 1;
-                    }
-                %>
-                <thead>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Ramo</th>
-                <th>CNPJ</th>
-                <th class="th-actions">Aï¿½ï¿½es</th>
-                </thead>
-                <c:forEach items="${lista}" var="empresa">
-                    <tr>
-                        <td>${empresa.getId()}</td>
-                        <td>${empresa.getNome()}</td>                
-                        <td>${empresa.getRamo()}</td> 
-                        <td>${empresa.getCnpj()}</td>
-                        <td class='acoes'><a class="${empresa.getUsuario().getStatus()}" href='bloquearusuario.jsp?id=${empresa.getUsuario().getId()}'><i class="bi bi-lightbulb-off-fill"></i></a><a href='editarempresaform.jsp?id=${empresa.getId()}'><i class='bi bi-eye olho'></i></a> <a href='excluirempresa.jsp?id=${empresa.getId()}'><button btn-delete class='buttons-template btn-delete'>Deletar</button></a></td>
-                    </tr>
-                </c:forEach>
-
-            </table>
-            <div class="escolha">    
-                <div class="pagination">
-                    <% for (i = 1; i <= contagem; i++) {%>
-                    <a href="empresascontrolar.jsp?pag=<%=i%>"><%=i%></a>
-                    <% }%>   
-                </div>  
-                <a href="cadastrarempresaform.jsp"> <button class='buttons-template btn-add'>Adicionar</button></a>
+                </table>
+                <div class="escolha">    
+                    <div class="pagination">
+                        <% for (i = 1; i <= contagem; i++) {%>
+                        <a href="empresascontrolar.jsp?pag=<%=i%>"> <%=i%> </a>
+                        <% }%>   
+                    </div>  
+                </div>
             </div>
         </div>
-
     </body>
 
 </html>
