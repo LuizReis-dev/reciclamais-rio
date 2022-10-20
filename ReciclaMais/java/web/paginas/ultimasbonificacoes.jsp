@@ -37,7 +37,7 @@
             List<Bonificacao> lista = BonificacaoDao.getBonificacoes(id, total);
             request.setAttribute("lista", lista);
 
-            int contagem = CatadorDao.getContagem();
+            int contagem = BonificacaoDao.getContagem();
             int i;
             request.setAttribute("contagem", contagem);
             if (contagem % total == 0) {
