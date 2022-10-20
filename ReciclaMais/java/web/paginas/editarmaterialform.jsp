@@ -49,7 +49,7 @@
                             </span>
                         </div>
                         <div class="div_input_label">
-                            <input class="input" type="text" name="valorBonificacaoKg" id="valor_bonificacao" value="<%=material.getValorBonificacao()%>">
+                            <input class="input" type="text" name="valorBonificacao" id="valor_bonificacao" value="<%=material.getValorBonificacao()%>">
                             <label class="label" for="valor_bonificacao">Valor da Bonificação por Kg</label>
                             <span class="input_span">
                                 <i class="bi bi-cash-coin icone"></i>

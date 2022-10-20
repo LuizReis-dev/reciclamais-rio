@@ -42,7 +42,7 @@ public class OperacaoComercialDao {
         List<OperacaoComercial> list = new ArrayList<OperacaoComercial>();
         try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.*, funcionario.nome FROM `operacao_comercial` INNER JOIN funcionario on funcionario.id = id_funcionario WHERE DATE(data) = ?");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT operacao_comercial.*, funcionario.nome, catador.nome as nome_catador FROM `operacao_comercial` INNER JOIN funcionario on funcionario.id = id_funcionario INNER JOIN catador on catador.id = operacao_comercial.id_catador WHERE DATE(data) = ?");
             ps.setString(1, dia);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -51,6 +51,7 @@ public class OperacaoComercialDao {
 
                 Catador catador = new Catador();
                 catador.setId(rs.getInt("id_catador"));
+                catador.setNome(rs.getString("nome_catador"));
                 op.setCatador(catador);
 
                 Empresa empresa = new Empresa();

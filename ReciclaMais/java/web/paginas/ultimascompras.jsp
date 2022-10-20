@@ -25,8 +25,7 @@
 
     <body>
         <%@include file="controledeacesso.jsp"%>
-        <%            
-            String dia;
+        <%            String dia;
 
             if (request.getParameter("data") != null) {
                 dia = request.getParameter("data");
@@ -63,6 +62,7 @@
                     <th>Id</th>
                     <th>Valor Sugerido</th>
                     <th>Valor Final</th>
+                    <th>Catador</th>
                     <th>Funcionario</th>
                     </thead>
                     <c:forEach items="${lista}" var="op">
@@ -70,6 +70,7 @@
                             <td>${op.getId()}</td>
                             <td>${op.getTotal_sugerido()}</td>
                             <td>${op.getTotal_final()}</td>
+                            <td>${op.getCatador().getNome()}</td>
                             <td>${op.getFuncionario().getNome()}</td>
                         </tr>
                     </c:forEach>
