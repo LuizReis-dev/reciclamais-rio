@@ -98,18 +98,18 @@ public class MateriaisEmOperacaoComercialDao {
         }
         return idMatEmOp;
     }
-    
-    public static List<MateriaisEmOperacaoComercial> materiaisMaisVendidos(){
+
+    public static List<MateriaisEmOperacaoComercial> materiaisMaisVendidos() {
         List<MateriaisEmOperacaoComercial> list = new ArrayList<MateriaisEmOperacaoComercial>();
-         try {
+        try {
             Connection con = ConnectionDao.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(total_em_kg) as total_em_kg, id_material, material.nome FROM materias_em_op INNER JOIN material on material.id = materias_em_op.id_material GROUP BY id_material;"); 
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(total_em_kg) as total_em_kg, id_material, material.nome FROM materias_em_op INNER JOIN material on material.id = materias_em_op.id_material GROUP BY id_material;");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-               Material material = new Material();
-               material.setNome(rs.getString("nome"));
-               
+                Material material = new Material();
+                material.setNome(rs.getString("nome"));
+
                 MateriaisEmOperacaoComercial matop = new MateriaisEmOperacaoComercial();
                 matop.setQuantidadeEmKg(rs.getDouble("total_em_kg"));
                 matop.setMaterial(material);
@@ -119,5 +119,30 @@ public class MateriaisEmOperacaoComercialDao {
             System.out.println(erro);
         }
         return list;
-    } 
+    }
+
+    public static List<MateriaisEmOperacaoComercial> catadoresQueMaisVenderam() {
+        List<MateriaisEmOperacaoComercial> list = new ArrayList<MateriaisEmOperacaoComercial>();
+        try {
+            Connection con = ConnectionDao.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT SUM(total_em_kg) as total, catador.id, catador.nome FROM materias_em_op INNER JOIN operacao_comercial on operacao_comercial.id = materias_em_op.id_operacao_comercial INNER JOIN catador on operacao_comercial.id_catador = catador.id GROUP BY catador.id ORDER BY total DESC LIMIT 3;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Catador catador = new Catador();
+                catador.setNome(rs.getString("nome"));
+       
+                OperacaoComercial opComercial = new OperacaoComercial();
+                opComercial.setCatador(catador);
+                
+                MateriaisEmOperacaoComercial matop = new MateriaisEmOperacaoComercial();
+                matop.setQuantidadeEmKg(rs.getDouble("total"));
+                matop.setOperacaoComercial(opComercial);
+                
+                list.add(matop);
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return list;
+    }
 }

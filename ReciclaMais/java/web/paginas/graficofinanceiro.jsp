@@ -65,7 +65,7 @@
                             <span class="descricao-grafico">Vendas</span>
                         </div>
                     </a>
-                    <a href="ranking.jsp">
+                    <a href="rankingcatadores.jsp">
                         <div class="grafico-opcao">
                             <i class="bi bi-award"></i>
                             <span class="descricao-grafico">Rakings</span>

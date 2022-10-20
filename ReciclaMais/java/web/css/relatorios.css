@@ -331,3 +331,6 @@ section h2 {
     visibility: visible;
     pointer-events: auto;
 }
+.row {
+    height: 75px;
+}
