@@ -15,11 +15,11 @@
                     echo '<h1> Produto já adicionado ao carrinho </h1>';
                 } else {
                     $_SESSION['carrinho'][$id_material] = $id_material;
-                    header('location: ../principal/compra.php');
+                    header('location: ../principal/comprar.php');
                 }
             } else {
                 $_SESSION['carrinho'] = array($id_material => $id_material);
-                header('location: compra.php');
+                header('location: ../principal/comprar.php');
             }
         } else {
             echo "<h1>Esse material não existe</h1>";

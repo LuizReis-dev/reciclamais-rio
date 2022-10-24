@@ -1,0 +1,144 @@
+@import url(estilo.css);
+
+#pagina {
+    grid-template-columns: 1fr 400px 1fr;
+    grid-template-rows: 1fr 400px 1fr;
+    grid-template-areas: "nada1 nada1 nada1""nada2 conteiner nada3""nada4 nada4 nada4";
+}
+
+.home {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.retornar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--preto);
+    transition: var(--tempo);
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.retornar:hover {
+    background-color: var(--verdeC4);
+}
+
+.retornar .voltar {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px solid var(--branco);
+    transition: var(--tempo);
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%) rotate(-45deg);
+    border-right: none;
+    border-bottom: none;
+}
+
+.retornar:hover .voltar {
+    left: 28%;
+}
+
+.retornar .voltar:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 4px;
+    background-color: var(--branco);
+    transform-origin: left;
+    transform: rotate(45deg) translate(-7px, 4px) scaleX(0);
+    transition: var(--tempo);
+}
+
+.home:hover .voltar:before {
+    transform: rotate(45deg) translate(-7px, 4px) scaleX(1);
+}
+
+.descricao {
+    background-color: var(--preto);
+    font-family: 'Arial';
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--branco);
+    letter-spacing: 2px;
+    font-weight: 600;
+    pointer-events: none;
+    position: absolute;
+    left: 50px;
+    opacity: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%) translateX(0px);
+    visibility: hidden;
+    transition: var(--tempo);
+}
+
+.home:hover .descricao {
+    transform: translateY(-50%) translateX(10px);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.descricao:before {
+    position: absolute;
+    content: '';
+    height: 12px;
+    width: 12px;
+    background: var(--preto);
+    top: 30%;
+    left: 2%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.home:hover .retornar,
+.home:hover .descricao {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.conteiner {
+    background: var(--branco);
+    grid-area: conteiner;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    line-height: 35px;
+    border-radius: 20px;
+    font-size: 1em;
+    letter-spacing: .1em;
+    user-select: none;
+    font-weight: 700;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.4),
+        inset 4px 4px 6px -1px rgba(255, 255, 255, 0.4),
+        inset -4px -4px 6px -1px rgba(78, 148, 79, 0.7);
+}
+
+.conteiner picture.cristo {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -60px;
+    left: calc(50% - 60px);
+    background: var(--backgroundC);
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(78, 148, 79, 0.5);
+}
+
+.conteiner img {
+    width: 120px;
+    height: 120px;
+}

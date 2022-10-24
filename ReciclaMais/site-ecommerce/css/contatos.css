@@ -1,0 +1,252 @@
+@import url(estilo.css);
+
+#pagina {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: "cabecalho""conteiner";
+}
+
+.conteiner {
+    width: calc(var(--max) - 200px);
+    height: calc(var(--max) - 120px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 40px 100px 80px 100px;
+    grid-area: conteiner;
+    position: relative;
+}
+
+.informacoes-contato {
+    position: absolute;
+    top: 50px;
+    width: 350px;
+    height: calc(var(--max) - 100px);
+    background: var(--verdeC4);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    order: 0;
+}
+
+.informacoes-contato h2 {
+    color: var(--branco);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    user-select: none;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.informacoes {
+    position: relative;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.informacoes li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    user-select: none;
+}
+
+.informacoes li i {
+    width: 35px;
+    min-width: 35px;
+    font-size: 18px;
+    color: var(--branco);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.informacoes li small {
+    color: var(--branco);
+    margin-left: 10px;
+    font-weight: 300;
+    opacity: 0.5s;
+}
+
+.informacoes li:hover i,
+.informacoes li:hover small {
+    opacity: 1;
+}
+
+.redes-sociais {
+    width: var(--max);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.redes-sociais li {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.redes-sociais li a {
+    width: var(--max);
+    height: var(--max);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--preto);
+    border-radius: 50%;
+    font-size: 18px;
+    color: var(--branco);
+    transform: rotate(0deg);
+    transition: var(--tempo);
+}
+
+.redes-sociais li:hover a {
+    background-color: var(--branco);
+    color: var(--preto);
+    transform: rotate(360deg);
+}
+
+.redes-sociais li a i {
+    pointer-events: none;
+}
+
+.formulario {
+    padding: 40px 50px 40px 250px;
+    background: var(--branco);
+    margin: 0 0 0 125px;
+    width: calc(var(--max) - 125px);
+    height: var(--max);
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+    order: 1;
+}
+
+.formulario h2 {
+    width: var(--max);
+    color: var(--verdeC4);
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    user-select: none;
+}
+
+.formulario form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 35px;
+}
+
+.form-input {
+    position: relative;
+    margin: 0 0 35px 0;
+    width: 45%;
+    height: 35px;
+}
+
+.form-input:nth-child(5),
+.form-input:nth-child(6) {
+    width: var(--max);
+}
+
+.form-input:nth-child(5) {
+    height: 100px;
+}
+
+.form-input:nth-child(6) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.form-input input,
+.form-input textarea {
+    position: absolute;
+    width: var(--max);
+    height: var(--max);
+    padding: 5px 10px;
+    font-size: 16px;
+    color: var(--branco);
+    border: none;
+    border-bottom: 1px solid var(--verdeC4);
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    z-index: 100;
+}
+
+.form-input label {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    padding: 5px;
+    font-size: 16px;
+    color: var(--preto);
+    font-weight: 300;
+    transition: var(--tempo);
+    pointer-events: none;
+    user-select: none;
+}
+
+.form-input input:focus~label,
+.form-input textarea:focus~label,
+.form-input input:valid~label,
+.form-input textarea:valid~label {
+    transform: translateY(-20px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--verdeC4);
+}
+
+.form-input span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: var(--max);
+    height: 2px;
+    background-color: var(--verdeC4);
+    transition: var(--tempo);
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.form-input input:focus~span,
+.form-input textarea:focus~span,
+.form-input input:valid~span,
+.form-input textarea:valid~span {
+    height: var(--max);
+}
+
+.form-input input[type='submit'] {
+    height: 40px;
+    background-color: var(--verdeC4);
+    color: var(--branco);
+    border: none;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 12px;
+    max-width: 150px;
+    cursor: pointer;
+    transition: var(--tempo);
+}
+
+.form-input input[type='submit']:hover {
+    box-shadow: 0 0 10px var(--verdeC4),
+        0 0 20px var(--verdeC4),
+        0 0 40px var(--verdeC4);
+}

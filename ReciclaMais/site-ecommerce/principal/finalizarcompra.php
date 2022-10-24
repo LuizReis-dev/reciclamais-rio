@@ -23,21 +23,26 @@ $valor = $checkout_session->amount_total / 100;
 
 $quantidadeMateriais = json_decode($quantidade);
 
-$sqlOperacaoComercial = "INSERT INTO operacao_comercial(id_empresa, tipo,total) VALUE($id_cliente, 'v', $valor)";
+$sqlOperacaoComercial = "INSERT INTO operacao_comercial(id_empresa, tipo,total_final, total_sugerido, status) VALUE($id_cliente, 'v', $valor, $valor, 'pendente')";
 if ($conn->query($sqlOperacaoComercial) === TRUE) {
     $id_op = $conn->insert_id;
-
     foreach ($quantidadeMateriais as $material) {
         $sqlMatOp = "INSERT INTO materias_em_op(id_operacao_comercial, id_material, total_em_kg) VALUES($id_op,$material->material, $material->quantidade)";
+        
+        $sqlAtualizar = "UPDATE material set qtd_disponivel_venda = qtd_disponivel_venda - $material->quantidade WHERE id = $material->material";
+        $conn->query($sqlAtualizar);
         if ($conn->query($sqlMatOp)) {
             $emailcliente = $checkout_session->customer_details->email;
             $nomecliente = $checkout_session->customer_details->name;
-            $texto = "Olá " . $nomecliente . " informamos que sua compra no valor de " . $valor . " foi registrada e seu pedido será entregue em menos de 3 dias";
+            $texto = "Olá " . $nomecliente . " informamos que sua compra no valor de R$" . $valor . " foi registrada e seu pedido será entregue em menos de 3 dias";
             require '../util/enviaremail.php';
             enviaremail($nomecliente, $emailcliente, "Compra Realizada", $texto);
+            unset($_SESSION['carrinho']);
             header('location: index.php');
         }
     }
+    }else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 //Fecha a conexão.

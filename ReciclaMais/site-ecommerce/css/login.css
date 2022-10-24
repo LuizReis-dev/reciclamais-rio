@@ -1,5 +1,101 @@
 @import url(estilo.css);
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+.home {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.retornar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--preto);
+    transition: var(--tempo);
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.retornar:hover {
+    background-color: var(--verdeC4);
+}
+
+.retornar .voltar {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px solid var(--branco);
+    transition: var(--tempo);
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%) rotate(-45deg);
+    border-right: none;
+    border-bottom: none;
+}
+
+.retornar:hover .voltar {
+    left: 28%;
+}
+
+.retornar .voltar:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 4px;
+    background-color: var(--branco);
+    transform-origin: left;
+    transform: rotate(45deg) translate(-7px, 4px) scaleX(0);
+    transition: var(--tempo);
+}
+
+.home:hover .voltar:before {
+    transform: rotate(45deg) translate(-7px, 4px) scaleX(1);
+}
+
+.descricao {
+    background-color: var(--preto);
+    font-family: 'Arial';
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--branco);
+    letter-spacing: 2px;
+    font-weight: 600;
+    pointer-events: none;
+    position: absolute;
+    left: 50px;
+    opacity: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%) translateX(0px);
+    visibility: hidden;
+    transition: var(--tempo);
+}
+
+.home:hover .descricao {
+    transform: translateY(-50%) translateX(10px);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.descricao:before {
+    position: absolute;
+    content: '';
+    height: 12px;
+    width: 12px;
+    background: var(--preto);
+    top: 30%;
+    left: 5%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.home:hover .retornar,
+.home:hover .descricao {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
 
 .container {
     display: flex;
@@ -14,27 +110,56 @@
     width: 300px;
     background-color: var(--branco);
     text-align: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.cabecalho {
+    width: var(--max);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .cabecalho h2 {
     margin-top: 50px;
     margin-bottom: 30px;
     font-size: 35px;
-    color: var(--verde4);
+    color: var(--preto);
     text-transform: uppercase;
+    letter-spacing: 5px;
+    position: relative;
+    transition: var(--tempo);
+    user-select: none;
+}
+
+.cabecalho h2:hover {
+    letter-spacing: 10px;
+}
+
+.cabecalho h2::after {
+    content: '';
+    background-color: var(--verdeC4);
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -10px;
+    left: 0;
 }
 
 .inputs input,
 button {
     width: 80%;
     height: 35px;
-    padding-left: 8px;
+    padding: 0 40px 0 8px;
     box-sizing: border;
 }
 
 .div_formulario {
-    margin-top: 25px;
+    margin-top: 28px;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .label_formulario {
@@ -49,6 +174,7 @@ button {
     cursor: text;
     pointer-events: none;
     transition: var(--tempo);
+    z-index: 1;
 }
 
 .input_formulario {
@@ -56,14 +182,13 @@ button {
     border: 1px solid var(--preto);
     color: var(--preto);
     transition: var(--tempo);
-}
-
-.input_formulario:hover {
-    border-color: var(--verde2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    padding: 5px 5px 5px 40px;
+    border: none;
 }
 
 .input_formulario:hover~.label_formulario {
-    color: var(--verde2);
+    color: var(--verdeC2);
 }
 
 .input_formulario:focus~.label_formulario,
@@ -71,17 +196,13 @@ button {
     transform: translateX(5px) translateY(-15px);
     font-size: 12px;
     color: var(--branco);
-    background-color: var(--verde4);
+    background-color: var(--verdeC4);
     letter-spacing: 2px;
 }
 
 .input_formulario:focus,
 .input_formulario:valid {
-    border-color: var(--verde4);
-}
-
-.input_formulario:not(.input_formulario:valid) {
-    
+    border: 1px solid var(--verdeC4);
 }
 
 #alterar {
@@ -90,27 +211,35 @@ button {
     right: 10%;
     margin-right: 5px;
     transform: translateY(-50%);
+    font-size: 20px;
     width: 30px;
     height: 30px;
     color: var(--cinza);
 }
 
+#alterar {
+    color: var(--preto);
+}
+
 #alterar i {
-    font-size: 20px;
+    font-size: inherit;
     top: 10%;
     left: 20%;
     position: absolute;
-    color: inherit;
     cursor: pointer;
 }
 
-i.bi::before{
-    color: var(--cinza);
-    transition: var(--tempo);
+i.olho::before {
+    color: inherit;
 }
 
-i.bi:hover::before{
-    color: var(--preto);
+input.input_formulario:hover~span#alterar {
+    color: var(--verdeC2);
+}
+
+input.input_formulario:focus~span#alterar,
+input.input_formulario:valid~span#alterar {
+    color: var(--verdeC4);
 }
 
 .inputs input[type="checkbox"] {
@@ -120,14 +249,23 @@ i.bi:hover::before{
 
 .inputs p {
     font-size: 12px;
-    margin-top: 10px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    font-weight: 500;
+    user-select: none;
 }
 
 .inputs a {
-    color: var(--verde4);
+    color: var(--verdeC4);
     text-decoration: none;
     font-size: 12px;
     cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    font-weight: 500;
+    user-select: none;
+    z-index: 5;
 }
 
 .inputs a:hover {
@@ -135,21 +273,57 @@ i.bi:hover::before{
 }
 
 .botao {
-    background-color: var(--verde3);
-    color: #fff;
-    margin-top: 25px;
-    border: none;
+    background: transparent;
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.5);
-    transition: 0.2s;
+    transition: var(--tempo);
+    padding: 0;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    color: var(--branco);
+    overflow: hidden;
 }
 
-.botao:hover {
-    background-color: var(--verde4);
+.botao span {
+    width: var(--max);
+    height: var(--max);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--backgroundC);
+    z-index: 10;
+    clip-path: polygon(0% 0%, 65% 0, 80% 50%, 65% 100%, 0% 100%);
+    transition: var(--tempo);
+}
+
+.botao span:nth-child(2) {
+    background: var(--branco);
+    color: var(--verdeC2);
+    overflow: hidden;
+    z-index: 1;
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%, 40% 50%);
+}
+
+.botao:hover span:nth-child(1) {
+    clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
 }
 
 .botao:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.botao:active span {
     box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.4),
         inset -4px -4px 6px -1px rgba(78, 148, 79, 0.7),
         -0.5px -0.5px 0 rgba(78, 148, 79, 1),
@@ -160,24 +334,28 @@ i.bi:hover::before{
 
 .img {
     width: 515px;
-    background-color: var(--verde4);
+    background-color: var(--verdeC4);
     display: flex;
     order: 2;
     background-size: cover;
     background-position: center;
     text-align: center;
     color: var(--branco);
+    box-shadow: inset 4px 4px 6px -1px rgba(78, 148, 79, 0.9),
+        inset -4px -4px 6px -1px rgba(0, 0, 0, 0.3);
+    user-select: none;
 }
 
 
 .img span {
-    width: var(--max-porcentagem);
-    height: var(--max-porcentagem);
+    width: var(--max);
+    height: var(--max);
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-content: center;
+    color: inherit;
 }
 
 .cristo img {
@@ -187,9 +365,19 @@ i.bi:hover::before{
 
 .img span h2 {
     font-size: 40px;
-    color: #E9EFC0;
+    color: inherit;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    user-select: none;
 }
 
 .img span p {
     font-style: italic;
+    color: inherit;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    user-select: none;
 }

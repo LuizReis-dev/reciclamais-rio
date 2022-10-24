@@ -6,7 +6,7 @@
 define('STRIPE_API_KEY', 'sk_test_51LHzhDJ6IibYh1aVzRXYMhZFq2wd7avqQvlzWiqP0y2J9meDJP1znvE8L8M3PFjZ2Mv9l0OYle4hOoD6FVyN70j300Dgdg7zFU');  
 define('STRIPE_PUBLISHABLE_KEY', 'pk_test_51LHzhDJ6IibYh1aVX3xdwV9pXX9aPasCSo3O1MwCpFnwyotLuciPR2JUSQCEZNVRPsizZzH4FODE3TKg1TI7nsu600kZxsVie2'); 
 
-define('STRIPE_SUCCESS_URL', 'http://localhost/site-ecommerce/principal/finalizarcompra.php'); 
+define('STRIPE_SUCCESS_URL', 'https://reciclamaisrio.000webhostapp.com/principal/finalizarcompra.php'); 
 define('STRIPE_CANCEL_URL', 'http://localhost:4242/cancel.php'); 
 
 // Database configuration   

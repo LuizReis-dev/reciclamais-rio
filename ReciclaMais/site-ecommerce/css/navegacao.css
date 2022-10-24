@@ -1,14 +1,13 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+@import url(estilo.css);
 
 .navegacao {
     height: 100vh;
-    width: 5vw;
-    background-color: #83BD75;
+    width: 70px;
+    background-color: var(--verdeC3);
+    z-index: 999;
+    grid-area: navegacao;
 }
+
 .navegacao aside {
     display: flex;
     height: 100%;
@@ -16,31 +15,96 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .logo {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 }
+
 .icones {
     display: flex;
     flex-direction: column;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-    width: 70px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .icones a {
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 20px;
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     margin-bottom: 20px;
+    position: relative;
+    transition: var(--tempo);
+    border-radius: 6px;
 }
 
 .icones a:hover {
-    background-color: #91ce82;
+    background-color: var(--verdeC4);
 }
+
+.navegacao .descricao {
+    position: absolute;
+    left: 70px;
+    color: var(--branco);
+    background-color: var(--verdeC3);
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transform: translateY(0%) translateX(0px);
+    border-radius: 6px;
+    transition: var(--tempo);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    text-transform: lowercase;
+}
+
+.navegacao .descricao:before {
+    content: "";
+    background-color: var(--verdeC3);
+    position: absolute;
+    top: 48%;
+    left: -8px;
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg) translateY(-50%);
+    border-radius: 2px;
+}
+
+.navegacao .icones a:hover span.descricao,
+.navegacao .informacao:hover span.descricao {
+    transform: translateY(0%) translateX(10px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.navegacao .link-admin .descricao {
+    position: absolute;
+    top: 20px;
+    left: 70px;
+}
+
+.navegacao aside a:hover span.descricao {
+    transform: translateY(0%) translateX(10px);
+    opacity: 1;
+    visibility: visible;
+}
+
 .informacao {
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 35px;
+    width: 70px;
+    text-align: center;
     text-align: center;
     margin-bottom: 5px;
 }

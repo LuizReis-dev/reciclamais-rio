@@ -1,7 +1,5 @@
 <?php
-require '../util/navegacao.html';
 require '../util/conexao.php';
-require '../acesso/acessoadm.php';
 
 $id = $_GET["pag"];
 
@@ -38,13 +36,16 @@ if ($result->num_rows > 0) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Controlar catadores</title>
+        <title>ReciclaMaisRio | Controlar catadores</title>
         <link rel="import" href="navegacao.html">
         <link rel="stylesheet" href="../css/controlar.css">
-        <link rel="stylesheet" href="../css/estiloprincipal.css">
     </head>
 
     <body>
+        <div id="pagina">
+            <?php
+            require '../util/navegacao.html';
+            ?>
         <div class="conteudo-principal">
             <div class="opcoes">
                 <a id="selecionado" class="opcao" href="#">Catadores</a>
@@ -84,6 +85,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <a href="adicionarcatadorform.php"> <button class='buttons-template btn-add'>Adicionar</button></a>
             </div>
+        </div>
         </div>
 
     </body>

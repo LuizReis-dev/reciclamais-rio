@@ -1,6 +1,7 @@
 <?php
 session_start();
 //Dados do formulário
+$idusuario = $_GET["id"];
 $campoid = filter_input(INPUT_POST, 'id');
 $campoendereco = filter_input(INPUT_POST, 'endereco');
 $campoemail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -14,7 +15,7 @@ $sql = "UPDATE empresa SET email='" . $campoemail . "', endereco='" . $campoende
 
 //Executa o sql e faz tratamento de erro.
 if ($conn->query($sql) === TRUE) {
-  echo "Registro atualizado.";  
+  header('location: usuario.php?id=$idusuario');
 } else {
   echo "Erro: " . $conn->error;
 }

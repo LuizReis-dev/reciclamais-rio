@@ -5,59 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReciclaMais</title>
+    <title>ReciclaMaisRio | Admin</title>
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
 </head>
 
 <body>
-    <div class="conteudo">
-        <h1 class="titulo">O que deseja fazer?</h1>
-        <div class="opcoes">
-            <div class="opcao">
-                <a href="controle.php">
-                    <div class="logo">
-                        <i class="bi bi-bar-chart-fill"></i>
-                    </div>
-                </a>
-                <p class="descricao">Relatórios</p>
-
+    <div id="pagina">
+        <div class="conteudo">
+            <div class="bem-vindo">
+                <h2 id="bem-vindo" class="bem-vindo">Bem-vindo</h2>
             </div>
-            <div class="opcao">
-                <a href="catadorescontrolar.php?pag=1">
-                    <div class="logo">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                </a>
-                <p class="descricao">Cadastros</p>
+            <div class="titulo">
+                <h3 id="titulo" class="titulo">O que deseja fazer?</h3>
             </div>
-            <div class="opcao">
-                <div class="logo">
-                    <i class="bi bi-bag-fill"></i>
+            <div class="opcoes">
+                <div class="opcao">
+                    <div class="logo">
+                        <a href="catadorescontrolar.php?pag=1">
+                            <i class="bi bi-person-fill"></i>
+                        </a>
+                    </div>
+                    <span class="descricao">Cadastros</span>
                 </div>
-                <p class="descricao">Vendas</p>
-
-            </div>
-            <div class="opcao">
-                <div class="logo">
-                    <i class="bi bi-calculator-fill"></i>
-                </div>
-                <p class="descricao">Calcular</p>
-
-            </div>
-            <div class="opcao">
-                <a href="estoque.php">
+                <div class="opcao">
                     <div class="logo">
-                        <i class="bi bi-box-fill"></i>
+                        <a href="vendas.php?pag=1">
+                            <i class="bi bi-bag-fill"></i>
+                        </a>
                     </div>
-                </a>
-                <p class="descricao">Estoque</p>
+                    <span class="descricao">Vendas</span>
+                </div>
+                <div class="opcao">
+                    <div class="logo">
+                        <a href="estoque.php">
+                        <i class="bi bi-bookshelf"></i>
+                        </a>
+                    </div>
+                    <span class="descricao">Estoque</span>
+                </div>
             </div>
-
         </div>
     </div>
-
+    <!--<script src="../scripts/admin.js" type=""></script>-->
 </body>
 
 </html>

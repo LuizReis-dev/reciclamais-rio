@@ -25,6 +25,7 @@ $productPrice = $request->Price;
 $quantidade = $request->quantidade;
 //O Id do cliente será lido da Sessão
 $clienteId= $_SESSION["id_empresa"];
+ 
 // Convert product price to cent 
 $stripeAmount = round($productPrice*100, 2); 
 

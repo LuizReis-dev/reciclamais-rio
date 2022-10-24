@@ -1,47 +1,106 @@
+@import url(estilo.css);
+
+#pagina {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr 40px;
+    grid-template-areas: "cabecalho""conteiner""copyright";
+}
+
+.conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: conteiner;
+}
+
 .banner {
     margin: auto;
     text-align: center;
-    width: 1088px;
-    margin-top: 15px;
+    width: 90%;
     height: 500px;
-    background-image: url(../imagens/img-banner3.png);
+    margin-top: 15px;
+    margin: 0 5vw;
+    background-image: var(--banner);
     background-position: center;
     background-size: cover;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.281);
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-columns: 1fr 1.8fr;
     grid-template-rows: 35% 65%;
-    grid-template-areas: "nada img img" "nada p p";
+    grid-template-areas: "nada img img""nada p p";
+    position: relative;
 }
 
-.banner img {
-    height: 180px;
-    padding-left: 110px;
-    justify-self: center;
+.cristo {
+    margin-top: 10px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: img;
 }
 
+.cristo img {
+    width: 150px;
+    height: 150px;
+    user-select: none;
+}
+
 .paragrafo {
-    font-family: "";
+    font-family: "Nunito";
     font-style: normal;
-    padding-right: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    color: #fff;
+    align-items: center;
+    color: var(--preto);
+    user-select: none;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
     grid-area: p;
 }
 
 .paragrafo h2 {
-    width: 80%;
+    font-family: 'Nunito';
+    width: var(--max);
+    height: 20%;
     font-size: 30px;
     text-align: center;
     margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: 900;
+    user-select: none;
+    cursor: text;
+}
+
+.paragrafo h2 span{
+    color: var(--verdeC4);
 }
 
 .paragrafo p {
-    width: 80%;
-    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    width: var(--max);
+    height: 80%;
+    line-height: 32px;
+    margin-top: 30px;
+    font-size: 18px;
     text-align: justify;
+    letter-spacing: 2px;
+    font-weight: 400;
+    user-select: none;
+    color: var(--preto);
+    cursor: text;
+}
+
+.copyright {
+    width: var(--max);
+    height: 40px;
+    padding-left: 51.2px;
+    grid-area: copyright;
+}
+
+.copyright small{
+    user-select: none;
+    cursor: text;
 }

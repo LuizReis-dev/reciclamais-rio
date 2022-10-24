@@ -1,54 +1,88 @@
 @import url(estilo.css);
 
 .cabecalho {
-    font-family: 'Nunito';
     display: flex;
-    width: 90vw;
-    height: 40px;
+    width: calc(100vw - 102.4px);
+    height: 60px;
     justify-content: space-between;
-    margin: auto;
-    margin-top: 10px;
+    margin: 0 51.2px;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #b4b4b4;
-}
-
-.nome-cooperativa{
-    font-family: 'Nunito';
-    font-weight: 200;
-    color: var(--verde4);
+    border-bottom: 1px solid var(--preto);
+    z-index: 999;
+    grid-area: cabecalho;
 }
 
 .cabecalho a {
+    font-style: 'Montserrat';
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: inherit;
+}
+
+.cabecalho h2 {
+    width: 200px;
+    font-family: 'Nunito';
+    font-weight: 400;
+    color: var(--preto);
+    transition: var(--tempo);
+    font-size: 25px;
+    letter-spacing: 1px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.cabecalho h2:hover {
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--verdeC4);
 }
 
 .opcoes {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     width: 50%;
-    justify-content: space-evenly;
+    height: var(--max);
 }
 
 .opcoes li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
 .opcoes li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    color: inherit;
-    font-size: 18px;
-    letter-spacing: 0.5px;
+    color: var(--preto);
+    font-size: 15px;
+    letter-spacing: 1px;
     position: relative;
-    padding: 0 10px;
+    padding: 0 5px;
+    margin: 0 5px;
+    letter-spacing: 1px;
+    transition: var(--tempo);
+    user-select: none;
+}
+
+.opcoes li a:hover {
+    font-weight: 800;
+    letter-spacing: 3px;
 }
 
 .opcoes li a::after {
     content: '';
-    background-color: var(--verde4);
+    background-color: var(--verdeC4);
     position: absolute;
-    width: 0px;
+    width: 0%;
     height: 3px;
     left: 0;
     bottom: -10px;
@@ -60,23 +94,30 @@
 }
 
 .logos {
-    font-size: 25px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrinho {
+    margin-right: -5px;
 }
 
 .logos i {
-    margin-right: 5px;
     cursor: pointer;
     color: var(--preto);
+    user-select: none;
 }
 
 .opcoes li:hover {
     font-weight: 800;
 }
 
-.logos span {
+.logos a i span {
     display: inline-block;
-    text-align: center;
-    background-color: #83BD75;
+    background-color: var(--preto);
     border-radius: 50%;
     color: var(--branco);
     font-size: 12px;
@@ -86,5 +127,40 @@
     font-weight: bold;
     position: relative;
     bottom: 15px;
-    right: 0;
+    text-align: center;
+    padding-right: 2px;
+    right: 3px;
+    user-select: none;
+}
+
+.login {
+    width: 130px;
+    height: 35px;
+    margin-left: 10px;
+    background-color: transparent;
+    border: 1px solid var(--preto);
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+}
+
+.login a {
+    width: var(--max);
+    height: var(--max);
+    padding: 4px 10px;
+    
+}
+
+.login i {
+    font-size: 20px;
+}
+
+.logar {
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--preto);
+    user-select: none;
+    margin-left: .1rem;
 }

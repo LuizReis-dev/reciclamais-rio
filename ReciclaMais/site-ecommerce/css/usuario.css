@@ -1,0 +1,178 @@
+@import url(estilo.css);
+
+#pagina {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px calc(100vh - 100px) 40px;
+    grid-template-areas: "cabecalho" "conteiner" "nada";
+}
+
+.conteiner {
+    display: flex;
+    flex-direction: row;
+    padding: 0 51.2px;
+}
+
+aside {
+    width: 25%;
+    height: var(--max);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    order: 0;
+    background: var(--verdeC4);
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2),
+        3px 0 5px rgba(0, 0, 0, 0.2),
+        -5px 5px 5px rgba(0, 0, 0, 0.4),
+        inset 4px 4px 6px -1px rgba(78, 148, 79, 0.9),
+        inset -4px -4px 6px -1px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+}
+
+.user{
+    position: absolute;
+    top: 20px;
+    left: calc(50% -50px);
+    z-index: 1;
+    color: var(--branco);
+    font-size: 100px;
+}
+
+.dados {
+    width: var(--max);
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 80px 0 0 0;
+}
+
+.dados h2 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    user-select: none;
+    color: var(--branco);
+    margin: 3px 0;
+}
+
+.dados p {
+    color: var(--branco);
+    letter-spacing: 0.1em;
+    font-weight: 200;
+    font-size: 14px;
+    user-select: none;
+}
+
+.dados a {
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: var(--backgroundC);
+    color: var(--branco);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-top: 15px;
+    justify-self: end;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    transition: var(--tempo);
+    opacity: 0.7;
+}
+
+.dados a:hover {
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+main {
+    width: 75%;
+    height: var(--max);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
+    order: 1;
+}
+
+.compras {
+    width: var(--max);
+    height: var(--max);
+    background: var(--branco);
+    overflow-y: visible;
+    user-select: none;
+    border-collapse: collapse;
+}
+
+.compras thead {
+    width: var(--max);
+    height: 80px;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.2);
+}
+
+.compras thead tr {
+    width: 100%;
+    height: 100%;
+    font-family: Arial;
+    background-color: var(--tempo);
+    border-bottom: 1px solid var(--verdeC3);
+    color: var(--branco);
+    font-size: 20px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.compras thead tr:last-child {
+    background-color: var(--verdeC3);
+    height: 30px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--branco);
+
+}
+
+.compras thead th {
+    border: 0;
+    padding: 10px 30px;
+    text-align: center;
+}
+
+.compras tbody {
+    width: 100%;
+    height: calc(100% - 75px);
+    background: transparent;
+}
+
+.compras tbody tr {
+    color: var(--preto);
+    font-weight: 500;
+    transition: var(--tempo);
+}
+
+.compras tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.compras tbody tr:hover {
+    color: var(--verdeC3);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.compras tbody td {
+    width: 30%;
+    text-align: center;
+}

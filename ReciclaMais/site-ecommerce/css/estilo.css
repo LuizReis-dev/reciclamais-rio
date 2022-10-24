@@ -1,5 +1,5 @@
 * {
-    font-family: 'Montserrat','Nunito';
+    font-family: 'Montserrat', 'Nunito', 'Poppins', sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -10,11 +10,14 @@
 
 :root {
     /* plano de fundo */
-    --backgroundC: linear-gradient(120deg,var(--verdeC1),var(--verdeC2),var(--verdeC3),var(--verdeC4));
-    --backgroundE: linear-gradient(120deg,var(--verdeE4),var(--verdeE3),var(--verdeE2),var(--verdeE1));
+    --backgroundC: linear-gradient(120deg, var(--verdeC1), var(--verdeC2), var(--verdeC3), var(--verdeC4));
 
     /* imagens */
-    
+    --banner: url(../imagens/banner.png);
+    --logo: url(../imagens/logo.png);
+    --cristobranco: url(../imagens/cristobranco.png);
+    --cristopreto: url(../imagens/cristopreto.png);
+    --reciclamaisrio: url(../imagens/reciclamaisrio.jpg);
 
     /* cores */
     --verdeC1: #E9EFC0;
@@ -22,33 +25,48 @@
     --verdeC3: #83BD75;
     --verdeC4: #4E944F;
 
-    --verdeE1: #235347;
-    --verdeE2: #163832;
-    --verdeE3: #0b2b26;
-    --verdeE4: #051f20;
-
     --preto: #000000;
-    --cinzaE: #2f2323;
     --branco: #ffffff;
-    --cinzaC: #c6c6c6;
-    
-    --sucesso: #2ecc71;
-    --erro: #e74c3c;
-    --transparent: transparent;
+
 
     /* números */
-    --tamanho-x: 100vw;
-    --tamanho-y: 100vh;
-    --max-porcentagem: 100%;
+    --max: 100%;
     --tempo: 0.5s;
-    --font-size: 18px;
-    
 }
 
 #pagina {
-    width: var(--tamanho-x);
-    height: var(--tamanho-y);
+    min-width: 100vw;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     background: var(--backgroundC);
     display: grid;
     overflow: hidden;
+    transition: var(--tempo);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: var(--max);
+    background-color: #E1E8EB;
+}
+
+::-webkit-scrollbar-track {
+    border: 2px solid #E1E8EB;
+    box-shadow: inset 0 0 5px #4E944F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B4E197;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0cf80;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #83bb5d;
 }

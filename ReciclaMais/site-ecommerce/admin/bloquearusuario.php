@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../acesso/acessoadm.php';
 
 
@@ -17,10 +16,6 @@ if ($campostatus == "ativo") {
 }
 
 if ($conn->query($sql) === TRUE) {
-    echo "Usuário bloqueado";
-
-    include 'log.php';
-
     header('Location: empresascontrolar.php?pag=1'); //Redireciona para o controle  
 } else {
     echo "Erro: " . $conn->error;

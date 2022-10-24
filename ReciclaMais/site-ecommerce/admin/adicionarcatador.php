@@ -11,7 +11,6 @@ $campoTelefone = filter_input(INPUT_POST, 'telefone');
 $sql = "INSERT INTO catador(nome, cpf, endereco, data_de_nascimento, email, telefone) VALUES ('$campoNome', '$campoCpf', '$campoEndereco', '$campoDataDeNascimento', '$campoEmail', '$campoTelefone')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Gravado com sucesso.";
     header('location: catadorescontrolar.php?pag=1');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

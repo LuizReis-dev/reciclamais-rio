@@ -1,15 +1,15 @@
 <?php
 session_start();
 // Include configuration file 
-require_once './util/conexao.php';
+require_once 'conexao.php';
 
     $session_id = $_GET['session_id'];   
-    
+
         // Include Stripe PHP library 
         require_once 'stripe-php/init.php';
         
         // Set API key
-        \Stripe\Stripe::setApiKey('sk_test_51LfOQfE7cOap8gRqh7Nq1Vjv9xUKOBC7FF0ZIDib9WuEH09iV2VjY0EPZ5SOgtXjvcwela8mkw90UTBzrhqTexsw00Izbxpx06');
+        \Stripe\Stripe::setApiKey('sk_test_51LHzhDJ6IibYh1aVzRXYMhZFq2wd7avqQvlzWiqP0y2J9meDJP1znvE8L8M3PFjZ2Mv9l0OYle4hOoD6FVyN70j300Dgdg7zFU');
         
         // Fetch the Checkout Session to display the JSON result on the success page
         try {
@@ -17,19 +17,51 @@ require_once './util/conexao.php';
         }catch(Exception $e) { 
             $api_error = $e->getMessage(); 
         }
+
+        echo "<hr>" . $checkout_session;
+
+
 // Retrieves the details of customer
-$teste = "0";
+            try {
+                // Create the PaymentIntent
+                $customer = \Stripe\Customer::retrieve($checkout_session->customer);
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                $api_error = $e->getMessage();
+            }
+
+echo "<hr>" . $customer;
+
+
+      
+            // Retrieve the details of a PaymentIntent
+            try {
+                $intent = \Stripe\PaymentIntent::retrieve($checkout_session->payment_intent);
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                $api_error = $e->getMessage();
+            }
+
+echo "<hr>" . $intent;
+
+
+echo "<hr>";
+
 $id_cliente = $checkout_session->metadata->id_cliente;
-$quantidade = $checkout_session->metadata->$teste;
-
+$id_plano = $checkout_session->metadata->id_plano;
 $valor = $checkout_session->amount_total;
-echo $quantidade;
-echo "<hr>";
+
+echo "Id: $id_cliente Valor: $valor";
 
 echo "<hr>";
 
+$sql = "INSERT INTO pagamento(ID_cliente, ID_plano, Valor, Status) VALUES($id_cliente, $id_plano, $valor, 'realizado')"; 
 
-require './util/enviaremail.php';
+//Executa o SQL e faz tratamento de erros
+if ($conn->query($sql) === TRUE) {
+  echo "Gravado com sucesso.";
+} else { 
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 //Fecha a conexão.
 $conn->close();
 ?>
